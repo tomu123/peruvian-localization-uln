@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CompanyInfo_Name">
+          <DataField>CompanyInfo_Name</DataField>
+        </Field>
+        <Field Name="CompanyInfo__VAT_Registration_No__">
+          <DataField>CompanyInfo__VAT_Registration_No__</DataField>
+        </Field>
+        <Field Name="Ejercicio">
+          <DataField>Ejercicio</DataField>
+        </Field>
+        <Field Name="MesPeriodo">
+          <DataField>MesPeriodo</DataField>
+        </Field>
+        <Field Name="UserInfo">
+          <DataField>UserInfo</DataField>
+        </Field>
+        <Field Name="PaginaInfo">
+          <DataField>PaginaInfo</DataField>
+        </Field>
+        <Field Name="InfoFecha">
+          <DataField>InfoFecha</DataField>
+        </Field>
+        <Field Name="G_L_Account_Name">
+          <DataField>G_L_Account_Name</DataField>
+        </Field>
+        <Field Name="G_L_Account__No__">
+          <DataField>G_L_Account__No__</DataField>
+        </Field>
+        <Field Name="SaldoFinalTotal">
+          <DataField>SaldoFinalTotal</DataField>
+        </Field>
+        <Field Name="SaldoFinalTotalFormat">
+          <DataField>SaldoFinalTotalFormat</DataField>
+        </Field>
+        <Field Name="DENOMINACION_O_RAZON_SOCIAL_Caption">
+          <DataField>DENOMINACION_O_RAZON_SOCIAL_Caption</DataField>
+        </Field>
+        <Field Name="EJERCICIO_Caption">
+          <DataField>EJERCICIO_Caption</DataField>
+        </Field>
+        <Field Name="RUC_Caption">
+          <DataField>RUC_Caption</DataField>
+        </Field>
+        <Field Name="PERIODO_Caption">
+          <DataField>PERIODO_Caption</DataField>
+        </Field>
+        <Field Name="DataItem1000000000">
+          <DataField>DataItem1000000000</DataField>
+        </Field>
+        <Field Name="FECHA_DE_INICIO_DE_LA_OPERACIONCaption">
+          <DataField>FECHA_DE_INICIO_DE_LA_OPERACIONCaption</DataField>
+        </Field>
+        <Field Name="MONTO_DE_LA_CUENTA_POR_COBRARCaption">
+          <DataField>MONTO_DE_LA_CUENTA_POR_COBRARCaption</DataField>
+        </Field>
+        <Field Name="DENOMINACION_O_RAZON_SOCIALCaption">
+          <DataField>DENOMINACION_O_RAZON_SOCIALCaption</DataField>
+        </Field>
+        <Field Name="MONTO_DE_LA_CUENTA_POR_COBRARCaption_Control1000000009">
+          <DataField>MONTO_DE_LA_CUENTA_POR_COBRARCaption_Control1000000009</DataField>
+        </Field>
+        <Field Name="APELLIDOS_Y_NOMBRESCaption">
+          <DataField>APELLIDOS_Y_NOMBRESCaption</DataField>
+        </Field>
+        <Field Name="NUMEROCaption">
+          <DataField>NUMEROCaption</DataField>
+        </Field>
+        <Field Name="DOCUMENTO_DE_IDENTIDADCaption">
+          <DataField>DOCUMENTO_DE_IDENTIDADCaption</DataField>
+        </Field>
+        <Field Name="INFORMACION_DEL_ACCIONISTA__SOCIO_O_PERSONALCaption">
+          <DataField>INFORMACION_DEL_ACCIONISTA__SOCIO_O_PERSONALCaption</DataField>
+        </Field>
+        <Field Name="TIPOCaption">
+          <DataField>TIPOCaption</DataField>
+        </Field>
+        <Field Name="SALDO_FINAL_TOTAL_Caption">
+          <DataField>SALDO_FINAL_TOTAL_Caption</DataField>
+        </Field>
+        <Field Name="G_L_Entry__G_L_Account_No__">
+          <DataField>G_L_Entry__G_L_Account_No__</DataField>
+        </Field>
+        <Field Name="TipoDoc">
+          <DataField>TipoDoc</DataField>
+        </Field>
+        <Field Name="NombrePersona">
+          <DataField>NombrePersona</DataField>
+        </Field>
+        <Field Name="G_L_Entry__G_L_Entry__Amount">
+          <DataField>G_L_Entry__G_L_Entry__Amount</DataField>
+        </Field>
+        <Field Name="G_L_Entry__G_L_Entry__AmountFormat">
+          <DataField>G_L_Entry__G_L_Entry__AmountFormat</DataField>
+        </Field>
+        <Field Name="G_L_Entry__Document_Date_">
+          <DataField>G_L_Entry__Document_Date_</DataField>
+        </Field>
+        <Field Name="SUBTOTAL_Caption">
+          <DataField>SUBTOTAL_Caption</DataField>
+        </Field>
+        <Field Name="G_L_Entry_Entry_No_">
+          <DataField>G_L_Entry_Entry_No_</DataField>
+        </Field>
+        <Field Name="numDoc">
+          <DataField>numDoc</DataField>
+        </Field>
+        <Field Name="GrupoContable">
+          <DataField>GrupoContable</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Picture_CompanyInformation">
+          <DataField>Picture_CompanyInformation</DataField>
+        </Field>
+        <Field Name="NombreCIA">
+          <DataField>NombreCIA</DataField>
+        </Field>
+        <Field Name="VATCIA">
+          <DataField>VATCIA</DataField>
+        </Field>
+        <Field Name="PostingDate_BankAccountLedgerEntry">
+          <DataField>PostingDate_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="CurrencyCode_BankAccountLedgerEntry">
+          <DataField>CurrencyCode_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="DocumentNo_BankAccountLedgerEntry">
+          <DataField>DocumentNo_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="Amount_BankAccountLedgerEntry">
+          <DataField>Amount_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="Amount_BankAccountLedgerEntryFormat">
+          <DataField>Amount_BankAccountLedgerEntryFormat</DataField>
+        </Field>
+        <Field Name="glTextAmount">
+          <DataField>glTextAmount</DataField>
+        </Field>
+        <Field Name="RelationalExchRateAmount_CurrencyExchangeRate">
+          <DataField>RelationalExchRateAmount_CurrencyExchangeRate</DataField>
+        </Field>
+        <Field Name="RelationalExchRateAmount_CurrencyExchangeRateFormat">
+          <DataField>RelationalExchRateAmount_CurrencyExchangeRateFormat</DataField>
+        </Field>
+        <Field Name="Name_BankAccount">
+          <DataField>Name_BankAccount</DataField>
+        </Field>
+        <Field Name="BankAccountNo_BankAccount">
+          <DataField>BankAccountNo_BankAccount</DataField>
+        </Field>
+        <Field Name="Beneficiario_BankAccountLedgerEntry">
+          <DataField>Beneficiario_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="Description_BankAccountLedgerEntry">
+          <DataField>Description_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="ExternalDocumentNo_BankAccountLedgerEntry">
+          <DataField>ExternalDocumentNo_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="Reversed_BankAccountLedgerEntry">
+          <DataField>Reversed_BankAccountLedgerEntry</DataField>
+        </Field>
+        <Field Name="Text1_GlobalVoucherBuffer">
+          <DataField>Text1_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Text2_GlobalVoucherBuffer">
+          <DataField>Text2_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Text3_GlobalVoucherBuffer">
+          <DataField>Text3_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Text4_GlobalVoucherBuffer">
+          <DataField>Text4_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Text5_GlobalVoucherBuffer">
+          <DataField>Text5_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Text6_GlobalVoucherBuffer">
+          <DataField>Text6_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Decimal1_GlobalVoucherBuffer">
+          <DataField>Decimal1_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Decimal1_GlobalVoucherBufferFormat">
+          <DataField>Decimal1_GlobalVoucherBufferFormat</DataField>
+        </Field>
+        <Field Name="Decimal2_GlobalVoucherBuffer">
+          <DataField>Decimal2_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Decimal2_GlobalVoucherBufferFormat">
+          <DataField>Decimal2_GlobalVoucherBufferFormat</DataField>
+        </Field>
+        <Field Name="Integer1_GlobalVoucherBuffer">
+          <DataField>Integer1_GlobalVoucherBuffer</DataField>
+        </Field>
+        <Field Name="Text7_GlobalVoucherBuffer">
+          <DataField>Text7_GlobalVoucherBuffer</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

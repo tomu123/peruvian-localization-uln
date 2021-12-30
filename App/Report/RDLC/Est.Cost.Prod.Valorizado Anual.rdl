@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="ConsumoProduccion">
+          <DataField>ConsumoProduccion</DataField>
+        </Field>
+        <Field Name="MontoEnero">
+          <DataField>MontoEnero</DataField>
+        </Field>
+        <Field Name="MontoEneroFormat">
+          <DataField>MontoEneroFormat</DataField>
+        </Field>
+        <Field Name="MontoFebrero">
+          <DataField>MontoFebrero</DataField>
+        </Field>
+        <Field Name="MontoFebreroFormat">
+          <DataField>MontoFebreroFormat</DataField>
+        </Field>
+        <Field Name="MontoMarzo">
+          <DataField>MontoMarzo</DataField>
+        </Field>
+        <Field Name="MontoMarzoFormat">
+          <DataField>MontoMarzoFormat</DataField>
+        </Field>
+        <Field Name="MontoAbril">
+          <DataField>MontoAbril</DataField>
+        </Field>
+        <Field Name="MontoAbrilFormat">
+          <DataField>MontoAbrilFormat</DataField>
+        </Field>
+        <Field Name="MontoMayo">
+          <DataField>MontoMayo</DataField>
+        </Field>
+        <Field Name="MontoMayoFormat">
+          <DataField>MontoMayoFormat</DataField>
+        </Field>
+        <Field Name="MontoJunio">
+          <DataField>MontoJunio</DataField>
+        </Field>
+        <Field Name="MontoJunioFormat">
+          <DataField>MontoJunioFormat</DataField>
+        </Field>
+        <Field Name="MontoJulio">
+          <DataField>MontoJulio</DataField>
+        </Field>
+        <Field Name="MontoJulioFormat">
+          <DataField>MontoJulioFormat</DataField>
+        </Field>
+        <Field Name="MontoAgosto">
+          <DataField>MontoAgosto</DataField>
+        </Field>
+        <Field Name="MontoAgostoFormat">
+          <DataField>MontoAgostoFormat</DataField>
+        </Field>
+        <Field Name="MontoSeptiembre">
+          <DataField>MontoSeptiembre</DataField>
+        </Field>
+        <Field Name="MontoSeptiembreFormat">
+          <DataField>MontoSeptiembreFormat</DataField>
+        </Field>
+        <Field Name="MontoOctubre">
+          <DataField>MontoOctubre</DataField>
+        </Field>
+        <Field Name="MontoOctubreFormat">
+          <DataField>MontoOctubreFormat</DataField>
+        </Field>
+        <Field Name="MontoNoviembre">
+          <DataField>MontoNoviembre</DataField>
+        </Field>
+        <Field Name="MontoNoviembreFormat">
+          <DataField>MontoNoviembreFormat</DataField>
+        </Field>
+        <Field Name="MontoDeciembre">
+          <DataField>MontoDeciembre</DataField>
+        </Field>
+        <Field Name="MontoDeciembreFormat">
+          <DataField>MontoDeciembreFormat</DataField>
+        </Field>
+        <Field Name="Total">
+          <DataField>Total</DataField>
+        </Field>
+        <Field Name="TotalFormat">
+          <DataField>TotalFormat</DataField>
+        </Field>
+        <Field Name="Periodo">
+          <DataField>Periodo</DataField>
+        </Field>
+        <Field Name="RUC">
+          <DataField>RUC</DataField>
+        </Field>
+        <Field Name="RAZONSOCIAL">
+          <DataField>RAZONSOCIAL</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>
