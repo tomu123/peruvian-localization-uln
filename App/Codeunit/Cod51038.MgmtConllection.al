@@ -2027,11 +2027,14 @@ codeunit 51038 "Mgmt Collection"
         // 7	Código de cuota	8	74	81	A	8		
         // Código de Cuota (alineado a la izquierda) solo para Data Completa caso contrario espacios
         lclDocNo := pRecCollectionBuffer."Document No.";
-        lclDocNo := fnFormatDocumentNo(lclDocNo);
-        lclDocNo := CopyStr(lclDocNo, StrPos(lclDocNo, '-') + 1, StrLen(lclDocNo));
+        //lclDocNo := fnFormatDocumentNo(lclDocNo);
+        lclDocNo := DelChr(lclDocNo, '=', '-');
+        lclDocNo := CopyStr(lclDocNo, 5, 8);
+        lclDocNo := PADSTR('', 8 - StrLen(lclDocNo), '0') + lclDocNo;
         case gTipoRegistro of
             'Data Completa':
-                rTxtLinesIBK += PADSTR('', 8, '0');
+                //rTxtLinesIBK += PADSTR('', 8, '0');
+                rTxtLinesIBK += lclDocNo;
             else
                 rTxtLinesIBK += PADSTR('', 8, '0');
         end;
