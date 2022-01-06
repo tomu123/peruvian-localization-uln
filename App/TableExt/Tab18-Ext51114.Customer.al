@@ -9,7 +9,7 @@ tableextension 51114 "ST Customer" extends Customer
             Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Banco Recaudación ME"';
             TableRelation = "Customer Bank Account".Code where("Customer No." = field("No."));
         }
-        //Consult RUC Begin
+        //Consult RUC Begin 
         field(51005; "SUNAT Status"; Text[30])
         {
             Caption = 'SUNAT Status', Comment = 'ESM="Estado SUNAT"';
