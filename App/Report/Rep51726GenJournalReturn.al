@@ -643,7 +643,7 @@ report 51726 GenJournalReturn
             Commit();
             recGJLine."Document No." := NoDocumentoSerieBatch;
         end;
-
+        recGJLine."Source Code" := 'DIAGEN';
         recGJLine.INSERT;
     END;
 
@@ -658,7 +658,7 @@ report 51726 GenJournalReturn
         gWindow: Dialog;
         gFirstLine: Integer;
         gLastLine: Integer;
-
+        gSourceCode: Code[20];
         gTxtDato: array[39] of text;
         gPrimaryKey: Text;
         gForeingKEY: Text;

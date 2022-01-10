@@ -6,6 +6,12 @@ codeunit 51029 "LD Correct Posted Documents"
     end;
 
     //******************************************** Begin Sales *****************************************************
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterCorrectInvoice(var SalesHeader: Record "Sales Header")
+    begin
+
+    end;
+
     procedure SalesCorrectInvoice(var pSalesInvoiceHeader: Record "Sales Invoice Header"): Boolean
     var
         SalesHeader: Record "Sales Header";
