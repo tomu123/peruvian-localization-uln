@@ -115,7 +115,7 @@ codeunit 51005 "Cnslt. Ruc Management"
         // if IntegrationProcess then
         //     AutomaticIntegrationGetParameter(ConfTempHdr);
 
-        ConsumeService();
+        ConsumeService2();
         if IsExistsVendor() then
             UpdateVendor()
         else
