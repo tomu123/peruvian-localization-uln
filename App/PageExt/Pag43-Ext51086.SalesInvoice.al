@@ -41,13 +41,13 @@ pageextension 51086 "Detrac. Sales Invoice" extends "Sales Invoice"
                 {
                     ApplicationArea = All;
                     Caption = 'Amount Detraction';
-                    Editable = "Sales Detraction";
+                    Editable = false;
                 }
                 field("Sales Amt Detraction (LCY)"; "Sales Amt Detraction (LCY)")
                 {
                     ApplicationArea = All;
                     Caption = 'Amount Detraction (LCY)';
-                    Editable = "Sales Detraction";
+                    Editable = false;
                 }
             }
         }

@@ -24,6 +24,16 @@ pageextension 51001 "Legal Doc. Sales Invoice List" extends "Sales Invoice List"
     actions
     {
         // Add changes to page actions here
+        modify(PostAndSend)
+        {
+            Visible = false;
+            Enabled = false;
+        }
+        modify("Post &Batch")
+        {
+            Visible = false;
+            Enabled = false;
+        }
     }
 
     var
