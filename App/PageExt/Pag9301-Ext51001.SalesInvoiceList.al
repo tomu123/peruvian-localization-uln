@@ -24,7 +24,6 @@ pageextension 51001 "Legal Doc. Sales Invoice List" extends "Sales Invoice List"
     actions
     {
         // Add changes to page actions here
-<<<<<<< HEAD
         modify(PostAndSend)
         {
             Visible = false;
@@ -34,15 +33,6 @@ pageextension 51001 "Legal Doc. Sales Invoice List" extends "Sales Invoice List"
         {
             Visible = false;
             Enabled = false;
-=======
-        modify("Post &Batch")
-        {
-            Visible = false;
-        }
-        modify(PostAndSend)
-        {
-            Visible = false;
->>>>>>> c60cf94c5a0ecfbd31e3031fc256189efba62bb3
         }
     }
 
