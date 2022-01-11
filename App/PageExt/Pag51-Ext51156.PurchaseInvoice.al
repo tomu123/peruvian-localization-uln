@@ -75,6 +75,10 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                     Validate("Vendor Invoice No.");
                 end;
             }
+            field("Vendor Order No."; "Vendor Order No.")
+            {
+                ApplicationArea = All;
+            }
         }
         addafter("Vendor Invoice No.")
         {
@@ -193,7 +197,7 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                 }
                 field("Purch. Amount Detraction"; "Purch. Amount Detraction")
                 {
-                    Editable = EditDetrac;
+                    Editable = false;
                     ApplicationArea = All;
                     trigger OnValidate()
                     var
@@ -204,7 +208,7 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                 }
                 field("Purch Amount Detraction (DL)"; "Purch Amount Detraction (DL)")
                 {
-                    Editable = EditDetrac;
+                    Editable = false;
                     ApplicationArea = All;
                     trigger OnValidate()
                     var

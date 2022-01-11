@@ -1,5 +1,6 @@
 pageextension 51034 "Detrac Posted Pucharse Invoice" extends "Posted Purchase Invoice"
 {
+    Editable = false;
     layout
     {
         addafter("Vendor Invoice No.")

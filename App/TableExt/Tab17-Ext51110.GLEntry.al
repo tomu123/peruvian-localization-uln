@@ -28,7 +28,7 @@ tableextension 51110 "Setup G/L Entry" extends "G/L Entry"
             DataClassification = ToBeClassified;
             Caption = 'Analityc Base Entry No.', Comment = 'ESM="N° Mov. Analítica Base"';
         }
-        field(51008; "Posting Text"; Text[200])
+        field(51008; "Posting Text"; Text[250])
         {
             DataClassification = ToBeClassified;
             Caption = 'Posting Text', Comment = 'ESM="Glosa Principal"';

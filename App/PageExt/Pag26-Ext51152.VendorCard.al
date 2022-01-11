@@ -181,10 +181,12 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
             }
             field(PostCode; Rec."Post Code")
             {
+                Caption = 'Departament', comment = 'ESM="Departamento"';
                 ApplicationArea = All;
             }
             field(City2; Rec.City)
             {
+                Caption = 'City', comment = 'ESM="Ciudad"';
                 ApplicationArea = All;
             }
         }

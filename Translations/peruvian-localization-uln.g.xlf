@@ -17113,6 +17113,16 @@
           <note from="Developer" annotates="general" priority="2">ESM="Agente de retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Vendor Card - Control RetentionAgent - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3362382913 - Control 1041034975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ciudad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Vendor Card - Control City2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3362382913 - Control 3374398455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Departament</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Departamento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Vendor Card - Control PostCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3362382913 - Change 1634172321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Preferred Bank Account Code</source>
           <note from="Developer" annotates="general" priority="2">ESM="Banco destino MN"</note>

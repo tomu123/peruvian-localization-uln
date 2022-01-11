@@ -65,7 +65,6 @@ codeunit 51038 "Mgmt Collection"
 
     procedure ConvertTxtToCSV(pCollectionBank: text; var pTempFileBlob: Codeunit "Temp Blob"; var pFileName: Text)
     var
-        SLSetup: Record "Setup Localization";
         TXTInStr: InStream;
         CSVInStr: InStream;
         Buffer: Text;
@@ -92,150 +91,156 @@ codeunit 51038 "Mgmt Collection"
         gReconciliationLineBuffer.DeleteAll();
 
         while not TXTInStr.EOS do begin
-            LineCounter += 1;
             TXTInStr.READTEXT(Buffer);
-            if LineCounter = 1 then begin
-                case pCollectionBank of
-                    'INTERBANK':
-                        begin
-                            DocumentNo := delchr(COPYSTR(Buffer, 38, 15), '=', ' ');
-                            SerieNO := COPYSTR(DocumentNo, 1, 4);
-                            DocNo := COPYSTR(DocumentNo, 5, 11);
-                            DocumentNo := SerieNO + '-' + DocNo;
-                            Suministro := COPYSTR(Buffer, 10, 19).Trim();
-                            ProcessDate := COPYSTR(Buffer, 83, 8);
-                            ProcessDate := TxtToDateFormat(ProcessDate);
+            //BEGIN ULN :: JB 10/01/2022
+            //Description: Filtrar para interbank, si son PEN entonces solo usar '01', si es USD entonces solo '10'
+            if not (((SLSetup."Curr. Bank Code Selected" = 'IBK-R-PEN') and (COPYSTR(Buffer, 8, 2) <> '01')) or
+            ((SLSetup."Curr. Bank Code Selected" = 'IBK-R-USD') and (COPYSTR(Buffer, 8, 2) <> '10'))) then begin
+                //END ULN :: JB 10/01/2022
+                LineCounter += 1;
+                if LineCounter = 1 then begin
+                    case pCollectionBank of
+                        'INTERBANK':
+                            begin
+                                DocumentNo := delchr(COPYSTR(Buffer, 38, 15), '=', ' ');
+                                SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                DocNo := COPYSTR(DocumentNo, 5, 11);
+                                DocumentNo := SerieNO + '-' + DocNo;
+                                Suministro := COPYSTR(Buffer, 10, 19).Trim();
+                                ProcessDate := COPYSTR(Buffer, 83, 8);
+                                ProcessDate := TxtToDateFormat(ProcessDate);
 
-                            PaymentAmount := COPYSTR(Buffer, 97, 13);
-                            PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 11);
-                            PaymentAmountDec := COPYSTR(PaymentAmount, 12, 2);
-                            TransactionNo := CopyStr(Buffer, 140, 8);
-                            Reference := COPYSTR(Buffer, 53, 30);
-                        end;
+                                PaymentAmount := COPYSTR(Buffer, 97, 13);
+                                PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 11);
+                                PaymentAmountDec := COPYSTR(PaymentAmount, 12, 2);
+                                TransactionNo := CopyStr(Buffer, 140, 8);
+                                Reference := COPYSTR(Buffer, 53, 30);
+                            end;
+                    end;
                 end;
-            end;
 
-            if (LineCounter > 1) then begin
+                if (LineCounter > 1) then begin
+                    case pCollectionBank of
+                        'BCP':
+                            begin
+                                DocumentNo := delchr(COPYSTR(Buffer, 31, 27), '=', ' ');
+                                Suministro := fnRemoveCero(COPYSTR(Buffer, 14, 14));
+                                ProcessDate := COPYSTR(Buffer, 58, 8);
+                                ProcessDate := TxtToDateFormat(ProcessDate);
+
+                                DueDate := COPYSTR(Buffer, 66, 8);
+                                DueDate := TxtToDateFormat(DueDate);
+
+                                PaymentAmount := COPYSTR(Buffer, 74, 15);
+                                PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 13);
+                                PaymentAmountDec := COPYSTR(PaymentAmount, 14, 2);
+                                TransactionNo := CopyStr(Buffer, 125, 5);
+                                Reference := COPYSTR(Buffer, 131, 22);
+                            end;
+                        'BBVA':
+                            begin
+                                DocumentNo := delchr(COPYSTR(Buffer, 56, 12), '=', ' ');
+                                SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                DocNo := COPYSTR(DocumentNo, 5, 12);
+                                DocumentNo := SerieNO + '-' + DocNo;
+                                Suministro := COPYSTR(Buffer, 33, 10);
+                                ProcessDate := COPYSTR(Buffer, 136, 8);
+                                ProcessDate := TxtToDateFormat(ProcessDate);
+
+                                PaymentAmount := COPYSTR(Buffer, 81, 15);
+                                PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 13);
+                                PaymentAmountDec := COPYSTR(PaymentAmount, 14, 2);
+                                TransactionNo := CopyStr(Buffer, 130, 6);
+                            end;
+                        'SCOTIA':
+                            begin
+                                DocumentNo := delchr(COPYSTR(Buffer, 34, 15), '=', ' ');
+                                SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                DocNo := COPYSTR(DocumentNo, 5, 11);
+                                DocumentNo := SerieNO + '-' + DocNo;
+                                Suministro := COPYSTR(Buffer, 19, 12);
+                                Suministro := DELCHR(Suministro, '=');
+                                ProcessDate := COPYSTR(Buffer, 147, 8);
+                                ProcessDate := TxtToDateFormat(ProcessDate);
+
+                                PaymentAmount := COPYSTR(Buffer, 73, 11);
+                                PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 9);
+                                PaymentAmountDec := COPYSTR(PaymentAmount, 10, 2);
+                                TransactionNo := CopyStr(Buffer, 157, 13);
+                                Reference := COPYSTR(Buffer, 170, 30);
+                            end;
+                        'INTERBANK':
+                            begin
+                                DocumentNo := delchr(COPYSTR(Buffer, 38, 15), '=', ' ');
+                                SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                DocNo := COPYSTR(DocumentNo, 5, 11);
+                                DocumentNo := SerieNO + '-' + DocNo;
+                                Suministro := COPYSTR(Buffer, 10, 19).Trim();
+                                ProcessDate := COPYSTR(Buffer, 83, 8);
+                                ProcessDate := TxtToDateFormat(ProcessDate);
+
+                                PaymentAmount := COPYSTR(Buffer, 97, 13);
+                                PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 11);
+                                PaymentAmountDec := COPYSTR(PaymentAmount, 12, 2);
+                                TransactionNo := CopyStr(Buffer, 140, 8);
+                                Reference := COPYSTR(Buffer, 53, 30);
+                            end;
+                    end;
+                end;
+
                 case pCollectionBank of
                     'BCP':
                         begin
-                            DocumentNo := delchr(COPYSTR(Buffer, 31, 27), '=', ' ');
-                            Suministro := fnRemoveCero(COPYSTR(Buffer, 14, 14));
-                            ProcessDate := COPYSTR(Buffer, 58, 8);
-                            ProcessDate := TxtToDateFormat(ProcessDate);
-
-                            DueDate := COPYSTR(Buffer, 66, 8);
-                            DueDate := TxtToDateFormat(DueDate);
-
-                            PaymentAmount := COPYSTR(Buffer, 74, 15);
-                            PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 13);
-                            PaymentAmountDec := COPYSTR(PaymentAmount, 14, 2);
-                            TransactionNo := CopyStr(Buffer, 125, 5);
-                            Reference := COPYSTR(Buffer, 131, 22);
+                            if COPYSTR(Buffer, 1, 2) = 'DD' then begin//Lineas detalle
+                                CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
+                                CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
+                                CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
+                                CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
+                                CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
+                                CSVBuffer.InsertEntry(LineCounter, 6, Reference);
+                                CSVBuffer.InsertEntry(LineCounter, 7, Suministro);
+                                //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, Reference, Suministro);
+                            end;
                         end;
                     'BBVA':
                         begin
-                            DocumentNo := delchr(COPYSTR(Buffer, 56, 12), '=', ' ');
-                            SerieNO := COPYSTR(DocumentNo, 1, 4);
-                            DocNo := COPYSTR(DocumentNo, 5, 12);
-                            DocumentNo := SerieNO + '-' + DocNo;
-                            Suministro := COPYSTR(Buffer, 33, 10);
-                            ProcessDate := COPYSTR(Buffer, 136, 8);
-                            ProcessDate := TxtToDateFormat(ProcessDate);
+                            if COPYSTR(Buffer, 1, 2) = '02' then begin//Lineas detalle
+                                CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
+                                CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
+                                CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
+                                CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
+                                CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
+                                CSVBuffer.InsertEntry(LineCounter, 6, Suministro);
+                                //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, '', Suministro);
 
-                            PaymentAmount := COPYSTR(Buffer, 81, 15);
-                            PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 13);
-                            PaymentAmountDec := COPYSTR(PaymentAmount, 14, 2);
-                            TransactionNo := CopyStr(Buffer, 130, 6);
+                            end;
                         end;
                     'SCOTIA':
                         begin
-                            DocumentNo := delchr(COPYSTR(Buffer, 34, 15), '=', ' ');
-                            SerieNO := COPYSTR(DocumentNo, 1, 4);
-                            DocNo := COPYSTR(DocumentNo, 5, 11);
-                            DocumentNo := SerieNO + '-' + DocNo;
-                            Suministro := COPYSTR(Buffer, 19, 12);
-                            Suministro := DELCHR(Suministro, '=');
-                            ProcessDate := COPYSTR(Buffer, 147, 8);
-                            ProcessDate := TxtToDateFormat(ProcessDate);
+                            if COPYSTR(Buffer, 1, 1) = 'D' then begin//Lineas detalle
+                                CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
+                                CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
+                                CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
+                                CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
+                                CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
+                                CSVBuffer.InsertEntry(LineCounter, 6, Reference);
+                                CSVBuffer.InsertEntry(LineCounter, 7, Suministro);
+                                //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, Reference, Suministro);
 
-                            PaymentAmount := COPYSTR(Buffer, 73, 11);
-                            PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 9);
-                            PaymentAmountDec := COPYSTR(PaymentAmount, 10, 2);
-                            TransactionNo := CopyStr(Buffer, 157, 13);
-                            Reference := COPYSTR(Buffer, 170, 30);
+                            end;
                         end;
                     'INTERBANK':
                         begin
-                            DocumentNo := delchr(COPYSTR(Buffer, 38, 15), '=', ' ');
-                            SerieNO := COPYSTR(DocumentNo, 1, 4);
-                            DocNo := COPYSTR(DocumentNo, 5, 11);
-                            DocumentNo := SerieNO + '-' + DocNo;
-                            Suministro := COPYSTR(Buffer, 10, 19).Trim();
-                            ProcessDate := COPYSTR(Buffer, 83, 8);
-                            ProcessDate := TxtToDateFormat(ProcessDate);
-
-                            PaymentAmount := COPYSTR(Buffer, 97, 13);
-                            PaymentAmountEntero := COPYSTR(PaymentAmount, 1, 11);
-                            PaymentAmountDec := COPYSTR(PaymentAmount, 12, 2);
-                            TransactionNo := CopyStr(Buffer, 140, 8);
-                            Reference := COPYSTR(Buffer, 53, 30);
+                            CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
+                            CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
+                            CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
+                            CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
+                            CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
+                            CSVBuffer.InsertEntry(LineCounter, 6, Reference);
+                            CSVBuffer.InsertEntry(LineCounter, 7, Suministro);
+                            //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, Reference, Suministro);
                         end;
                 end;
-            end;
-
-            case pCollectionBank of
-                'BCP':
-                    begin
-                        if COPYSTR(Buffer, 1, 2) = 'DD' then begin//Lineas detalle
-                            CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
-                            CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
-                            CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
-                            CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
-                            CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
-                            CSVBuffer.InsertEntry(LineCounter, 6, Reference);
-                            CSVBuffer.InsertEntry(LineCounter, 7, Suministro);
-                            //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, Reference, Suministro);
-                        end;
-                    end;
-                'BBVA':
-                    begin
-                        if COPYSTR(Buffer, 1, 2) = '02' then begin//Lineas detalle
-                            CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
-                            CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
-                            CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
-                            CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
-                            CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
-                            CSVBuffer.InsertEntry(LineCounter, 6, Suministro);
-                            //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, '', Suministro);
-
-                        end;
-                    end;
-                'SCOTIA':
-                    begin
-                        if COPYSTR(Buffer, 1, 1) = 'D' then begin//Lineas detalle
-                            CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
-                            CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
-                            CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
-                            CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
-                            CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
-                            CSVBuffer.InsertEntry(LineCounter, 6, Reference);
-                            CSVBuffer.InsertEntry(LineCounter, 7, Suministro);
-                            //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, Reference, Suministro);
-
-                        end;
-                    end;
-                'INTERBANK':
-                    begin
-                        CSVBuffer.InsertEntry(LineCounter, 1, DocumentNo);
-                        CSVBuffer.InsertEntry(LineCounter, 2, ProcessDate);
-                        CSVBuffer.InsertEntry(LineCounter, 3, DueDate);
-                        CSVBuffer.InsertEntry(LineCounter, 4, PaymentAmountEntero + '.' + PaymentAmountDec);
-                        CSVBuffer.InsertEntry(LineCounter, 5, TransactionNo);
-                        CSVBuffer.InsertEntry(LineCounter, 6, Reference);
-                        CSVBuffer.InsertEntry(LineCounter, 7, Suministro);
-                        //fnReviewDocument(DocumentNo, ProcessDate, DueDate, PaymentAmountEntero + '.' + PaymentAmountDec, TransactionNo, Reference, Suministro);
-                    end;
             end;
         end;
 

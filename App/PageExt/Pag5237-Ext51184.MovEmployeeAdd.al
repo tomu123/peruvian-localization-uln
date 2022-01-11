@@ -8,11 +8,13 @@ pageextension 51184 "Employee Ledger Entries" extends "Employee Ledger Entries"
             field("Employee Posting Group"; "Employee Posting Group")
             {
                 ApplicationArea = All;
+                Editable = false;
             }
 
             field("Currency Code"; "Currency Code")
             {
                 ApplicationArea = All;
+                Editable = false;
             }
 
         }
@@ -23,10 +25,12 @@ pageextension 51184 "Employee Ledger Entries" extends "Employee Ledger Entries"
             field("PS Due Date"; "PS Due Date")
             {
                 ApplicationArea = All;
+                Editable = false;
             }
             field("PS Not Show Payment Schedule"; "PS Not Show Payment Schedule")
             {
                 ApplicationArea = All;
+                Editable = false;
             }
         }
         addafter("Employee No.")
@@ -35,6 +39,7 @@ pageextension 51184 "Employee Ledger Entries" extends "Employee Ledger Entries"
             {
                 ApplicationArea = All;
                 Caption = 'Employee Name', Comment = 'ESM="Nombre Empleado"';
+                Editable = false;
             }
         }
 
