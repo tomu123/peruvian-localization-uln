@@ -473,6 +473,7 @@ report 51726 GenJournalReturn
         VendPostingGroup: Record "Vendor Posting Group";
         CustPostingGroup: Record "Customer Posting Group";
         RecEmployeeLedgerEntry: Record 5222;
+        GenJnlTmplt: Record "Gen. Journal Template";
 
     BEGIN
         //-------------------
@@ -643,7 +644,8 @@ report 51726 GenJournalReturn
             Commit();
             recGJLine."Document No." := NoDocumentoSerieBatch;
         end;
-        recGJLine."Source Code" := 'DIAGEN';
+        GenJnlTmplt.Get(recGJLine."Journal Template Name");
+        recGJLine."Source Code" := GenJnlTmplt."Source Code";
         recGJLine.INSERT;
     END;
 
