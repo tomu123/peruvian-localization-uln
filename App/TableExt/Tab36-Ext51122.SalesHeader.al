@@ -201,8 +201,11 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
 
                 if Round(("Sales % Detraction" * SalesLine."Amount Including VAT") / 100, GLSetup."Amount Rounding Precision") > SalesLine."Amount Including VAT" then
                     Error(ErrorOverflowAmt);
+                if "Currency Code" = '' then
+                    "Sales Amt Detraction" := Round(Round(("Sales % Detraction" * SalesLine."Amount Including VAT") / 100, GLSetup."Amount Rounding Precision"), 1, '=')
+                else
+                    "Sales Amt Detraction" := Round(("Sales % Detraction" * SalesLine."Amount Including VAT") / 100, GLSetup."Amount Rounding Precision");
 
-                "Sales Amt Detraction" := Round(("Sales % Detraction" * SalesLine."Amount Including VAT") / 100, GLSetup."Amount Rounding Precision");
 
                 if "Currency Code" = '' then
                     "Sales Amt Detraction (LCY)" := Round("Sales Amt Detraction", 1, '=')
