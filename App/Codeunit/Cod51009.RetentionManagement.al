@@ -854,6 +854,11 @@ codeunit 51009 "Retention Management"
             "Currency Factor" := GenJnlLine."Currency Factor";
             VendorLedgerEntry."Retention No." := RetentionNo;
             VendorLedgerEntry."Applied Retention" := true;
+            VendorLedgerEntry.Modify();
+            GenJnlLine."Retention No." := RetentionNo;
+            GenJnlLine.Modify();
+            "Source Jnl Batch Name" := GenJnlLine."Journal Batch Name";
+            "Source Jnl Template Name" := GenJnlLine."Journal Template Name";
             Insert();
             SaveRetention();
             NextDtldRetLedgerEntryNo += 1;
@@ -875,6 +880,8 @@ codeunit 51009 "Retention Management"
                     RetentionLedgerEntry."Vendor Name" := "Vendor Name";
                     RetentionLedgerEntry."Source Document No." := "Source Document No.";
                     RetentionLedgerEntry."Assing User ID" := UserId;
+                    RetentionLedgerEntry."Source Jnl Batch Name" := "Source Jnl Batch Name";
+                    RetentionLedgerEntry."Source Jnl Template Name" := "Source Jnl Template Name";
                     RetentionLedgerEntry.Insert();
                     NextRetLedgerEntryNo += 1;
                 until Next() = 0;

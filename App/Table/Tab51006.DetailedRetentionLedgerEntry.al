@@ -119,6 +119,16 @@ table 51006 "Detailed Retention Ledg. Entry"
             DataClassification = ToBeClassified;
             Caption = 'Reversed';
         }
+        field(51023; "Source Jnl Template Name"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Jnl Template Name';
+        }
+        field(51024; "Source Jnl Batch Name"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Jnl Batch Name';
+        }
     }
 
     keys

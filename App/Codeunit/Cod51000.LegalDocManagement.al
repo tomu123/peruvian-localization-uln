@@ -189,6 +189,7 @@ codeunit 51000 "Legal Document Management"
         VendorLedgerEntry."Legal Document" := GenJournalLine."Legal Document";
         VendorLedgerEntry."Legal Status" := GenJournalLine."Legal Status";
         VendorLedgerEntry."Accountant receipt date" := GenJournalLine."Accountant receipt date";
+        VendorLedgerEntry."Retention No." := GenJournalLine."Retention No.";
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"VAT Entry", 'OnAfterCopyFromGenJnlLine', '', true, true)]
@@ -203,6 +204,7 @@ codeunit 51000 "Legal Document Management"
     begin
         GLEntry."Legal Document" := GenJournalLine."Legal Document";
         GLEntry."Legal Status" := GenJournalLine."Legal Status";
+        GLEntry."Retention No." := GenJournalLine."Retention No.";
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterCopyGenJnlLineFromSalesHeader', '', true, true)]
