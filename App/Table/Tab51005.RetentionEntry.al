@@ -36,42 +36,42 @@ table 51005 "Retention Ledger Entry"
         }
         field(51006; "Amount Invoice"; Decimal)
         {
-            CalcFormula = Sum ("Detailed Retention Ledg. Entry"."Amount Invoice" WHERE("Retention No." = field("Retention No.")));
+            CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Invoice" WHERE("Retention No." = field("Retention No.")));
             Caption = 'Amount Invoice';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51007; "Amount Invoice LCY"; Decimal)
         {
-            CalcFormula = Sum ("Detailed Retention Ledg. Entry"."Amount Invoice LCY" WHERE("Retention No." = field("Retention No.")));
+            CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Invoice LCY" WHERE("Retention No." = field("Retention No.")));
             Caption = 'Amount Invoice LCY';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51008; "Amount Paid"; Decimal)
         {
-            CalcFormula = Sum ("Detailed Retention Ledg. Entry"."Amount Paid" WHERE("Retention No." = field("Retention No.")));
+            CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Paid" WHERE("Retention No." = field("Retention No.")));
             Caption = 'Amount Paid';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51009; "Amount Paid LCY"; Decimal)
         {
-            CalcFormula = Sum ("Detailed Retention Ledg. Entry"."Amount Paid LCY" WHERE("Retention No." = field("Retention No.")));
+            CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Paid LCY" WHERE("Retention No." = field("Retention No.")));
             Caption = 'Amount Paid LCY';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51010; "Amount Retention"; Decimal)
         {
-            CalcFormula = Sum ("Detailed Retention Ledg. Entry"."Amount Retention" WHERE("Retention No." = field("Retention No.")));
+            CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Retention" WHERE("Retention No." = field("Retention No.")));
             Caption = 'Amount Retention';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51011; "Amount Retention LCY"; Decimal)
         {
-            CalcFormula = Sum ("Detailed Retention Ledg. Entry"."Amount Retention LCY" WHERE("Retention No." = field("Retention No.")));
+            CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Retention LCY" WHERE("Retention No." = field("Retention No.")));
             Caption = 'Amount Retention LCY';
             Editable = false;
             FieldClass = FlowField;
@@ -79,7 +79,7 @@ table 51005 "Retention Ledger Entry"
         field(51012; "Source Document No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source Document No.';
+            Caption = 'Source Document No.', Comment = 'ESM="No. Documento Origen"';
         }
         field(51013; "Source Jnl Template Name"; Code[10])
         {
@@ -145,6 +145,11 @@ table 51005 "Retention Ledger Entry"
             begin
                 ReverseDetail();
             end;
+        }
+        field(51025; "Manual Retention"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Manual Retention', Comment = 'ESM= "Retención Manual"';
         }
     }
 

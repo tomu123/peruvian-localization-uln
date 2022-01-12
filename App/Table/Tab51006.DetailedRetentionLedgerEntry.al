@@ -129,6 +129,11 @@ table 51006 "Detailed Retention Ledg. Entry"
             DataClassification = ToBeClassified;
             Caption = 'Source Jnl Batch Name';
         }
+        field(51025; "Manual Retention"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Manual Retention', Comment = 'ESM= "Retención Manual"';
+        }
     }
 
     keys

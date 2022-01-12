@@ -499,6 +499,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Entry No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manual Retention</source>
+          <note from="Developer" annotates="general" priority="2">ESM= "Retención Manual"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Manual Retention - Property Caption</note>
+          <target> "Retención Manual"</target>
+        </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3293495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Legal Document</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -523,6 +529,16 @@
           <source>Source Document No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Source Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 111109546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Jnl Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Source Jnl Batch Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 3825292638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Jnl Template Name</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Source Jnl Template Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 2565149650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Doc. Legal Document</source>
@@ -3928,6 +3944,12 @@
           <source>Hash Code</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Hash Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3511451743 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manual Retention</source>
+          <note from="Developer" annotates="general" priority="2">ESM= "Retención Manual"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Manual Retention - Property Caption</note>
+          <target> "Retención Manual"</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3293495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Legal Document</source>

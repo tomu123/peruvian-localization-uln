@@ -817,6 +817,8 @@ codeunit 51009 "Retention Management"
         CurrExchRate: Record "Currency Exchange Rate";
         CurrencyFactor: Decimal;
         CurrencyAmount: Decimal;
+        GLEntry: Record "G/L Entry";
+        VendLE: Record "Vendor Ledger Entry";
     begin
         Vendor.Get(GenJnlLine."Account No.");
         with DtldRetentionLedgEntry do begin
@@ -834,6 +836,21 @@ codeunit 51009 "Retention Management"
             "Vendor Doc. Posting Date" := VendorLedgerEntry."Posting Date";
             "Vendor Document Date" := VendorLedgerEntry."Document Date";
             "Source Document No." := TempGLEntryBuf."Document No.";
+            GLEntry.Reset();
+            GLEntry.SetRange("Document No.", TempGLEntryBuf."Document No.");
+            if GLEntry.FindSet() then
+                repeat
+                    GLEntry."Retention No." := RetentionNo;
+                until GLEntry.Next() = 0;
+            VendLE.Reset();
+            VendLE.SetRange("Document No.", TempGLEntryBuf."Document No.");
+            if VendLE.FindSet() then
+                repeat
+                    VendLE."Retention No." := RetentionNo;
+                    VendLE."Retention Amount" := "Amount Retention";
+                    VendLE."Retention Amount LCY" := "Amount Retention LCY";
+                    VendLE.Modify();
+                until VendLE.Next() = 0;
             if GenJnlLine."Currency Code" <> '' then begin
                 CurrExchRate.Get(GenJnlLine."Currency Code", GenJnlLine."Posting Date");
                 CurrencyAmount := CurrExchRate."Relational Adjmt Exch Rate Amt";
@@ -854,11 +871,13 @@ codeunit 51009 "Retention Management"
             "Currency Factor" := GenJnlLine."Currency Factor";
             VendorLedgerEntry."Retention No." := RetentionNo;
             VendorLedgerEntry."Applied Retention" := true;
+            VendorLedgerEntry."Retention Amount" := "Amount Retention";
+            VendorLedgerEntry."Retention Amount LCY" := "Amount Retention LCY";
             VendorLedgerEntry.Modify();
-            GenJnlLine."Retention No." := RetentionNo;
-            GenJnlLine.Modify();
+
             "Source Jnl Batch Name" := GenJnlLine."Journal Batch Name";
             "Source Jnl Template Name" := GenJnlLine."Journal Template Name";
+            "Manual Retention" := GenJnlLine."Manual Retention";
             Insert();
             SaveRetention();
             NextDtldRetLedgerEntryNo += 1;
@@ -882,6 +901,7 @@ codeunit 51009 "Retention Management"
                     RetentionLedgerEntry."Assing User ID" := UserId;
                     RetentionLedgerEntry."Source Jnl Batch Name" := "Source Jnl Batch Name";
                     RetentionLedgerEntry."Source Jnl Template Name" := "Source Jnl Template Name";
+                    RetentionLedgerEntry."Manual Retention" := "Manual Retention";
                     RetentionLedgerEntry.Insert();
                     NextRetLedgerEntryNo += 1;
                 until Next() = 0;

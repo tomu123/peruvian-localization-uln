@@ -52,6 +52,14 @@ page 51011 "Retention Ledger Entry"
                 {
                     ApplicationArea = All;
                 }
+                field("Manual Retention"; "Manual Retention")
+                {
+                    ApplicationArea = All;
+                }
+                field("Source Document No."; "Source Document No.")
+                {
+                    ApplicationArea = All;
+                }
                 field(Reversed; Rec.Reversed)
                 {
                     ApplicationArea = All;
@@ -91,6 +99,21 @@ page 51011 "Retention Ledger Entry"
     {
         area(Navigation)
         {
+            action(Navigate)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = '&Navigate';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Category4;
+                ToolTip = 'Find all entries and documents that exist for the document number and posting date on the selected entry or document.';
+                Visible = NOT IsOfficeAddin;
+
+                trigger OnAction()
+                begin
+                    Navigate;
+                end;
+            }
             action(Detailed)
             {
                 ApplicationArea = All;
