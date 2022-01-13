@@ -70,7 +70,7 @@ report 51014 "RET Retention Report"
                     end;
                     DtldRetentionLedgEntry."Retention No." := "Detailed Retention Ledg. Entry"."Retention No."; //Comporbante de Retencion
                     DtldRetentionLedgEntry."Currency Factor" := "Detailed Retention Ledg. Entry"."Currency Factor";//Tipo Cambio
-                    DtldRetentionLedgEntry."Entry No." := 1;//Documento a liquidar se asigna el valor 1, para ordenar en el Layout
+                    //DtldRetentionLedgEntry."Entry No." := 1;//Documento a liquidar se asigna el valor 1, para ordenar en el Layout
                     DtldRetentionLedgEntry."Vendor No." := "Detailed Retention Ledg. Entry"."Vendor No.";
                     DtldRetentionLedgEntry.Reversed := "Detailed Retention Ledg. Entry".Reversed;
                     DtldRetentionLedgEntry.Insert();
