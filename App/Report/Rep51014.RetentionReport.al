@@ -51,7 +51,7 @@ report 51014 "RET Retention Report"
                         '08':
                             DtldRetentionLedgEntry."Vendor External Document No." := 'ND ' + DtldRetentionLedgEntry."Vendor External Document No.";
                     end;
-                    DtldRetentionLedgEntry."Retention No." := 'Compra'; //Tipo Operación
+                    DtldRetentionLedgEntry."Document No." := 'Compra'; //Tipo Operación
                     if not Reversed then begin
                         if "Detailed Retention Ledg. Entry"."Currency Code" <> '' then begin
                             if "Detailed Retention Ledg. Entry"."Amount Paid" < 0 then begin
@@ -70,7 +70,7 @@ report 51014 "RET Retention Report"
                     end;
                     DtldRetentionLedgEntry."Retention No." := "Detailed Retention Ledg. Entry"."Retention No."; //Comporbante de Retencion
                     DtldRetentionLedgEntry."Currency Factor" := "Detailed Retention Ledg. Entry"."Currency Factor";//Tipo Cambio
-                    DtldRetentionLedgEntry."Entry No." := 1;//Documento a liquidar se asigna el valor 1, para ordenar en el Layout
+                    DtldRetentionLedgEntry."Line No." := 1;//Documento a liquidar se asigna el valor 1, para ordenar en el Layout
                     DtldRetentionLedgEntry."Vendor No." := "Detailed Retention Ledg. Entry"."Vendor No.";
                     DtldRetentionLedgEntry.Reversed := "Detailed Retention Ledg. Entry".Reversed;
                     DtldRetentionLedgEntry.Insert();
@@ -83,7 +83,7 @@ report 51014 "RET Retention Report"
                 DtldRetentionLedgEntry."Retention Posting Date" := "Detailed Retention Ledg. Entry"."Retention Posting Date"; //Fecha Emision
                 DtldRetentionLedgEntry."Vendor External Document No." := 'RET ' + "Detailed Retention Ledg. Entry"."Retention No."; //Documento (Numero Doc. Comprobante a pagar)
                 DtldRetentionLedgEntry."Vendor Document No." := "Detailed Retention Ledg. Entry"."Vendor Document No."; //Nro. Documento del Diario
-                DtldRetentionLedgEntry."Retention No." := 'Retencion'; //Tipo Operación
+                DtldRetentionLedgEntry."Document No." := 'RETENCION'; //Tipo Operación
                 if not Reversed then begin
                     if "Detailed Retention Ledg. Entry"."Currency Code" <> '' then begin
                         if "Detailed Retention Ledg. Entry"."Amount Retention" < 0 then begin
@@ -105,7 +105,7 @@ report 51014 "RET Retention Report"
                 if not Reversed then
                     DtldRetentionLedgEntry."Amount Retention" := "Detailed Retention Ledg. Entry"."Amount Retention" * -1;
                 DtldRetentionLedgEntry."Vendor No." := "Detailed Retention Ledg. Entry"."Vendor No.";
-                DtldRetentionLedgEntry."Entry No." := 2;//Retención se asigna el valor 1, para ordenar en el Layout
+                DtldRetentionLedgEntry."Line No." := 2;//Retención se asigna el valor 1, para ordenar en el Layout
                 DtldRetentionLedgEntry.Reversed := "Detailed Retention Ledg. Entry".Reversed;
                 DtldRetentionLedgEntry.Insert();
 
@@ -121,7 +121,7 @@ report 51014 "RET Retention Report"
                 if lclRecCheckLedgerEntry.FINDSET then
                     if STRLEN(DtldRetentionLedgEntry."Vendor External Document No.") < 17 then
                         DtldRetentionLedgEntry."Vendor External Document No." := 'CHE ' + DtldRetentionLedgEntry."Vendor External Document No.";
-                DtldRetentionLedgEntry."Retention No." := 'Pago Proveedor'; //Tipo Operación
+                DtldRetentionLedgEntry."Document No." := 'PAGO PROVEEDOR'; //Tipo Operación
                 if not Reversed then begin
                     if "Detailed Retention Ledg. Entry"."Currency Code" <> '' then begin
                         if ("Detailed Retention Ledg. Entry"."Amount Paid" + "Detailed Retention Ledg. Entry"."Amount Retention") > 0 then begin
@@ -141,7 +141,7 @@ report 51014 "RET Retention Report"
                 DtldRetentionLedgEntry."Retention No." := "Detailed Retention Ledg. Entry"."Retention No."; //Comporbante de Retencion
                 DtldRetentionLedgEntry."Currency Factor" := "Detailed Retention Ledg. Entry"."Currency Factor";//Tipo Cambio
                 DtldRetentionLedgEntry."Vendor No." := "Detailed Retention Ledg. Entry"."Vendor No.";
-                DtldRetentionLedgEntry."Entry No." := 3;//Retención se asigna el valor 1, para ordenar en el Layout
+                DtldRetentionLedgEntry."Line No." := 3;//Retención se asigna el valor 1, para ordenar en el Layout
                 DtldRetentionLedgEntry.Reversed := "Detailed Retention Ledg. Entry".Reversed;
                 DtldRetentionLedgEntry.Insert();
             end;
@@ -150,8 +150,7 @@ report 51014 "RET Retention Report"
             begin
                 CompanyInf.GET;
                 DtldRetentionLedgEntry.DeleteAll();
-                ;
-
+                LastEntryNo := 0;
                 if GroupOptionReport = GroupOptionReport::"Vendor Group" then
                     ShowTable := 'Agrupado Proveedor'
                 else
@@ -169,7 +168,7 @@ report 51014 "RET Retention Report"
             column(DocumentoDiario; DtldRetentionLedgEntry."Vendor Document No.")
             {
             }
-            column(TipoOperacion; DtldRetentionLedgEntry."Retention No.")
+            column(TipoOperacion; DtldRetentionLedgEntry."Document No.")
             {
             }
             column(ImporteDebeUSD; DtldRetentionLedgEntry."Amount Invoice")
@@ -264,17 +263,17 @@ report 51014 "RET Retention Report"
 
                 if GroupOptionReport = GroupOptionReport::"Vendor Group" then begin
                     DtldRetentionLedgEntry2.Reset();
-                    DtldRetentionLedgEntry2.SetCurrentKey("Vendor No.", "Retention No.");
+                    DtldRetentionLedgEntry2.SetCurrentKey("Vendor No.", "Document No.");
                     DtldRetentionLedgEntry2.SetRange("Vendor No.", DtldRetentionLedgEntry."Vendor No.");
-                    DtldRetentionLedgEntry2.SetRange("Retention No.", 'RETENCION');
+                    DtldRetentionLedgEntry2.SetRange("Document No.", 'RETENCION');
                     DtldRetentionLedgEntry2.CalcSums("Amount Invoice", "Amount Invoice LCY", "Amount Paid", "Amount Paid LCY");
                     RetentionAmtLCY := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid LCY") - Abs(DtldRetentionLedgEntry2."Amount Invoice LCY")); //Haber - Debe soles
                     TotalRetentionUSD := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid") - Abs(DtldRetentionLedgEntry2."Amount Invoice"));//Haber - Debe Dolares
 
                     DtldRetentionLedgEntry2.Reset();
-                    DtldRetentionLedgEntry2.SetCurrentKey("Vendor No.", "Retention No.");
+                    DtldRetentionLedgEntry2.SetCurrentKey("Vendor No.", "Document No.");
                     DtldRetentionLedgEntry2.SetRange("Vendor No.", DtldRetentionLedgEntry."Vendor No.");
-                    DtldRetentionLedgEntry2.SetRange("Retention No.", 'PAGO PROVEEDOR');
+                    DtldRetentionLedgEntry2.SetRange("Document No.", 'PAGO PROVEEDOR');
                     DtldRetentionLedgEntry2.CalcSums("Amount Invoice", "Amount Invoice LCY", "Amount Paid", "Amount Paid LCY");
                     VendorTotalAmountPaymentLCY := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid LCY") - Abs(DtldRetentionLedgEntry2."Amount Invoice LCY")); //Haber - Debe soles
                     VendorTotalAmountPaymentUSD := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid") - Abs(DtldRetentionLedgEntry2."Amount Invoice"));//Haber - Debe Dolares
@@ -282,15 +281,15 @@ report 51014 "RET Retention Report"
                 end;
 
                 DtldRetentionLedgEntry2.Reset();
-                DtldRetentionLedgEntry2.SetCurrentKey("Retention No.");
-                DtldRetentionLedgEntry2.SetRange("Retention No.", 'RETENCION');
+                DtldRetentionLedgEntry2.SetCurrentKey("Document No.");
+                DtldRetentionLedgEntry2.SetRange("Document No.", 'RETENCION');
                 DtldRetentionLedgEntry2.CalcSums("Amount Invoice", "Amount Invoice LCY", "Amount Paid", "Amount Paid LCY");
                 TotalPeriodRetentionAmtLCY := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid LCY") - Abs(DtldRetentionLedgEntry2."Amount Invoice LCY")); //Haber - Debe soles
                 TotalPeriodRetentionAmtUSD := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid") - Abs(DtldRetentionLedgEntry2."Amount Invoice"));//Haber - Debe Dolares
 
                 DtldRetentionLedgEntry2.Reset();
-                DtldRetentionLedgEntry2.SetCurrentKey("Retention No.");
-                DtldRetentionLedgEntry2.SetRange("Retention No.", 'PAGO PROVEEDOR');
+                DtldRetentionLedgEntry2.SetCurrentKey("Document No.");
+                DtldRetentionLedgEntry2.SetRange("Document No.", 'PAGO PROVEEDOR');
                 DtldRetentionLedgEntry2.CalcSums("Amount Invoice", "Amount Invoice LCY", "Amount Paid", "Amount Paid LCY");
                 TotalPeriodVendorAmtLCY := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid LCY") - Abs(DtldRetentionLedgEntry2."Amount Invoice LCY")); //Haber - Debe soles
                 TotalPeriodVendorAmtUSD := Abs(Abs(DtldRetentionLedgEntry2."Amount Paid") - Abs(DtldRetentionLedgEntry2."Amount Invoice"));//Haber - Debe Dolares
@@ -342,15 +341,15 @@ report 51014 "RET Retention Report"
     labels
     {
     }
-    trigger OnPreReport()
-    var
-    begin
-        LastEntryNo := 0;
-        DtldRetentionLedgEntry.Reset();
-        DtldRetentionLedgEntry.DeleteAll();
-        DtldRetentionLedgEntry2.Reset();
-        DtldRetentionLedgEntry2.DeleteAll();
-    end;
+    // trigger OnPreReport()
+    // var
+    // begin
+    //     LastEntryNo := 0;
+    //     DtldRetentionLedgEntry.Reset();
+    //     DtldRetentionLedgEntry.DeleteAll();
+    //     DtldRetentionLedgEntry2.Reset();
+    //     DtldRetentionLedgEntry2.DeleteAll();
+    // end;
 
     var
         CompanyInf: Record "Company Information";

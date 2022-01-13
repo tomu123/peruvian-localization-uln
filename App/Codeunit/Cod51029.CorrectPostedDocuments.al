@@ -174,7 +174,9 @@ codeunit 51029 "LD Correct Posted Documents"
     begin
         SalesSetup.Get();
         SalesSetup.TestField("Invoice Nos.");
-        SalesSetup.TestField("Posted Prepmt. Inv. Nos.");
+        //SalesSetup.TestField("Posted Prepmt. Inv. Nos.");
+        SalesSetup.TestField("Posted Return Receipt Nos.");
+        SalesSetup.TestField("Posted Invoice Nos.");
         SalesHeader.Init();
         SalesHeader.TransferFields(pSalesCrMemoHdr, false);
         SalesHeader.Validate("Sell-to Customer No.", pSalesCrMemoHdr."Sell-to Customer No.");

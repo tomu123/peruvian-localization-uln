@@ -497,6 +497,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Currency Factor - Property Caption</note>
           <target>Factor Divisa</target>
         </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM= "N° Linea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Document No. - Property Caption</note>
+          <target> "N° Linea"</target>
+        </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1401769901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Electronic Invoice</source>
           <note from="Developer" annotates="general" priority="2">ESM="Factura Electrónica"</note>
@@ -508,6 +514,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="No. Movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Entry No. - Property Caption</note>
           <target>No. Movimiento</target>
+        </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM= "N° Linea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Line No. - Property Caption</note>
+          <target> "N° Linea"</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Retention</source>
@@ -11055,22 +11067,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionReport - Property Caption</note>
           <target>Reporte Retenciones</target>
         </trans-unit>
-        <trans-unit id="Page 3511451743 - Action 1395509807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PDT 626</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action GroupPDT626 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3511451743 - Action 148521894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PDT - 626</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action PDT626 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3511451743 - Action 3822228832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show File PDT</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Mostrar Archivo PDT"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action ShowFilesPDT626 - Property Caption</note>
-          <target>Mostrar Archivo PDT</target>
-        </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3318911803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Action</source>
           <note from="Developer" annotates="general" priority="2">ESM="Rentenciones"</note>
@@ -17108,8 +17104,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 701109401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Cancell L.D.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Anular"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Property Caption</note>
+          <target>Anular</target>
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Create and post a sales credit memo that reverses this posted sales invoice. This posted purchase credit memo will be canceled.</source>
@@ -17118,8 +17115,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Correct Ext.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CorrectLegalDocAction - Property Caption</note>
+          <target>Extornar</target>
         </trans-unit>
         <trans-unit id="PageExtension 697845627 - Action 701109401 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Reverse this posted invoice and automatically create a new invoice with the same information that you can correct before posting. This posted invoice will automatically be canceled.</source>
