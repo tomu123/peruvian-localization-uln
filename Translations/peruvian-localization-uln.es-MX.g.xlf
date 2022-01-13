@@ -3988,8 +3988,9 @@
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 4267346559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Document No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Documento Origen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Source Document No. - Property Caption</note>
+          <target>No. Documento Origen</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 111109546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Jnl Batch Name</source>
@@ -10982,6 +10983,16 @@
           <source>Detailed</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Detailed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3511451743 - Action 3538210097 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Find all entries and documents that exist for the document number and posting date on the selected entry or document.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Navigate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3511451743 - Action 3538210097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Navigate</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Navigate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 2780237198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Report</source>

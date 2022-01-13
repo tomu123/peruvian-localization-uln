@@ -7,72 +7,72 @@ table 51005 "Retention Ledger Entry"
         field(51000; "Entry No."; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Entry No.';
+            Caption = 'Entry No.', Comment = 'ESM="No. Movimiento"';
         }
         field(51001; "Retention No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Retention No.';
+            Caption = 'Retention No.', Comment = 'ESM="No. Retención"';
         }
         field(51002; "Retention Posting Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Retention Posting Date';
+            Caption = 'Retention Posting Date', Comment = 'ESM="Fecha Registro Retención"';
         }
         field(51003; "Retention Legal Document"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Retention Legal Document';
+            Caption = 'Retention Legal Document', Comment = 'ESM="Documento Legal Retención"';
         }
         field(51004; "Vendor No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vendor No.';
+            Caption = 'Vendor No.', Comment = 'ESM="No. Proveedor"';
         }
         field(51005; "Vendor Name"; Text[100])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vendor Name';
+            Caption = 'Vendor Name', Comment = 'ESM="Nombre Proveedor"';
         }
         field(51006; "Amount Invoice"; Decimal)
         {
             CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Invoice" WHERE("Retention No." = field("Retention No.")));
-            Caption = 'Amount Invoice';
+            Caption = 'Amount Invoice', Comment = 'ESM="Importe Factura"';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51007; "Amount Invoice LCY"; Decimal)
         {
             CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Invoice LCY" WHERE("Retention No." = field("Retention No.")));
-            Caption = 'Amount Invoice LCY';
+            Caption = 'Amount Invoice LCY', Comment = 'ESM="Importe Factura DL"';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51008; "Amount Paid"; Decimal)
         {
             CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Paid" WHERE("Retention No." = field("Retention No.")));
-            Caption = 'Amount Paid';
+            Caption = 'Amount Paid', Comment = 'ESM="Importe Pagado"';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51009; "Amount Paid LCY"; Decimal)
         {
             CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Paid LCY" WHERE("Retention No." = field("Retention No.")));
-            Caption = 'Amount Paid LCY';
+            Caption = 'Amount Paid LCY', Comment = 'ESM="Importe Pagado DL"';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51010; "Amount Retention"; Decimal)
         {
             CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Retention" WHERE("Retention No." = field("Retention No.")));
-            Caption = 'Amount Retention';
+            Caption = 'Amount Retention', Comment = 'ESM="Importe Retención"';
             Editable = false;
             FieldClass = FlowField;
         }
         field(51011; "Amount Retention LCY"; Decimal)
         {
             CalcFormula = Sum("Detailed Retention Ledg. Entry"."Amount Retention LCY" WHERE("Retention No." = field("Retention No.")));
-            Caption = 'Amount Retention LCY';
+            Caption = 'Amount Retention LCY', Comment = 'ESM="Importe Retención DL"';
             Editable = false;
             FieldClass = FlowField;
         }
@@ -94,7 +94,7 @@ table 51005 "Retention Ledger Entry"
         field(51015; "Assing User ID"; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Assign User ID';
+            Caption = 'Assign User ID', Comment = 'ESM="ID Usuario Asignado"';
         }
         field(51016; "Electronic Status"; Option)
         {
@@ -115,17 +115,17 @@ table 51005 "Retention Ledger Entry"
         field(51019; "Hash Code"; Text[150])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Hash Code';
+            Caption = 'Hash Code', Comment = 'ESM="Cód. Hash"';
         }
         field(51020; "Reversion Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Reversion Date';
+            Caption = 'Reversion Date', Comment = 'ESM="Fecha Reversión"';
         }
         field(51021; "Reversion Motive"; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Reversion Motive';
+            Caption = 'Reversion Motive', Comment = 'ESM="Motivo Reversión"';
         }
         field(51022; "Reversion XML File"; Text[100])
         {
@@ -135,12 +135,12 @@ table 51005 "Retention Ledger Entry"
         field(51023; "Error Code"; Code[30])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Error Code';
+            Caption = 'Error Code', Comment = 'ESM="Cód. Error"';
         }
         field(51024; "Reversed"; Boolean)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Reversed';
+            Caption = 'Reversed', Comment = 'ESM="Reversado"';
             trigger OnValidate()
             begin
                 ReverseDetail();

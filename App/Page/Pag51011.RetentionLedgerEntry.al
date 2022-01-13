@@ -5,7 +5,7 @@ page 51011 "Retention Ledger Entry"
     UsageCategory = Lists;
     SourceTable = "Retention Ledger Entry";
     Editable = false;
-
+    Caption = 'Retention Ledger Entry', Comment = 'ESM="Mov. Retención"';
     layout
     {
         area(Content)
@@ -72,16 +72,6 @@ page 51011 "Retention Ledger Entry"
                 {
                     ApplicationArea = All;
                 }
-                field("Electronic Status"; Rec."Electronic Status")
-                {
-                    ApplicationArea = All;
-                    Visible = ShowElectronic;
-                }
-                field("Electronic Response"; Rec."Electronic Response")
-                {
-                    ApplicationArea = All;
-                    Visible = ShowElectronic;
-                }
                 field("Elec. Response Description"; Rec."Elec. Response Description")
                 {
                     ApplicationArea = All;
@@ -99,10 +89,11 @@ page 51011 "Retention Ledger Entry"
     {
         area(Navigation)
         {
+            //Caption = '&Navigate',Comment = 'ESM="Navegar"';
             action(Navigate)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = '&Navigate';
+                Caption = '&Navigate', Comment = 'ESM="Navegar"';
                 Image = Navigate;
                 Promoted = true;
                 PromotedCategory = Category4;
@@ -116,7 +107,7 @@ page 51011 "Retention Ledger Entry"
             action(Detailed)
             {
                 ApplicationArea = All;
-                Caption = 'Detailed';
+                Caption = 'Detailed', Comment = 'ESM="Detallado"';
                 Image = ViewDetails;
                 RunObject = page "Detailed Retention Ledg. Entry";
                 RunPageLink = "Retention No." = field("Retention No.");
@@ -124,20 +115,21 @@ page 51011 "Retention Ledger Entry"
             action(RetentionReport)
             {
                 ApplicationArea = All;
-                Caption = 'Retention Report';
+                Caption = 'Retention Report', Comment = 'ESM="Reporte Retenciones"';
                 Image = Report;
                 RunObject = report "RET Retention Report";
             }
         }
         area(Processing)
         {
+            //Caption = '&Processing',Comment = 'ESM="Procesamiento"';
             group(RetentionActions)
             {
-                Caption = 'Retention Action';
+                Caption = 'Retention Action', Comment = 'ESM="Rentenciones"';
                 action(Anulle)
                 {
                     ApplicationArea = All;
-                    Caption = 'Anulled';
+                    Caption = 'Anulled', Comment = 'ESM="Anulado"';
                     Image = Cancel;
                     trigger OnAction()
                     begin
@@ -154,7 +146,7 @@ page 51011 "Retention Ledger Entry"
                 action(ElectronicReversed)
                 {
                     ApplicationArea = All;
-                    Caption = 'Electronic Reverse';
+                    Caption = 'Electronic Reverse', Comment = 'ESM="Reversión Electrónica"';
                     Image = Cancel;
                     trigger OnAction()
                     begin
@@ -185,7 +177,7 @@ page 51011 "Retention Ledger Entry"
                 action(ShowFilesPDT626)
                 {
                     ApplicationArea = All;
-                    Caption = 'Show File PDT';
+                    Caption = 'Show File PDT', Comment = 'ESM="Mostrar Archivo PDT"';
                     Image = Table;
                     RunObject = page "ST Control File List";
                     RunPageLink = "File ID" = const('0626');

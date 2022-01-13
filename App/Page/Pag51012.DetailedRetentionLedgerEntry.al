@@ -5,7 +5,7 @@ page 51012 "Detailed Retention Ledg. Entry"
     UsageCategory = Lists;
     SourceTable = "Detailed Retention Ledg. Entry";
     Editable = false;
-
+    Caption = 'Detailed Retention Ledger Entry', Comment = 'ESM="Mov. Retención Detallado"';
     layout
     {
         area(Content)
