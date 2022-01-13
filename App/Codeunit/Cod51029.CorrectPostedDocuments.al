@@ -80,7 +80,7 @@ codeunit 51029 "LD Correct Posted Documents"
         pSalesCrMemoHdr.TestField("Legal Status", pSalesCrMemoHdr."Legal Status"::Success);
         CheckOpenItemLedgerEntryInDocuments(Database::"Sales Cr.Memo Header", pSalesCrMemoHdr."No.", pSalesCrMemoHdr."Posting Date");
         CheckPostedSalesCrMemoForCorrectCancel(pSalesCrMemoHdr);
-        if not Confirm('¿Desea corregir el Documento %1?', false, pSalesCrMemoHdr."No.") then
+        if not Confirm('¿Desea anular el Documento %1?', false, pSalesCrMemoHdr."No.") then
             exit(false);
 
         CreateSalesInvoiceFromPostedSalesCrMemo(SalesHeader, pSalesCrMemoHdr, SalesHeader."Legal Status"::Anulled);

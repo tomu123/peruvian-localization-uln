@@ -26,7 +26,7 @@ pageextension 51013 "Legal Doc. Pstd Sales CrMemos" extends "Posted Sales Credit
             action(CorrectLegalDocAction)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Correct Ext.';
+                Caption = 'Correct Ext.', Comment = 'ESM="Extornar"';
                 ToolTip = 'Create and post a sales credit memo that reverses this posted sales invoice. This posted purchase credit memo will be canceled.';
                 Image = Undo;
                 Promoted = true;
@@ -48,7 +48,7 @@ pageextension 51013 "Legal Doc. Pstd Sales CrMemos" extends "Posted Sales Credit
             action(CancellLegalDocAction)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Cancell L.D.';
+                Caption = 'Cancell L.D.', Comment = 'ESM="Anular"';
                 ToolTip = 'Create and post a purchase invoice that reverses this posted purchase credit memo. This posted purchase credit memo will be canceled.';
                 Image = Undo;
                 Promoted = true;
