@@ -151,7 +151,7 @@ report 51014 "RET Retention Report"
                 CompanyInf.GET;
                 DtldRetentionLedgEntry.DeleteAll();
                 ;
-                LastEntryNo := 0;
+
                 if GroupOptionReport = GroupOptionReport::"Vendor Group" then
                     ShowTable := 'Agrupado Proveedor'
                 else
@@ -345,8 +345,11 @@ report 51014 "RET Retention Report"
     trigger OnPreReport()
     var
     begin
+        LastEntryNo := 0;
         DtldRetentionLedgEntry.Reset();
         DtldRetentionLedgEntry.DeleteAll();
+        DtldRetentionLedgEntry2.Reset();
+        DtldRetentionLedgEntry2.DeleteAll();
     end;
 
     var
