@@ -85,6 +85,14 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
             Visible = false;
         }
     }
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+    begin
+        FilterGroup(2);
+        SetFilter("Internal Consumption", '%1', false);
+        FilterGroup(0);
+    end;
 
     var
         LDCorrectPstdDoc: Codeunit "LD Correct Posted Documents";
