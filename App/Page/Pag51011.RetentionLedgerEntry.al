@@ -107,11 +107,10 @@ page 51011 "Retention Ledger Entry"
                 Promoted = true;
                 PromotedCategory = Category4;
                 ToolTip = 'Find all entries and documents that exist for the document number and posting date on the selected entry or document.';
-                Visible = NOT IsOfficeAddin;
 
                 trigger OnAction()
                 begin
-                    Navigate;
+                    NavigateDoc;
                 end;
             }
             action(Detailed)
@@ -200,6 +199,15 @@ page 51011 "Retention Ledger Entry"
     begin
         SLSetup.Get();
         ShowElectronic := SLSetup."Retention Agent Option" in [SLSetup."Retention Agent Option"::"Only Electronic", SLSetup."Retention Agent Option"::"Physical and Electronics"];
+    end;
+
+    procedure NavigateDoc()
+    var
+        NavigatePage: Page Navigate;
+    begin
+        NavigatePage.SetDoc("Retention Posting Date", "Source Document No.");
+        NavigatePage.SetRec(Rec);
+        NavigatePage.Run;
     end;
 
     var
