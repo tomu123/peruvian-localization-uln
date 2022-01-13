@@ -836,21 +836,6 @@ codeunit 51009 "Retention Management"
             "Vendor Doc. Posting Date" := VendorLedgerEntry."Posting Date";
             "Vendor Document Date" := VendorLedgerEntry."Document Date";
             "Source Document No." := TempGLEntryBuf."Document No.";
-            GLEntry.Reset();
-            GLEntry.SetRange("Document No.", TempGLEntryBuf."Document No.");
-            if GLEntry.FindSet() then
-                repeat
-                    GLEntry."Retention No." := RetentionNo;
-                until GLEntry.Next() = 0;
-            VendLE.Reset();
-            VendLE.SetRange("Document No.", TempGLEntryBuf."Document No.");
-            if VendLE.FindSet() then
-                repeat
-                    VendLE."Retention No." := RetentionNo;
-                    VendLE."Retention Amount" := "Amount Retention";
-                    VendLE."Retention Amount LCY" := "Amount Retention LCY";
-                    VendLE.Modify();
-                until VendLE.Next() = 0;
             if GenJnlLine."Currency Code" <> '' then begin
                 CurrExchRate.Get(GenJnlLine."Currency Code", GenJnlLine."Posting Date");
                 CurrencyAmount := CurrExchRate."Relational Adjmt Exch Rate Amt";
@@ -878,6 +863,22 @@ codeunit 51009 "Retention Management"
             "Source Jnl Batch Name" := GenJnlLine."Journal Batch Name";
             "Source Jnl Template Name" := GenJnlLine."Journal Template Name";
             "Manual Retention" := GenJnlLine."Manual Retention";
+            GLEntry.Reset();
+            GLEntry.SetRange("Document No.", TempGLEntryBuf."Document No.");
+            if GLEntry.FindSet() then
+                repeat
+                    GLEntry."Retention No." := RetentionNo;
+                    GLEntry.Modify();
+                until GLEntry.Next() = 0;
+            VendLE.Reset();
+            VendLE.SetRange("Document No.", TempGLEntryBuf."Document No.");
+            if VendLE.FindSet() then
+                repeat
+                    VendLE."Retention No." := RetentionNo;
+                    VendLE."Retention Amount" := "Amount Retention";
+                    VendLE."Retention Amount LCY" := "Amount Retention LCY";
+                    VendLE.Modify();
+                until VendLE.Next() = 0;
             Insert();
             SaveRetention();
             NextDtldRetLedgerEntryNo += 1;
