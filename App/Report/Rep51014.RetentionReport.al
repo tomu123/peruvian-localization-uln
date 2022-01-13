@@ -311,6 +311,7 @@ report 51014 "RET Retention Report"
                 SetRange(Number, 1, DtldRetentionLedgEntry.COUNT);
             end;
         }
+
     }
 
     requestpage
@@ -341,6 +342,12 @@ report 51014 "RET Retention Report"
     labels
     {
     }
+    trigger OnPreReport()
+    var
+    begin
+        DtldRetentionLedgEntry.Reset();
+        DtldRetentionLedgEntry.DeleteAll();
+    end;
 
     var
         CompanyInf: Record "Company Information";
