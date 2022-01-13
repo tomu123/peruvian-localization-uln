@@ -451,53 +451,63 @@
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 643555839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Invoice</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Amount Invoice - Property Caption</note>
+          <target>Importe Factura</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 313800365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Invoice LCY</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Factura DL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Amount Invoice LCY - Property Caption</note>
+          <target>Importe Factura DL</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1330443460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Paid</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Pagado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Amount Paid - Property Caption</note>
+          <target>Importe Pagado</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1248876602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Paid LCY</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Pagado DL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Amount Paid LCY - Property Caption</note>
+          <target>Importe Pagado DL</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1540347076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Retention</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Amount Retention - Property Caption</note>
+          <target>Importe Retención</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1483683898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Retention LCY</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Reteciones DL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Amount Retention LCY - Property Caption</note>
+          <target>Importe Reteciones DL</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Currency Code - Property Caption</note>
+          <target>Cód. Divisa</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 2324056710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Factor</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Factor Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Currency Factor - Property Caption</note>
+          <target>Factor Divisa</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1401769901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Electronic Invoice</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Factura Electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Electronic Invoice - Property Caption</note>
+          <target>Factura Electrónica</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Entry No. - Property Caption</note>
+          <target>No. Movimiento</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Retention</source>
@@ -507,28 +517,33 @@
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3293495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Legal Document</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Documento Legal Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Retention Legal Document - Property Caption</note>
+          <target>Documento Legal Retención</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 738868973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Retention No. - Property Caption</note>
+          <target>No. Retención</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3813530700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Registro Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Retention Posting Date - Property Caption</note>
+          <target>Fecha Registro Retención</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3744289816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reversed</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Reversado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Reversed - Property Caption</note>
+          <target>Reversado</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 4267346559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Document No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Documento Origen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Source Document No. - Property Caption</note>
+          <target>No. Documento Origen</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 111109546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Jnl Batch Name</source>
@@ -542,43 +557,51 @@
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 2565149650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Doc. Legal Document</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Documento Legal Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor Doc. Legal Document - Property Caption</note>
+          <target>Documento Legal Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 2351753538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Doc. Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Registro Doc. Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor Doc. Posting Date - Property Caption</note>
+          <target>Fecha Registro Doc. Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1776304945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Document Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Emisión Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor Document Date - Property Caption</note>
+          <target>Fecha Emisión Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3226020520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>vendor Document No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Documento Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor Document No. - Property Caption</note>
+          <target>No. Documento Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 277574171 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor External Document No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Documento Externo Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor External Document No. - Property Caption</note>
+          <target>No. Documento Externo Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3961227134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Invoice No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor Invoice No. - Property Caption</note>
+          <target>No. Factura Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Name</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor Name - Property Caption</note>
+          <target>Nombre Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Vendor No. - Property Caption</note>
+          <target>No. Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 89811990 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
@@ -3877,38 +3900,45 @@
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 643555839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Invoice</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Amount Invoice - Property Caption</note>
+          <target>Importe Factura</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 313800365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Invoice LCY</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Factura DL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Amount Invoice LCY - Property Caption</note>
+          <target>Importe Factura DL</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1330443460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Paid</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Pagado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Amount Paid - Property Caption</note>
+          <target>Importe Pagado</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1248876602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Paid LCY</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Pagado DL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Amount Paid LCY - Property Caption</note>
+          <target>Importe Pagado DL</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1540347076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Retention</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Amount Retention - Property Caption</note>
+          <target>Importe Retención</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1483683898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Retention LCY</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Retención DL"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Amount Retention LCY - Property Caption</note>
+          <target>Importe Retención DL</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 2959304495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assign User ID</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="ID Usuario Asignado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Assing User ID - Property Caption</note>
+          <target>ID Usuario Asignado</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 659599736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Elec. Resp. Description</source>
@@ -3932,18 +3962,21 @@
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Entry No. - Property Caption</note>
+          <target>No. Movimiento</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3676003639 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Error Code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Error"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Error Code - Property Caption</note>
+          <target>Cód. Error</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 2713959177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hash Code</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Hash"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Hash Code - Property Caption</note>
+          <target>Cód. Hash</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Retention</source>
@@ -3953,33 +3986,39 @@
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3293495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Legal Document</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Documento Legal Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Retention Legal Document - Property Caption</note>
+          <target>Documento Legal Retención</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 738868973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Retention No. - Property Caption</note>
+          <target>No. Retención</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3813530700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Registro Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Retention Posting Date - Property Caption</note>
+          <target>Fecha Registro Retención</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3744289816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reversed</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Reversado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Reversed - Property Caption</note>
+          <target>Reversado</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 2478006171 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reversion Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Reversión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Reversion Date - Property Caption</note>
+          <target>Fecha Reversión</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3962226459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reversion Motive</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Motivo Reversión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Reversion Motive - Property Caption</note>
+          <target>Motivo Reversión</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1533563646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reversion XML File Name</source>
@@ -4004,13 +4043,15 @@
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Name</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Nombre Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Vendor Name - Property Caption</note>
+          <target>Nombre Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Vendor No. - Property Caption</note>
+          <target>No. Proveedor</target>
         </trans-unit>
         <trans-unit id="Table 710388415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales Cost Records</source>
@@ -7561,6 +7602,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page CustLedgerEntry Collection - Action GenerateFile - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1083182216 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detailed Retention Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Mov. Retención Detallado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Detailed Retention Ledg. Entry - Property Caption</note>
+          <target>Mov. Retención Detallado</target>
+        </trans-unit>
         <trans-unit id="Page 3941857436 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Entry</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -10979,10 +11026,17 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Ret. RH Purchase Invoices - Action SendApprovalRequest - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3511451743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retention Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Mov. Retención"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Property Caption</note>
+          <target>Mov. Retención</target>
+        </trans-unit>
         <trans-unit id="Page 3511451743 - Action 749121076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Detailed</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Detallado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Detailed - Property Caption</note>
+          <target>Detallado</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3538210097 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Find all entries and documents that exist for the document number and posting date on the selected entry or document.</source>
@@ -10991,13 +11045,15 @@
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3538210097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Navigate</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Navegar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Navigate - Property Caption</note>
+          <target>Navegar</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 2780237198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Report</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Reporte Retenciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionReport - Property Caption</note>
+          <target>Reporte Retenciones</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 1395509807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PDT 626</source>
@@ -11011,23 +11067,27 @@
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3822228832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Show File PDT</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Mostrar Archivo PDT"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action ShowFilesPDT626 - Property Caption</note>
+          <target>Mostrar Archivo PDT</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3318911803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Action</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Rentenciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionActions - Property Caption</note>
+          <target>Rentenciones</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 1335402577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Anulled</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Anulado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Anulle - Property Caption</note>
+          <target>Anulado</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 2116845018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Electronic Reverse</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Reversión Electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action ElectronicReversed - Property Caption</note>
+          <target>Reversión Electrónica</target>
         </trans-unit>
         <trans-unit id="Page 2400727267 - Control 684242166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Parameters</source>

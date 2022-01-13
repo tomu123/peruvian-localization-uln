@@ -96,7 +96,7 @@ page 51011 "Retention Ledger Entry"
                 Caption = '&Navigate', Comment = 'ESM="Navegar"';
                 Image = Navigate;
                 Promoted = true;
-                PromotedCategory = Category4;
+                PromotedCategory = Process;
                 ToolTip = 'Find all entries and documents that exist for the document number and posting date on the selected entry or document.';
 
                 trigger OnAction()
@@ -161,6 +161,7 @@ page 51011 "Retention Ledger Entry"
                     end;
                 }
             }
+            /*
             group(GroupPDT626)
             {
                 Caption = 'PDT 626';
@@ -183,7 +184,7 @@ page 51011 "Retention Ledger Entry"
                     RunPageLink = "File ID" = const('0626');
                 }
             }
-
+*/
         }
     }
 
