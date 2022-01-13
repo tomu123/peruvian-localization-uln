@@ -134,6 +134,16 @@ table 51006 "Detailed Retention Ledg. Entry"
             DataClassification = ToBeClassified;
             Caption = 'Manual Retention', Comment = 'ESM= "Retención Manual"';
         }
+        field(51026; "Line No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Line No.', Comment = 'ESM= "N° Linea"';
+        }
+        field(51027; "Document No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Document No.', Comment = 'ESM= "N° Linea"';
+        }
     }
 
     keys

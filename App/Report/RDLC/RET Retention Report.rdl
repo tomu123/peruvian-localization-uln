@@ -8,8 +8,157 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>2226340b-1b3e-4000-a525-58eecdaf93f8</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="CompanyAddress">
+          <DataField>CompanyAddress</DataField>
+        </Field>
+        <Field Name="CompanyVATRegistration">
+          <DataField>CompanyVATRegistration</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="Periodo">
+          <DataField>Periodo</DataField>
+        </Field>
+        <Field Name="ShowTable">
+          <DataField>ShowTable</DataField>
+        </Field>
+        <Field Name="FechaEmision">
+          <DataField>FechaEmision</DataField>
+        </Field>
+        <Field Name="Documento">
+          <DataField>Documento</DataField>
+        </Field>
+        <Field Name="DocumentoDiario">
+          <DataField>DocumentoDiario</DataField>
+        </Field>
+        <Field Name="TipoOperacion">
+          <DataField>TipoOperacion</DataField>
+        </Field>
+        <Field Name="ImporteDebeUSD">
+          <DataField>ImporteDebeUSD</DataField>
+        </Field>
+        <Field Name="ImporteDebeUSDFormat">
+          <DataField>ImporteDebeUSDFormat</DataField>
+        </Field>
+        <Field Name="ImporteHaberUSD">
+          <DataField>ImporteHaberUSD</DataField>
+        </Field>
+        <Field Name="ImporteHaberUSDFormat">
+          <DataField>ImporteHaberUSDFormat</DataField>
+        </Field>
+        <Field Name="SaldoUSD">
+          <DataField>SaldoUSD</DataField>
+        </Field>
+        <Field Name="SaldoUSDFormat">
+          <DataField>SaldoUSDFormat</DataField>
+        </Field>
+        <Field Name="TipoCombio">
+          <DataField>TipoCombio</DataField>
+        </Field>
+        <Field Name="TipoCombioFormat">
+          <DataField>TipoCombioFormat</DataField>
+        </Field>
+        <Field Name="ImporteDebeDL">
+          <DataField>ImporteDebeDL</DataField>
+        </Field>
+        <Field Name="ImporteDebeDLFormat">
+          <DataField>ImporteDebeDLFormat</DataField>
+        </Field>
+        <Field Name="ImporteHaberDL">
+          <DataField>ImporteHaberDL</DataField>
+        </Field>
+        <Field Name="ImporteHaberDLFormat">
+          <DataField>ImporteHaberDLFormat</DataField>
+        </Field>
+        <Field Name="SaldoDL">
+          <DataField>SaldoDL</DataField>
+        </Field>
+        <Field Name="SaldoDLFormat">
+          <DataField>SaldoDLFormat</DataField>
+        </Field>
+        <Field Name="TotalRetenido">
+          <DataField>TotalRetenido</DataField>
+        </Field>
+        <Field Name="TotalRetenidoFormat">
+          <DataField>TotalRetenidoFormat</DataField>
+        </Field>
+        <Field Name="DocumentoRetencion">
+          <DataField>DocumentoRetencion</DataField>
+        </Field>
+        <Field Name="Linea">
+          <DataField>Linea</DataField>
+        </Field>
+        <Field Name="RucProveedor">
+          <DataField>RucProveedor</DataField>
+        </Field>
+        <Field Name="NombreProveedor">
+          <DataField>NombreProveedor</DataField>
+        </Field>
+        <Field Name="TotalRetencionesSoles">
+          <DataField>TotalRetencionesSoles</DataField>
+        </Field>
+        <Field Name="TotalRetencionesSolesFormat">
+          <DataField>TotalRetencionesSolesFormat</DataField>
+        </Field>
+        <Field Name="TotalRetencionesUSD">
+          <DataField>TotalRetencionesUSD</DataField>
+        </Field>
+        <Field Name="TotalRetencionesUSDFormat">
+          <DataField>TotalRetencionesUSDFormat</DataField>
+        </Field>
+        <Field Name="TotalPagoProveedorSoles">
+          <DataField>TotalPagoProveedorSoles</DataField>
+        </Field>
+        <Field Name="TotalPagoProveedorSolesFormat">
+          <DataField>TotalPagoProveedorSolesFormat</DataField>
+        </Field>
+        <Field Name="TotalPagoProveedorUSD">
+          <DataField>TotalPagoProveedorUSD</DataField>
+        </Field>
+        <Field Name="TotalPagoProveedorUSDFormat">
+          <DataField>TotalPagoProveedorUSDFormat</DataField>
+        </Field>
+        <Field Name="TotalPeriodoPagoProveedoresSoles">
+          <DataField>TotalPeriodoPagoProveedoresSoles</DataField>
+        </Field>
+        <Field Name="TotalPeriodoPagoProveedoresSolesFormat">
+          <DataField>TotalPeriodoPagoProveedoresSolesFormat</DataField>
+        </Field>
+        <Field Name="TotalPeriodoPagoProveedoresUSD">
+          <DataField>TotalPeriodoPagoProveedoresUSD</DataField>
+        </Field>
+        <Field Name="TotalPeriodoPagoProveedoresUSDFormat">
+          <DataField>TotalPeriodoPagoProveedoresUSDFormat</DataField>
+        </Field>
+        <Field Name="TotalPeriodoRetencionSoles">
+          <DataField>TotalPeriodoRetencionSoles</DataField>
+        </Field>
+        <Field Name="TotalPeriodoRetencionSolesFormat">
+          <DataField>TotalPeriodoRetencionSolesFormat</DataField>
+        </Field>
+        <Field Name="TotalPeriodoRetencionUSD">
+          <DataField>TotalPeriodoRetencionUSD</DataField>
+        </Field>
+        <Field Name="TotalPeriodoRetencionUSDFormat">
+          <DataField>TotalPeriodoRetencionUSDFormat</DataField>
+        </Field>
+        <Field Name="Anulado">
+          <DataField>Anulado</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -39,7 +188,7 @@
                   <Width>1.56987cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.66268cm</Width>
+                  <Width>1.41031cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.56987cm</Width>
@@ -1466,9 +1615,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Pagos</Value>
+                                  <Value>Pagos USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1500,7 +1649,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPagoProveedorUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -1567,7 +1716,7 @@
                                 <TextRun>
                                   <Value>Pagos</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1599,7 +1748,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPagoProveedorSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -1793,9 +1942,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retenciones</Value>
+                                  <Value>Ret. USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1827,7 +1976,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalRetencionesUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -1892,9 +2041,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retenciones</Value>
+                                  <Value>Ret.</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1926,7 +2075,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalRetencionesSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -2120,9 +2269,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Facturas</Value>
+                                  <Value>Facturas USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -2154,7 +2303,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPagoProveedorUSD.Value + Fields!TotalRetencionesUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -2221,7 +2370,7 @@
                                 <TextRun>
                                   <Value>Facturas</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -2253,7 +2402,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPagoProveedorSoles.Value + Fields!TotalRetencionesSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -2807,7 +2956,7 @@
                                 <TextRun>
                                   <Value>Pagos</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -2839,7 +2988,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -2907,7 +3056,7 @@
                                 <TextRun>
                                   <Value>Pagos</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -2939,7 +3088,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -3134,9 +3283,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retenciones</Value>
+                                  <Value>Ret. USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3168,7 +3317,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoRetencionUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -3234,9 +3383,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retenciones</Value>
+                                  <Value>Ret. </Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3268,7 +3417,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoRetencionSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -3465,7 +3614,7 @@
                                 <TextRun>
                                   <Value>Facturas</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3497,7 +3646,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresUSD.Value + Fields!TotalPeriodoRetencionUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -3565,7 +3714,7 @@
                                 <TextRun>
                                   <Value>Facturas</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3597,7 +3746,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresSoles.Value + Fields!TotalPeriodoRetencionSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -3818,7 +3967,7 @@
             <Top>0.17639cm</Top>
             <Left>0.32139cm</Left>
             <Height>6.2825cm</Height>
-            <Width>20.51332cm</Width>
+            <Width>20.26095cm</Width>
             <Visibility>
               <Hidden>=IIF(Fields!ShowTable.Value="Agrupado Proveedor",FALSE,TRUE)</Hidden>
             </Visibility>
@@ -3853,7 +4002,7 @@
                   <Width>1.56987cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.69229cm</Width>
+                  <Width>1.43992cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.56987cm</Width>
@@ -5308,9 +5457,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Pagos</Value>
+                                  <Value>Pagos USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5342,7 +5491,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -5410,7 +5559,7 @@
                                 <TextRun>
                                   <Value>Pagos</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5442,7 +5591,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -5637,9 +5786,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retenciones</Value>
+                                  <Value>Ret. USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5671,7 +5820,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoRetencionUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -5737,9 +5886,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retenciones</Value>
+                                  <Value>Ret.</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5771,7 +5920,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoRetencionSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -5966,9 +6115,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Facturas</Value>
+                                  <Value>Facturas USD</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -6000,7 +6149,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresUSD.Value + Fields!TotalPeriodoRetencionUSD.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -6068,7 +6217,7 @@
                                 <TextRun>
                                   <Value>Facturas</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -6100,7 +6249,7 @@
                                 <TextRun>
                                   <Value>=Fields!TotalPeriodoPagoProveedoresSoles.Value + Fields!TotalPeriodoRetencionSoles.Value</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -6286,10 +6435,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.254cm</Top>
+            <Top>0.889cm</Top>
             <Left>0.29178cm</Left>
             <Height>3.93542cm</Height>
-            <Width>20.54293cm</Width>
+            <Width>20.29056cm</Width>
             <ZIndex>1</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!ShowTable.Value="Comprobante Retencion",FALSE,TRUE)</Hidden>
@@ -6304,7 +6453,7 @@
         <Height>6.45889cm</Height>
         <Style />
       </Body>
-      <Width>21cm</Width>
+      <Width>20.91533cm</Width>
       <Page>
         <PageHeader>
           <Height>5.47793cm</Height>
@@ -6724,7 +6873,7 @@
               <Top>4.47505cm</Top>
               <Left>12.96063cm</Left>
               <Height>0.74437cm</Height>
-              <Width>1.69229cm</Width>
+              <Width>1.44601cm</Width>
               <ZIndex>11</ZIndex>
               <Style>
                 <Border>
@@ -6758,7 +6907,7 @@
               </Paragraphs>
               <rd:DefaultName>rFecEmision</rd:DefaultName>
               <Top>1.76183in</Top>
-              <Left>5.74135in</Left>
+              <Left>5.66951in</Left>
               <Height>0.29306in</Height>
               <Width>0.61806in</Width>
               <ZIndex>12</ZIndex>
@@ -6794,7 +6943,7 @@
               </Paragraphs>
               <rd:DefaultName>rFecEmision</rd:DefaultName>
               <Top>1.76156in</Top>
-              <Left>6.35941in</Left>
+              <Left>6.28756in</Left>
               <Height>0.29306in</Height>
               <Width>0.61806in</Width>
               <ZIndex>13</ZIndex>
@@ -6830,7 +6979,7 @@
               </Paragraphs>
               <rd:DefaultName>rFecEmision</rd:DefaultName>
               <Top>1.76156in</Top>
-              <Left>6.97747in</Left>
+              <Left>6.90562in</Left>
               <Height>0.29306in</Height>
               <Width>0.61806in</Width>
               <ZIndex>14</ZIndex>
@@ -6880,7 +7029,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox8</rd:DefaultName>
               <Top>4.47436cm</Top>
-              <Left>19.29265cm</Left>
+              <Left>19.11016cm</Left>
               <Height>0.74437cm</Height>
               <Width>1.54206cm</Width>
               <ZIndex>15</ZIndex>
@@ -6899,7 +7048,7 @@
               <Top>4.30953cm</Top>
               <Left>0.36724cm</Left>
               <Height>0cm</Height>
-              <Width>20.46747cm</Width>
+              <Width>20.28498cm</Width>
               <ZIndex>16</ZIndex>
               <Style>
                 <Border>
@@ -6924,7 +7073,7 @@
               <Top>5.35985cm</Top>
               <Left>0.38489cm</Left>
               <Height>0cm</Height>
-              <Width>20.44982cm</Width>
+              <Width>20.26733cm</Width>
               <ZIndex>17</ZIndex>
               <Style>
                 <Border>
@@ -6959,6 +7108,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -6997,152 +7152,5 @@ End Function
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="CompanyAddress">
-          <DataField>CompanyAddress</DataField>
-        </Field>
-        <Field Name="CompanyVATRegistration">
-          <DataField>CompanyVATRegistration</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="Periodo">
-          <DataField>Periodo</DataField>
-        </Field>
-        <Field Name="ShowTable">
-          <DataField>ShowTable</DataField>
-        </Field>
-        <Field Name="FechaEmision">
-          <DataField>FechaEmision</DataField>
-        </Field>
-        <Field Name="Documento">
-          <DataField>Documento</DataField>
-        </Field>
-        <Field Name="DocumentoDiario">
-          <DataField>DocumentoDiario</DataField>
-        </Field>
-        <Field Name="TipoOperacion">
-          <DataField>TipoOperacion</DataField>
-        </Field>
-        <Field Name="ImporteDebeUSD">
-          <DataField>ImporteDebeUSD</DataField>
-        </Field>
-        <Field Name="ImporteDebeUSDFormat">
-          <DataField>ImporteDebeUSDFormat</DataField>
-        </Field>
-        <Field Name="ImporteHaberUSD">
-          <DataField>ImporteHaberUSD</DataField>
-        </Field>
-        <Field Name="ImporteHaberUSDFormat">
-          <DataField>ImporteHaberUSDFormat</DataField>
-        </Field>
-        <Field Name="SaldoUSD">
-          <DataField>SaldoUSD</DataField>
-        </Field>
-        <Field Name="SaldoUSDFormat">
-          <DataField>SaldoUSDFormat</DataField>
-        </Field>
-        <Field Name="TipoCombio">
-          <DataField>TipoCombio</DataField>
-        </Field>
-        <Field Name="TipoCombioFormat">
-          <DataField>TipoCombioFormat</DataField>
-        </Field>
-        <Field Name="ImporteDebeDL">
-          <DataField>ImporteDebeDL</DataField>
-        </Field>
-        <Field Name="ImporteDebeDLFormat">
-          <DataField>ImporteDebeDLFormat</DataField>
-        </Field>
-        <Field Name="ImporteHaberDL">
-          <DataField>ImporteHaberDL</DataField>
-        </Field>
-        <Field Name="ImporteHaberDLFormat">
-          <DataField>ImporteHaberDLFormat</DataField>
-        </Field>
-        <Field Name="SaldoDL">
-          <DataField>SaldoDL</DataField>
-        </Field>
-        <Field Name="SaldoDLFormat">
-          <DataField>SaldoDLFormat</DataField>
-        </Field>
-        <Field Name="TotalRetenido">
-          <DataField>TotalRetenido</DataField>
-        </Field>
-        <Field Name="TotalRetenidoFormat">
-          <DataField>TotalRetenidoFormat</DataField>
-        </Field>
-        <Field Name="DocumentoRetencion">
-          <DataField>DocumentoRetencion</DataField>
-        </Field>
-        <Field Name="Linea">
-          <DataField>Linea</DataField>
-        </Field>
-        <Field Name="RucProveedor">
-          <DataField>RucProveedor</DataField>
-        </Field>
-        <Field Name="NombreProveedor">
-          <DataField>NombreProveedor</DataField>
-        </Field>
-        <Field Name="TotalRetencionesSoles">
-          <DataField>TotalRetencionesSoles</DataField>
-        </Field>
-        <Field Name="TotalRetencionesSolesFormat">
-          <DataField>TotalRetencionesSolesFormat</DataField>
-        </Field>
-        <Field Name="TotalRetencionesUSD">
-          <DataField>TotalRetencionesUSD</DataField>
-        </Field>
-        <Field Name="TotalRetencionesUSDFormat">
-          <DataField>TotalRetencionesUSDFormat</DataField>
-        </Field>
-        <Field Name="TotalPagoProveedorSoles">
-          <DataField>TotalPagoProveedorSoles</DataField>
-        </Field>
-        <Field Name="TotalPagoProveedorSolesFormat">
-          <DataField>TotalPagoProveedorSolesFormat</DataField>
-        </Field>
-        <Field Name="TotalPagoProveedorUSD">
-          <DataField>TotalPagoProveedorUSD</DataField>
-        </Field>
-        <Field Name="TotalPagoProveedorUSDFormat">
-          <DataField>TotalPagoProveedorUSDFormat</DataField>
-        </Field>
-        <Field Name="TotalPeriodoPagoProveedoresSoles">
-          <DataField>TotalPeriodoPagoProveedoresSoles</DataField>
-        </Field>
-        <Field Name="TotalPeriodoPagoProveedoresSolesFormat">
-          <DataField>TotalPeriodoPagoProveedoresSolesFormat</DataField>
-        </Field>
-        <Field Name="TotalPeriodoPagoProveedoresUSD">
-          <DataField>TotalPeriodoPagoProveedoresUSD</DataField>
-        </Field>
-        <Field Name="TotalPeriodoPagoProveedoresUSDFormat">
-          <DataField>TotalPeriodoPagoProveedoresUSDFormat</DataField>
-        </Field>
-        <Field Name="TotalPeriodoRetencionSoles">
-          <DataField>TotalPeriodoRetencionSoles</DataField>
-        </Field>
-        <Field Name="TotalPeriodoRetencionSolesFormat">
-          <DataField>TotalPeriodoRetencionSolesFormat</DataField>
-        </Field>
-        <Field Name="TotalPeriodoRetencionUSD">
-          <DataField>TotalPeriodoRetencionUSD</DataField>
-        </Field>
-        <Field Name="TotalPeriodoRetencionUSDFormat">
-          <DataField>TotalPeriodoRetencionUSDFormat</DataField>
-        </Field>
-        <Field Name="Anulado">
-          <DataField>Anulado</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
+  <rd:ReportID>b366ebcc-79fb-432b-8903-5627cd650218</rd:ReportID>
 </Report>

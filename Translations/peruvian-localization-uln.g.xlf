@@ -483,6 +483,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Factor Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Currency Factor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM= "N° Linea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Document No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1401769901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Electronic Invoice</source>
           <note from="Developer" annotates="general" priority="2">ESM="Factura Electrónica"</note>
@@ -492,6 +497,11 @@
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2">ESM="No. Movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1083182216 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM= "N° Linea"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Detailed Retention Ledg. Entry - Field Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1083182216 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Retention</source>
