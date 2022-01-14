@@ -171,7 +171,17 @@ codeunit 51029 "LD Correct Posted Documents"
         NoSerieMgt: Codeunit NoSeriesManagement;
         CreateReserveEntry: Codeunit "Create Reserv. Entry";
         NextDocumentNo: Code[20];
+        Item: Record Item;
+        NoSerie: Record "No. Series";
     begin
+
+        NoSerie.Reset();
+        NoSerie.SetRange("Operation Type", NoSerie."Operation Type"::Sales);
+        NoSerie.SetRange("Legal Document", '01');
+        NoSerie.SetRange("Legal Status", NoSerie."Legal Status"::OutFlow);
+        NoSerie.SetRange("Internal Operation", true);
+        if NoSerie.FindSet() then;
+
         SalesSetup.Get();
         SalesSetup.TestField("Invoice Nos.");
         //SalesSetup.TestField("Posted Prepmt. Inv. Nos.");
@@ -184,7 +194,7 @@ codeunit 51029 "LD Correct Posted Documents"
         NextDocumentNo := NoSerieMgt.GetNextNo(SalesSetup."Invoice Nos.", WorkDate(), true);
         SalesHeader."No." := NextDocumentNo;
         SalesHeader.Status := SalesHeader.Status::Open;
-        SalesHeader."Posting No. Series" := pSalesCrMemoHdr."No. Series";
+        SalesHeader."Posting No. Series" := NoSerie.Code;
         SalesHeader.Validate("Legal Status", LegalStatus);
         SalesHeader."Legal Document" := '01';
         SalesHeader."Responsibility Center" := pSalesCrMemoHdr."Responsibility Center";
@@ -210,16 +220,19 @@ codeunit 51029 "LD Correct Posted Documents"
                 SalesLine.Validate("Unit Price", SalesCrMemoLine."Unit Price");
                 SalesLine.Validate("Gen. Prod. Posting Group", SalesCrMemoLine."Gen. Prod. Posting Group");
                 if SalesCrMemoLine.Type = SalesCrMemoLine.Type::Item then begin
-                    SalesLine.Validate("Location Code", SalesCrMemoLine."Location Code");
-                    SalesLine.Validate("Bin Code", SalesCrMemoLine."Bin Code");
-                    ValueEntry.Reset();
-                    ValueEntry.SetRange("Document No.", SalesCrMemoLine."Document No.");
-                    ValueEntry.SetRange("Document Line No.", SalesCrMemoLine."Line No.");
-                    ValueEntry.SetRange("Item No.", SalesCrMemoLine."No.");
-                    if ValueEntry.FindSet() then begin
-                        if ItemLedgEntry.Get(ValueEntry."Item Ledger Entry No.") then begin
-                            CreateReserveEntry.CreateReservEntryFor(37, 2, SalesHeader."No.", '', 0, 0, Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), '', ItemLedgEntry."Lot No.");
-                            CreateReserveEntry.CreateEntry(ItemLedgEntry."Item No.", '', ItemLedgEntry."Location Code", '', WorkDate(), WorkDate(), 0, ReservStatus::Prospect);
+                    Item.Get(SalesLine."No.");
+                    if Item.Type = Item.Type::Inventory then begin
+                        SalesLine.Validate("Location Code", SalesCrMemoLine."Location Code");
+                        SalesLine.Validate("Bin Code", SalesCrMemoLine."Bin Code");
+                        ValueEntry.Reset();
+                        ValueEntry.SetRange("Document No.", SalesCrMemoLine."Document No.");
+                        ValueEntry.SetRange("Document Line No.", SalesCrMemoLine."Line No.");
+                        ValueEntry.SetRange("Item No.", SalesCrMemoLine."No.");
+                        if ValueEntry.FindSet() then begin
+                            if ItemLedgEntry.Get(ValueEntry."Item Ledger Entry No.") then begin
+                                CreateReserveEntry.CreateReservEntryFor(37, 2, SalesHeader."No.", '', 0, 0, Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), '', ItemLedgEntry."Lot No.");
+                                CreateReserveEntry.CreateEntry(ItemLedgEntry."Item No.", '', ItemLedgEntry."Location Code", '', WorkDate(), WorkDate(), 0, ReservStatus::Prospect);
+                            end;
                         end;
                     end;
                 end;
