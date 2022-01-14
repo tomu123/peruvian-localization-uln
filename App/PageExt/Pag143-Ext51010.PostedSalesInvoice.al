@@ -24,6 +24,11 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
                 ApplicationArea = Basic, Suite;
                 Editable = false;
             }
+            field("User ID"; "User ID")
+            {
+                ApplicationArea = Basic, Suite;
+                Editable = false;
+            }
         }
     }
 
