@@ -275,6 +275,7 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader.Validate("Applies-to Doc. No.", pSalesInvoiceHeader."No.");
         SalesHeader."Posting Description" := 'Nota de Credito a Factura :' + SalesHeader."No.";
         SalesHeader.Validate("Return Receipt No. Series", SalesSetup."Posted Return Receipt Nos.");
+        SalesHeader.Validate("Applies-to Doc. No. Ref.", pSalesInvoiceHeader."No.");
         SalesHeader.Modify();
 
         OnAfterCreateCreditMemoFromPostedSalesinvoice(SalesHeader, pSalesInvoiceHeader);
