@@ -16033,6 +16033,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Sales Credit Memo - Control Aplicacion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2988390158 - Control 2136146676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Divisa"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Sales Credit Memo - Control Currency Code2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1413249529 - Action 529640939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2591587468">
           <source>Print Voucher</source>
           <note from="Developer" annotates="general" priority="2">ESM="Imprimir Voucher"</note>
