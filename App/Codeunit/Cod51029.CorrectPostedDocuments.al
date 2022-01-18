@@ -343,7 +343,7 @@ codeunit 51029 "LD Correct Posted Documents"
                 end;
             114:
                 begin
-                    SalesCrMemoHdr.Get(DocumentNo);
+                    if not SalesCrMemoHdr.Get(DocumentNo) then;
                     LegalStatus := SalesCrMemoHdr."Legal Status";
                     IsOutFlow := SalesCrMemoHdr."Legal Status" = SalesCrMemoHdr."Legal Status"::OutFlow;
                     if IsOutFlow then begin

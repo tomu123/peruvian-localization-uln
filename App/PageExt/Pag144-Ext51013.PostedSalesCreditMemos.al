@@ -40,7 +40,7 @@ pageextension 51013 "Legal Doc. Pstd Sales CrMemos" extends "Posted Sales Credit
                 begin
                     NewDocumentNo := Rec."No.";
                     LDCorrectPstdDoc.SalesCorrectCreditMemo(Rec);
-                    Get(NewDocumentNo);
+                    //Get(NewDocumentNo);
                     SelectLatestVersion();
                 end;
             }
