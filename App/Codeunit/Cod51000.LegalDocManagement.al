@@ -330,10 +330,11 @@ codeunit 51000 "Legal Document Management"
         if PurchaseHeader."Legal Document" = '' then
             Error('El campo Documento legal no puede estar vacío.');
     end;
-
+    /*
     [EventSubscriber(ObjectType::Codeunit, Codeunit::ArchiveManagement, 'OnBeforeAutoArchiveSalesDocument', '', true, true)]
     procedure OnBeforeDeleteSalesHeader(var SalesHeader: Record "Sales Header"; var IsHandled: Boolean)
     begin
         SalesHeader."Posting No." := '';
     end;
+    */
 }

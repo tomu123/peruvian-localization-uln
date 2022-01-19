@@ -329,9 +329,9 @@ codeunit 51008 "Setup Localization"
             if UpdateCurrencyExchangeRates.ExchangeRatesForCurrencyExist(CurrencyDate, SalesHeader."Currency Code") then begin
                 SalesHeader."Currency Factor" := CurrExchRate.ExchangeRate(CurrencyDate, SalesHeader."Currency Code");
                 if SalesHeader."Currency Code" <> '' then begin
-                    SalesHeader.SetHideValidationDialog(true);
-                    SalesHeader.RecreateSalesLines(SalesHeader.FieldCaption("Currency Code"));
-                    SalesHeader.SetHideValidationDialog(false);
+                    //SalesHeader.SetHideValidationDialog(true);
+                    //SalesHeader.RecreateSalesLines(SalesHeader.FieldCaption("Currency Code"));
+                    //SalesHeader.SetHideValidationDialog(false);
                 end;
             end else begin
                 if ConfirmManagement.GetResponseOrDefault(
@@ -346,9 +346,9 @@ codeunit 51008 "Setup Localization"
                 Message('Se ha modificado el tipo de cambio a la fecha %1', CurrencyDate);
         end else begin
             SalesHeader."Currency Factor" := 0;
-            SalesHeader.SetHideValidationDialog(true);
-            SalesHeader.RecreateSalesLines(SalesHeader.FieldCaption("Currency Code"));
-            SalesHeader.SetHideValidationDialog(false);
+            //SalesHeader.SetHideValidationDialog(true);
+            //SalesHeader.RecreateSalesLines(SalesHeader.FieldCaption("Currency Code"));
+            //SalesHeader.SetHideValidationDialog(false);
         end;
         Updated := true;
     end;
