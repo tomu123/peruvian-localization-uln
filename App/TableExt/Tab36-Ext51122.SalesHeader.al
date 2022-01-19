@@ -404,4 +404,12 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
     procedure OnBeforeFilterNoSeries(var NoSeries: Record "No. Series"; var SalesHeader: Record "Sales Header")
     begin
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"G/L Entry", 'OnAfterCopyGLEntryFromGenJnlLine', '', true, true)]
+    procedure SetCopyGLEntryFromGenJnlLine(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
+    begin
+        GLEntry."Legal Document" := GenJournalLine."Legal Document";
+        GLEntry."Legal Status" := GenJournalLine."Legal Status";
+        GLEntry."Retention No." := GenJournalLine."Retention No.";
+    end;
 }
