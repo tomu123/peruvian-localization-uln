@@ -105,13 +105,12 @@ pageextension 51117 "Legal Doc. Sales Credit Memo" extends "Sales Credit Memo"
                     ApplicationArea = All;
                     Editable = "Manual Document Ref.";
                 }
-                field("Applies-to Number Ref."; "Applies-to Number Ref.")
+                field("Applies-to Serie Ref."; "Applies-to Serie Ref.")
                 {
                     ApplicationArea = All;
                     Editable = "Manual Document Ref.";
                 }
-
-                field("Applies-to Serie Ref."; "Applies-to Serie Ref.")
+                field("Applies-to Number Ref."; "Applies-to Number Ref.")
                 {
                     ApplicationArea = All;
                     Editable = "Manual Document Ref.";
@@ -175,6 +174,64 @@ pageextension 51117 "Legal Doc. Sales Credit Memo" extends "Sales Credit Memo"
             Visible = false;
         }
         //******************************* END Sell-to *************************************
+
+        addafter("Posting Date")
+        {
+            field("Customer Posting Group"; "Customer Posting Group")
+            {
+                ApplicationArea = All;
+                Editable = true;
+                trigger OnValidate()
+                var
+                    CustPostingGroup: Record "Customer Posting Group";
+                begin
+                    if "Customer Posting Group" = '' then
+                        exit;
+                    CustPostingGroup.Get("Customer Posting Group");
+                    Validate("Currency Code", CustPostingGroup."Currency Code");
+                end;
+            }
+            field("Currency Code2"; "Currency Code")
+            {
+                ApplicationArea = Suite;
+                Caption = 'Currency Code', Comment = 'ESM="Cód. Divisa"';
+                Importance = Promoted;
+                Editable = false;
+
+                trigger OnAssistEdit()
+                var
+                    ChangeExchangeRate: Page "Change Exchange Rate";
+                    DocumentTotals: Codeunit "Document Totals";
+                begin
+                    Clear(ChangeExchangeRate);
+                    if "Posting Date" <> 0D then
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", "Posting Date")
+                    else
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", WorkDate);
+                    if ChangeExchangeRate.RunModal = ACTION::OK then begin
+                        Validate("Currency Factor", ChangeExchangeRate.GetParameter);
+                        CurrPage.SaveRecord;
+                        DocumentTotals.SalesRedistributeInvoiceDiscountAmountsOnDocument(Rec);
+                        CurrPage.Update(false);
+                        //SaveInvoiceDiscountAmount;
+                    end;
+                    Clear(ChangeExchangeRate);
+                end;
+
+                trigger OnValidate()
+                var
+                    SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+                begin
+                    CurrPage.SaveRecord;
+                    SalesCalcDiscByType.ApplyDefaultInvoiceDiscount(0, Rec);
+                end;
+            }
+        }
+        modify("Currency Code")
+        {
+            Visible = false;
+            Editable = false;
+        }
 
         //******************************* BEGIN Bill-to *************************************
         addafter("Bill-to Address 2")

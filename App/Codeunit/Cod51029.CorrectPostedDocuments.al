@@ -203,6 +203,7 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader.Validate("Applies-to Doc. No.", pSalesCrMemoHdr."No.");
         SalesHeader."Posting Description" := 'Nota de Credito a Factura :' + SalesHeader."No.";
         SalesHeader.Validate("Shipping No. Series", SalesSetup."Posted Shipment Nos.");
+        SalesHeader."Applies-to Document Date Ref." := pSalesCrMemoHdr."Posting Date";
         SalesHeader.Insert();
 
         SalesCrMemoLine.Reset();
@@ -275,6 +276,7 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader.Validate("Applies-to Doc. No.", pSalesInvoiceHeader."No.");
         SalesHeader."Posting Description" := 'Nota de Credito a Factura :' + SalesHeader."No.";
         SalesHeader.Validate("Return Receipt No. Series", SalesSetup."Posted Return Receipt Nos.");
+        SalesHeader.Validate("Applies-to Doc. No. Ref.", pSalesInvoiceHeader."No.");
         SalesHeader.Modify();
 
         OnAfterCreateCreditMemoFromPostedSalesinvoice(SalesHeader, pSalesInvoiceHeader);
@@ -341,7 +343,7 @@ codeunit 51029 "LD Correct Posted Documents"
                 end;
             114:
                 begin
-                    SalesCrMemoHdr.Get(DocumentNo);
+                    if not SalesCrMemoHdr.Get(DocumentNo) then;
                     LegalStatus := SalesCrMemoHdr."Legal Status";
                     IsOutFlow := SalesCrMemoHdr."Legal Status" = SalesCrMemoHdr."Legal Status"::OutFlow;
                     if IsOutFlow then begin
