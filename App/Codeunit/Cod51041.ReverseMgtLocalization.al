@@ -130,6 +130,112 @@ codeunit 51041 "Reverse Mgt. Localization"
             NewDetailedEmployeeLedgerEntry."Posting Date" := ReverseDate;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Reversal Entry", 'OnBeforeCheckEntries', '', true, true)]
+    procedure OnBeforeCheckEntriesULN(ReversalEntry: Record "Reversal Entry"; TableID: Integer; var SkipCheck: Boolean)
+    var
+        CustLE: Record "Cust. Ledger Entry";
+        VendLE: Record "Vendor Ledger Entry";
+        GLRegister: Record "G/L Register";
+        Cust: Record Customer;
+        Vend: Record Vendor;
+    begin
+        case TableID of
+            21:
+                begin
+                    SkipCheck := true;
+                    CustLE.Reset();
+                    if ReversalEntry."Reversal Type" = ReversalEntry."Reversal Type"::Transaction then
+                        CustLE.SetRange("Transaction No.", ReversalEntry."Transaction No.")
+                    else
+                        if ReversalEntry."Reversal Type" = ReversalEntry."Reversal Type"::Register then begin
+                            GLRegister.Reset();
+                            GLRegister.Get(ReversalEntry."G/L Register No.");
+                            CustLE.SetRange("Entry No.", GLRegister."From Entry No.", GLRegister."To Entry No.");
+                        end;
+                    if CustLE.Find('-') then
+                        repeat
+                            Cust.Get(CustLE."Customer No.");
+                            CheckPostingDate(
+                              CustLE."Posting Date", CustLE.TableCaption, CustLE."Entry No.");
+                            Cust.CheckBlockedCustOnJnls(Cust, CustLE."Document Type", false);
+                            Cust.CheckBlockedCustOnJnls(Cust, CustLE."Document Type", false);
+
+                            if CustLE.Reversed then
+                                ReversalEntry.AlreadyReversedEntry(CustLE.TableCaption, CustLE."Entry No.");
+                            CheckDtldCustLedgEntry(CustLE);
+                        until CustLE.Next() = 0;
+
+                end;
+            25:
+                begin
+                    SkipCheck := true;
+                    VendLE.Reset();
+                    if ReversalEntry."Reversal Type" = ReversalEntry."Reversal Type"::Transaction then
+                        VendLE.SetRange("Transaction No.", ReversalEntry."Transaction No.")
+                    else
+                        if ReversalEntry."Reversal Type" = ReversalEntry."Reversal Type"::Register then begin
+                            GLRegister.Reset();
+                            GLRegister.Get(ReversalEntry."G/L Register No.");
+                            VendLE.SetRange("Entry No.", GLRegister."From Entry No.", GLRegister."To Entry No.");
+                        end;
+                    if VendLE.Find('-') then
+                        repeat
+                            Vend.Get(VendLE."Vendor No.");
+                            CheckPostingDate(
+                              VendLE."Posting Date", VendLE.TableCaption, VendLE."Entry No.");
+                            Vend.CheckBlockedVendOnJnls(Vend, VendLE."Document Type", false);
+                            if VendLE.Reversed then
+                                ReversalEntry.AlreadyReversedEntry(VendLE.TableCaption, VendLE."Entry No.");
+                            CheckDtldVendLedgEntry(VendLE);
+                        until VendLE.Next() = 0;
+                end;
+        end;
+    end;
+
+    local procedure CheckPostingDate(PostingDate: Date; Caption: Text[50]; EntryNo: Integer)
+    var
+        GenJnlCheckLine: Codeunit "Gen. Jnl.-Check Line";
+        Text001: Label 'You cannot reverse %1 No. %2 because the posting date is not within the allowed posting period.';
+    begin
+        if GenJnlCheckLine.DateNotAllowed(PostingDate) then
+            Error(Text001, Caption, EntryNo);
+        if PostingDate > MaxPostingDate then
+            MaxPostingDate := PostingDate;
+    end;
+
+    local procedure CheckDtldCustLedgEntry(CustLedgEntry: Record "Cust. Ledger Entry")
+    var
+        DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
+    begin
+        DtldCustLedgEntry.SetCurrentKey("Cust. Ledger Entry No.", "Entry Type");
+        DtldCustLedgEntry.SetRange("Cust. Ledger Entry No.", CustLedgEntry."Entry No.");
+        DtldCustLedgEntry.SetFilter("Entry Type", '<>%1', DtldCustLedgEntry."Entry Type"::"Initial Entry");
+        DtldCustLedgEntry.SetRange(Unapplied, false);
+        if not DtldCustLedgEntry.IsEmpty then
+            Error(ReversalErrorForChangedEntry(CustLedgEntry.TableCaption, CustLedgEntry."Entry No."));
+        //OnAfterCheckDtldCustLedgEntry(DtldCustLedgEntry, CustLedgEntry);
+    end;
+
+    local procedure CheckDtldVendLedgEntry(VendLedgEntry: Record "Vendor Ledger Entry")
+    var
+        DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
+    begin
+        DtldVendLedgEntry.SetCurrentKey("Vendor Ledger Entry No.", "Entry Type");
+        DtldVendLedgEntry.SetRange("Vendor Ledger Entry No.", VendLedgEntry."Entry No.");
+        DtldVendLedgEntry.SetFilter("Entry Type", '<>%1', DtldVendLedgEntry."Entry Type"::"Initial Entry");
+        DtldVendLedgEntry.SetRange(Unapplied, false);
+        if not DtldVendLedgEntry.IsEmpty then
+            Error(ReversalErrorForChangedEntry(VendLedgEntry.TableCaption, VendLedgEntry."Entry No."));
+        //OnAfterCheckDtldVendLedgEntry(DtldVendLedgEntry, VendLedgEntry);
+    end;
+
+    procedure ReversalErrorForChangedEntry(TableName: Text[50]; EntryNo: Integer): Text[1024]
+    var
+        Text000: Label 'You cannot reverse %1 No. %2 because the entry is either applied to an entry or has been changed by a batch job.';
+    begin
+        exit(StrSubstNo(Text000, TableName, EntryNo));
+    end;
+
     var
         STSetup: Record "Setup Localization";
         ReverseInformationPage: Page "Standard Dialog Page";
@@ -138,4 +244,5 @@ codeunit 51041 "Reverse Mgt. Localization"
         EnabledProcess: Boolean;
         ReverseReason: Text;
         ReverseDocumentNoFilter: Text;
+        MaxPostingDate: Date;
 }

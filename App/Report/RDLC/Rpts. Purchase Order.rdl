@@ -2531,7 +2531,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Autorizado Electrónicamente por:</Value>
+                    <Value>Autorizado Electrónicamente por: </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>9pt</FontSize>
@@ -2565,7 +2565,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Buzón Facturas Electrónicas:</Value>
+                    <Value>Ingrese sus facturas por el Nuevo Portal de Proveedores:</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>9pt</FontSize>
@@ -2578,20 +2578,42 @@
                     <Value xml:space="preserve"> </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
+                      <FontFamily />
                       <FontSize>9pt</FontSize>
                       <FontWeight>Normal</FontWeight>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
                   </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
                   <TextRun>
-                    <Value>facturas@atriaenergia.com</Value>
+                    <Value>= "https://erp-peru.atriaenergia.com/AtriaPeru/SignIn?ReturnUrl=%2FAtriaPeru%2F"</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
+                      <FontFamily />
                       <FontSize>9pt</FontSize>
                       <FontWeight>Normal</FontWeight>
-                      <TextDecoration>Underline</TextDecoration>
-                      <Color>#0563c1</Color>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2926,7 +2948,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value xml:space="preserve">       </Value>
+                    <Value xml:space="preserve">     </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Times New Roman</FontFamily>
@@ -2937,11 +2959,10 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>Todas las facturas serán pagadas los viernes después de los 30 días de la correcta recepción de esta.</Value>
+                    <Value>Todas las facturas serán pagadas los viernes después de los 30 días de la correcta recepción de ésta por medio del Nuevo Portal de Proveedores.</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
-                      <FontFamily>Calibri</FontFamily>
-                      <FontSize>11pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Normal</FontWeight>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>

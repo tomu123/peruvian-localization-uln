@@ -191,7 +191,9 @@ report 51500 "Rpts. Purchase Order"
                 "Purchase Header".CalcFields("Amount Including VAT", Amount);
 
                 if "Purchase Header"."Currency Code" = '' then
-                    gMoneda := 'Soles';
+                    gMoneda := 'Soles'
+                else
+                    gMoneda := 'Dólares';
 
                 gDescripcionTermino := '';
                 gRecPaymentTerms.Reset;
