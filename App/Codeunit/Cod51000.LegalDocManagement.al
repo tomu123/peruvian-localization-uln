@@ -337,4 +337,39 @@ codeunit 51000 "Legal Document Management"
         SalesHeader."Posting No." := '';
     end;
     */
+    [EventSubscriber(ObjectType::Table, Database::"Reversal Entry", 'OnBeforeCheckEntries', '', true, true)]
+    procedure OnBeforeCheckEntriesULN(ReversalEntry: Record "Reversal Entry"; TableID: Integer; var SkipCheck: Boolean)
+    var
+        CustLE: Record "Cust. Ledger Entry";
+        VendLE: Record "Vendor Ledger Entry";
+        GLRegister: Record "G/L Register";
+    begin
+        case TableID of
+            21:
+                begin
+                    SkipCheck := true;
+                    CustLE.Reset();
+                    if ReversalEntry."Reversal Type" = ReversalEntry."Reversal Type"::Transaction then
+                        CustLE.SetRange("Transaction No.", ReversalEntry."Transaction No.")
+                    else
+                        if ReversalEntry."Reversal Type" = ReversalEntry."Reversal Type"::Register then begin
+                            GLRegister.Reset();
+                            GLRegister.Get(ReversalEntry."G/L Register No.");
+                            CustLE.SetRange("Entry No.", GLRegister."From Entry No.", GLRegister."To Entry No.");
+                        end;
+                    if CustLE.Find('-') then
+                        repeat
+                            Cust.Get(CustLedgEntry."Customer No.");
+                            CheckPostingDate(
+                              CustLedgEntry."Posting Date", CustLedgEntry.TableCaption, CustLedgEntry."Entry No.");
+                            Cust.CheckBlockedCustOnJnls(Cust, CustLedgEntry."Document Type", false);
+                        until CustLE.Next() = 0;
+
+                end;
+            25:
+                begin
+                    SkipCheck := true;
+                end;
+        end;
+    end;
 }
