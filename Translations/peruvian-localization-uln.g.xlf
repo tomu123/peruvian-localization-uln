@@ -19558,6 +19558,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Campo Región de Chile no se usa para peru"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Department - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1346423013 - Field 1953963635 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>ModifyCust</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cliente modificado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field ModifyCust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1346423013 - Field 95233857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Preferred Bank Acc. Code ME</source>
           <note from="Developer" annotates="general" priority="2">ESM="Banco Recaudación ME"</note>
@@ -19897,6 +19902,11 @@
           <source>Good Contributor Start Date</source>
           <note from="Developer" annotates="general" priority="2">ESM="Fec. Inicio Buen Contribuyente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field Good Contributor Start Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2553632317 - Field 2768338304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>ModifyVendor</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Proveedor modificado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field ModifyVendor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2553632317 - Field 3437839352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Perception Agent</source>

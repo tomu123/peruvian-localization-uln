@@ -55,6 +55,11 @@ tableextension 51114 "ST Customer" extends Customer
             Caption = 'Dummy Field', comment = 'ESM="Campo Región de Chile no se usa para peru"';
             DataClassification = ToBeClassified;
         }
+        field(57901; ModifyCust; Boolean)
+        {
+            Caption = 'ModifyCust', comment = 'ESM="Cliente modificado"';
+            DataClassification = ToBeClassified;
+        }
 
         //Ubigeo Begin **********************************************************************************************************
         modify(County)

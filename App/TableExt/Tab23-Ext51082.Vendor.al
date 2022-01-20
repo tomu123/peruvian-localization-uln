@@ -225,6 +225,11 @@ tableextension 51082 "ST Vendor" extends Vendor
             Caption = 'Dummy Field', comment = 'ESM="Campo Región de Chile no se usa para peru"';
             DataClassification = ToBeClassified;
         }
+        field(57901; ModifyVendor; Boolean)
+        {
+            Caption = 'ModifyVendor', comment = 'ESM="Proveedor modificado"';
+            DataClassification = ToBeClassified;
+        }
 
     }
     var

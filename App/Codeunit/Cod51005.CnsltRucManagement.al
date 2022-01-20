@@ -572,8 +572,11 @@ codeunit 51005 "Cnslt. Ruc Management"
             TextField[4] := SetPositionText(ResponseText);//Condicion
             TextField[5] := SetPositionText(ResponseText);//Ubigeo
             TextField[6] := SetPositionText(ResponseText);//Address
-        end else
-            Error(ResponseText);
+        end else begin
+            if not Massive then
+                Error(ResponseText);
+        end;
+
     end;
 
     local procedure IsExistsVendor(): Boolean
@@ -634,6 +637,105 @@ codeunit 51005 "Cnslt. Ruc Management"
         ExcludeApprovalVendor := true;
     end;
 
+    //Actualizar por masivo Customer and Vendor
+
+    procedure CreateCustomerExternalMass(pRuc: Code[20])
+    begin
+        Ruc := pRuc;
+        Massive := true;
+        SetCustomerMass();
+
+    end;
+
+    procedure CreateVendorExternalMass(pRuc: Code[20])
+    begin
+        Ruc := pRuc;
+        Massive := true;
+        SetVendorMass();
+    end;
+
+    local procedure SetVendorMass()
+    begin
+        SetPeruvianLocalization();
+        ConsumeService2();
+        UpdateVendorMass()
+    end;
+
+    local procedure SetCustomerMass()
+    begin
+        SetPeruvianLocalization();
+        ConsumeService2();
+        UpdateCustomerMass()
+    end;
+
+    local procedure UpdateVendorMass()
+    begin
+        Vendor.Reset();
+        if TextField[1] <> '' then begin
+            case SLSetup."Create Option Vendor" of
+                SLSetup."Create Option Vendor"::"Vendor Nos":
+                    Vendor.SetRange("VAT Registration No.", TextField[1]);
+                SLSetup."Create Option Vendor"::"VAT Registration No.":
+                    Vendor.SetRange("No.", TextField[1]);
+            end;
+            Vendor.FindSet();
+            if StrLen(TextField[2]) > 100 then begin
+                Vendor.Name := CopyStr(TextField[2], 1, 100);
+                Vendor."Name 2" := CopyStr(TextField[2], 101, 100);
+            end else
+                Vendor.Name := TextField[2];
+            Vendor."SUNAT Status" := TextField[3];
+            Vendor."SUNAT Condition" := TextField[4];
+            Vendor.Validate(Ubigeo, TextField[5]);
+            if StrLen(TextField[6]) > 100 then begin
+                Vendor.Address := CopyStr(TextField[6], 1, 100);
+                Vendor."Address 2" := CopyStr(TextField[6], 101, 100);
+            end else
+                Vendor.Address := TextField[6];
+            Vendor."VAT Registration Type" := '6';
+            Vendor.ModifyVendor := true;
+            Vendor.Modify();
+        end;
+
+    end;
+
+    local procedure UpdateCustomerMass()
+    var
+        DefaultDimension: Record "Default Dimension";
+    begin
+        Customer.Reset();
+        if TextField[1] <> '' then begin
+            case SLSetup."Create Option Customer" of
+                SLSetup."Create Option Customer"::"Customer Nos":
+                    Customer.SetRange("VAT Registration No.", TextField[1]);
+                SLSetup."Create Option Customer"::"VAT Registration No.":
+                    Customer.SetRange("No.", TextField[1]);
+            end;
+            Customer.FindSet();
+            if StrLen(TextField[2]) > 100 then begin
+                Customer.Name := CopyStr(TextField[2], 1, 100);
+                Customer."Name 2" := CopyStr(TextField[2], 101, 100);
+            end else
+                Customer.Name := TextField[2];
+            Customer."SUNAT Status" := TextField[3];
+            Customer."SUNAT Condition" := TextField[4];
+            //Customer.Ubigeo := TextField[5];
+            Customer.Validate(Ubigeo, TextField[5]);
+            if StrLen(TextField[6]) > 100 then begin
+                Customer.Address := CopyStr(TextField[6], 1, 100);
+                Customer."Address 2" := CopyStr(TextField[6], 101, 100);
+            end else
+                Customer.Address := TextField[6];
+            Customer."VAT Registration Type" := '6';
+            Customer.ModifyCust := true;
+            Customer.Modify();
+            if not DefaultDimension.Get(18, TextField[1], 'UNIDNEG') then
+                fnCreateDimensionUNIDNEG();
+            if not DefaultDimension.Get(18, TextField[1], 'REGION') then
+                fnUpdateDimensionREGION();
+        end;
+    end;
+
     var
         SLSetup: Record "Setup Localization";
         Vendor: Record Vendor;
@@ -660,4 +762,5 @@ codeunit 51005 "Cnslt. Ruc Management"
         IntegrationVend: Boolean;
         TemplateCode: Code[20];
         TableID: Integer;
+        Massive: Boolean;
 }

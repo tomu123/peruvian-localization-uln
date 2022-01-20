@@ -646,6 +646,69 @@ page 51003 "Setup Localization"
                     CurrencyTypeMgt.GetCurrencyAmount()
                 end;
             }
+
+            action(UpdateCustomer) //Eliminar
+            {
+                ApplicationArea = All;
+
+                trigger OnAction();
+                var
+                    Customer: Record Customer;
+                    lcCount: Integer;
+                    ConsulRuc: Codeunit "Cnslt. Ruc Management";
+                    lcAux: Integer;
+                begin
+                    if not (UserId in ['SUPER', 'SUPER4']) then
+                        Error('Usted no puede utilizar este botom');
+                    DialogText.Open('Actualizando Clientes #1###### de #2######');
+                    Customer.Reset();
+                    Customer.SetRange("VAT Registration Type", '6');
+                    Customer.SetRange(ModifyCust, false);
+                    lcCount := Customer.Count;
+                    if Customer.findset() then
+                        repeat
+                            DialogText.Update(1, lcCount);
+                            lcAux += 1;
+                            DialogText.Update(2, lcAux);
+                            if StrLen(Customer."No.") = 11 then
+                                ConsulRuc.CreateCustomerExternalMass(Customer."No.");
+
+                        until Customer.next() = 0;
+                    DialogText.Close();
+                    Message('Proceso terminado');
+                end;
+            }
+            action(UpdateVendor) //Eliminar
+            {
+                ApplicationArea = All;
+
+                trigger OnAction();
+                var
+                    Vendor: Record Vendor;
+                    lcCount: Integer;
+                    ConsulRuc: Codeunit "Cnslt. Ruc Management";
+                    lcAux: Integer;
+                begin
+                    if not (UserId in ['SUPER', 'SUPER4']) then
+                        Error('Usted no puede utilizar este botom');
+                    DialogText.Open('Actualizando Proveedores #1###### de #2######');
+                    Vendor.Reset();
+                    Vendor.SetRange("VAT Registration Type", '6');
+                    Vendor.SetRange(ModifyVendor, false);
+                    lcCount := Vendor.Count;
+                    if Vendor.findset() then
+                        repeat
+                            DialogText.Update(1, lcCount);
+                            lcAux += 1;
+                            DialogText.Update(2, lcAux);
+                            if StrLen(Vendor."No.") = 11 then
+                                ConsulRuc.CreateVendorExternalMass(Vendor."No.");
+
+                        until Vendor.next() = 0;
+                    DialogText.Close();
+                    Message('Proceso terminado');
+                end;
+            }
         }
     }
 
@@ -656,6 +719,7 @@ page 51003 "Setup Localization"
         DimDescription: Label 'This setup %1 %2.', Comment = 'ESM="Se configuró %1 %2"';
         gAdjExchRateLocEditable: Boolean;
         gFTFreeTitleEditable: Boolean;
+        DialogText: Dialog;
 
     local procedure UpdateDescription()
     var
