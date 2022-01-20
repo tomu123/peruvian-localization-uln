@@ -139,10 +139,15 @@ codeunit 51038 "Mgmt Collection"
                             end;
                         'BBVA':
                             begin
-                                DocumentNo := delchr(COPYSTR(Buffer, 56, 12), '=', ' ');
-                                SerieNO := COPYSTR(DocumentNo, 1, 4);
-                                DocNo := COPYSTR(DocumentNo, 5, 12);
-                                DocumentNo := SerieNO + '-' + DocNo;
+                                DocumentNo := delchr(COPYSTR(Buffer, 66, 14), '=', ' ');
+                                if (COPYSTR(DocumentNo, 1, 1) = '0') then
+                                    DocumentNo := COPYSTR(DocumentNo, 1, 2) + '-' + COPYSTR(DocumentNo, 3, 4) + '-' + CopyStr(DocumentNo, 7, 8)
+                                else
+                                    DocumentNo := COPYSTR(DocumentNo, 1, 4) + '-' + COPYSTR(DocumentNo, 5, 10);
+
+                                //SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                //DocNo := COPYSTR(DocumentNo, 5, 12);
+                                //DocumentNo := SerieNO + '-' + DocNo;
                                 Suministro := COPYSTR(Buffer, 33, 10);
                                 ProcessDate := COPYSTR(Buffer, 136, 8);
                                 ProcessDate := TxtToDateFormat(ProcessDate);
@@ -155,9 +160,14 @@ codeunit 51038 "Mgmt Collection"
                         'SCOTIA':
                             begin
                                 DocumentNo := delchr(COPYSTR(Buffer, 34, 15), '=', ' ');
-                                SerieNO := COPYSTR(DocumentNo, 1, 4);
-                                DocNo := COPYSTR(DocumentNo, 5, 11);
-                                DocumentNo := SerieNO + '-' + DocNo;
+                                //SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                //DocNo := COPYSTR(DocumentNo, 5, 11);
+                                //DocumentNo := SerieNO + '-' + DocNo;
+                                if (COPYSTR(DocumentNo, 1, 1) = '0') then
+                                    DocumentNo := COPYSTR(DocumentNo, 1, 2) + '-' + COPYSTR(DocumentNo, 3, 4) + '-' + CopyStr(DocumentNo, 7, 9)
+                                else
+                                    DocumentNo := COPYSTR(DocumentNo, 1, 4) + '-' + COPYSTR(DocumentNo, 5, 11);
+
                                 Suministro := COPYSTR(Buffer, 19, 12);
                                 Suministro := DELCHR(Suministro, '=');
                                 ProcessDate := COPYSTR(Buffer, 147, 8);
@@ -172,9 +182,14 @@ codeunit 51038 "Mgmt Collection"
                         'INTERBANK':
                             begin
                                 DocumentNo := delchr(COPYSTR(Buffer, 38, 15), '=', ' ');
-                                SerieNO := COPYSTR(DocumentNo, 1, 4);
-                                DocNo := COPYSTR(DocumentNo, 5, 11);
-                                DocumentNo := SerieNO + '-' + DocNo;
+                                //SerieNO := COPYSTR(DocumentNo, 1, 4);
+                                //DocNo := COPYSTR(DocumentNo, 5, 11);
+                                //DocumentNo := SerieNO + '-' + DocNo;
+                                if (COPYSTR(DocumentNo, 1, 1) = '0') then
+                                    DocumentNo := COPYSTR(DocumentNo, 1, 2) + '-' + COPYSTR(DocumentNo, 3, 4) + '-' + CopyStr(DocumentNo, 7, 9)
+                                else
+                                    DocumentNo := COPYSTR(DocumentNo, 1, 4) + '-' + COPYSTR(DocumentNo, 5, 11);
+
                                 Suministro := COPYSTR(Buffer, 10, 19).Trim();
                                 ProcessDate := COPYSTR(Buffer, 83, 8);
                                 ProcessDate := TxtToDateFormat(ProcessDate);
