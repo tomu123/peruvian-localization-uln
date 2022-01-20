@@ -693,6 +693,7 @@ codeunit 51005 "Cnslt. Ruc Management"
             end else
                 Vendor.Address := TextField[6];
             Vendor."VAT Registration Type" := '6';
+            Vendor."VAT Registration No." := Vendor."No.";
             Vendor.ModifyVendor := true;
             Vendor.Modify();
         end;
@@ -727,6 +728,7 @@ codeunit 51005 "Cnslt. Ruc Management"
             end else
                 Customer.Address := TextField[6];
             Customer."VAT Registration Type" := '6';
+            Customer."VAT Registration No." := Customer."No.";
             Customer.ModifyCust := true;
             Customer.Modify();
             if not DefaultDimension.Get(18, TextField[1], 'UNIDNEG') then
