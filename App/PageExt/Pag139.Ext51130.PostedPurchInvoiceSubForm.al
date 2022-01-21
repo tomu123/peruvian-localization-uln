@@ -9,6 +9,10 @@ pageextension 51130 "ST Posted Purch. Inv. Subform" extends "Posted Purch. Invoi
             {
                 ApplicationArea = All;
             }
+            field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 

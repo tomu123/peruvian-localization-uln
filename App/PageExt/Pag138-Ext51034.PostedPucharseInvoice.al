@@ -275,6 +275,23 @@ pageextension 51034 "Detrac Posted Pucharse Invoice" extends "Posted Purchase In
             Enabled = false;
             Visible = false;
         }
+        addafter(Approvals)
+        {
+            action(ModifyDetraction)
+            {
+                Caption = 'Modify Detraction', Comment = 'ESM="Modificar Detracción"';
+                Image = SalesInvoice;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'To modify the data of the deduction.', Comment = 'ESM="Modificar los datos de la detracción."';
+
+                // trigger OnAction()
+                // begin
+                //     FillGenericPurchase();
+                // end;
+            }
+        }
     }
     procedure ShowLegalPropertyName(): Text[250]
     var
