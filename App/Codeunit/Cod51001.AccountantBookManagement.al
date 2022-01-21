@@ -1215,7 +1215,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23
                                 MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
                                 MyLineText += FormatCurrency("Currency Code") + MySeparator;//Field 25
-                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 26
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:3><Standard Format,2>') + MySeparator;//Field 26 //FMM 21.01.22 No aparecian los 3 decimales en tipo cambio
                                 MyLineText += Format("Mod. Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Fiedl 27
                                 MyLineText += "Mod. Legal Document" + MySeparator;//Field 28
                                 MyLineText += "Mod. Serie" + MySeparator;//Field 29
@@ -1273,7 +1273,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += '' + MySeparator;//Field 14
                                 MyLineText += Format("Taxed VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 15
                                 MyLineText += FormatCurrency("Currency Code") + MySeparator;//Field 16
-                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 17
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:3><Standard Format,2>') + MySeparator;//Field 17 //FMM 21.01.22 No aparecian los 3 decimales en tipo cambio
                                 MyLineText += "Country Residence Not Address" + MySeparator;//Field 18
                                 MyLineText += "Vendor Name" + MySeparator;//Field 19
                                 MyLineText += "Foreing Residence Not Address" + MySeparator;//Field 20
@@ -1334,7 +1334,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += "Legal Document" + MySeparator;//Field 06
                                 MyLineText += "Serie Document" + MySeparator;//Field 07
                                 MyLineText += format("Number Document") + MySeparator;//Field 08
-                                IF "Legal Document" IN ['00', '03', '12', '13', '87'] = FALSE then
+                                IF "Legal Document" IN ['00', '12', '13', '87'] = FALSE then //FMM 21.01.22 Kath solicito quitar para las boletas
                                     MyLineText += MySeparator //Field 09
                                 ELSE
                                     MyLineText += Format("Field 9 Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 09
@@ -1358,7 +1358,7 @@ codeunit 51001 "Accountant Book Management"
                                     MyLineText += 'PEN' + MySeparator//Field 26 
                                 else
                                     MyLineText += "Currency Code" + MySeparator;//Field 26
-                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 27
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:3><Standard Format,2>') + MySeparator;//Field 27 //FMM 21.01.22 No aparecian los 3 decimales en tipo cambio
                                 MyLineText += Format("Mod. Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Fiedl 28
                                 MyLineText += "Mod. Legal Document" + MySeparator;//Field 29
                                 MyLineText += "Mod. Serie" + MySeparator;//Field 30
