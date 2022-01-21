@@ -44,7 +44,6 @@ page 51002 "ST Control File List"
                 {
                     ApplicationArea = All;
                 }
-
                 field("Create User ID"; Rec."Create User ID")
                 {
                     ApplicationArea = All;

@@ -4658,6 +4658,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ST Control File - Method CompressZipControlFile - NamedType lclCharacter</note>
         </trans-unit>
+        <trans-unit id="Table 373262418 - Method 267935081 - NamedType 630748190" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The file is not exists.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="EL archivo no existe."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ST Control File - Method DownloadEmptyFile - NamedType FileIsNotExist</note>
+        </trans-unit>
+        <trans-unit id="Table 373262418 - Method 267935081 - NamedType 1968152428" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download File</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Descargar archivo."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ST Control File - Method DownloadEmptyFile - NamedType DialogTitle</note>
+        </trans-unit>
         <trans-unit id="Table 373262418 - Method 1095505734 - NamedType 630748190" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file is not exists.</source>
           <note from="Developer" annotates="general" priority="2">ESM="EL archivo no existe."</note>
