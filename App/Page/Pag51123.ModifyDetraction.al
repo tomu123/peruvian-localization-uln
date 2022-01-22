@@ -51,6 +51,8 @@ page 51123 "Modify Detraction"
             if not ((DetractionOperationNo <> '') and (DetractionEmisionDate <> 0D)) then
                 Error('Todos los campos deben estar llenos.')
         end;
+        if not PurchInvHeader."Purch. Detraction" then
+            Error('El documento no tiene detracción.');
         PurchInvHeader."Purch. Detraction Operation" := DetractionOperationNo;
         PurchInvHeader."Purch Date Detraction" := DetractionEmisionDate;
         PurchInvHeader.Modify();
