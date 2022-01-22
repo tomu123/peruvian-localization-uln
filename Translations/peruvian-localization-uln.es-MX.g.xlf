@@ -5106,6 +5106,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ST Control File - Method CompressZipControlFile - NamedType lclCharacter</note>
         </trans-unit>
+        <trans-unit id="Table 373262418 - Method 267935081 - NamedType 630748190" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The file is not exists.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="EL archivo no existe."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ST Control File - Method DownloadEmptyFile - NamedType FileIsNotExist</note>
+          <target>EL archivo no existe.</target>
+        </trans-unit>
+        <trans-unit id="Table 373262418 - Method 267935081 - NamedType 1968152428" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download File</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Descargar archivo."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ST Control File - Method DownloadEmptyFile - NamedType DialogTitle</note>
+          <target>Descargar archivo.</target>
+        </trans-unit>
         <trans-unit id="Table 373262418 - Method 1095505734 - NamedType 630748190" size-unit="char" translate="yes" xml:space="preserve">
           <source>The file is not exists.</source>
           <note from="Developer" annotates="general" priority="2">ESM="EL archivo no existe."</note>
@@ -6738,6 +6750,16 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention RH Management - Method CheckRetentionRH - NamedType ExistsLinesMessage</note>
           <target>Ya generó retención. Si desea calcular, elimine la línea y vuelva a procesar.</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3284961557 - Method 4270700670 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot reverse %1 No. %2 because the posting date is not within the allowed posting period.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Reverse Mgt. Localization - Method CheckPostingDate - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3284961557 - Method 1441074367 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot reverse %1 No. %2 because the entry is either applied to an entry or has been changed by a batch job.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Reverse Mgt. Localization - Method ReversalErrorForChangedEntry - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4047494536 - Method 72853870 - NamedType 3343455545" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Asset %1 already has Cost. \\ Do you want to continue with the registration</source>
           <note from="Developer" annotates="general" priority="2">ESM="Activo Fijo %1 ya cuenta con Costo  .\\ ¿Desea Continuar con el registro?"</note>
@@ -8059,6 +8081,36 @@
           <source>Seleccione Tipo registro</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page MasterData Lookup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2690467875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify Detraction</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Modificar detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Property Caption</note>
+          <target>Modificar detracción</target>
+        </trans-unit>
+        <trans-unit id="Page 2690467875 - Control 2614479299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detraction</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Control Detraction - Property Caption</note>
+          <target>Detracción</target>
+        </trans-unit>
+        <trans-unit id="Page 2690467875 - Control 1001786756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detraction Emision Date</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Control DetractionEmisionDate_ - Property Caption</note>
+          <target>Fecha Detracción</target>
+        </trans-unit>
+        <trans-unit id="Page 2690467875 - Control 3744241150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detraction Operation No</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Detracción Operación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Control DetractionOperationNo_ - Property Caption</note>
+          <target>Detracción Operación</target>
+        </trans-unit>
+        <trans-unit id="Page 2690467875 - Control 430029747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Comprobante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Control DocumentNo_ - Property Caption</note>
+          <target>N° Comprobante</target>
         </trans-unit>
         <trans-unit id="Page 1457438016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cobros - Recaudación</source>
@@ -16929,6 +16981,18 @@
           <note from="Developer" annotates="general" priority="2">ESM="Salgo GC Proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Cnslt. Ruc Vendor List - Action SaldoGCProveedor - Property Caption</note>
           <target>Salgo GC Proveedor</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1049462362 - Action 2630738763 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>To modify the data of the deduction.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Modificar los datos de la detracción."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac Posted Pucharse Invoice - Action ModifyDetraction - Property ToolTip</note>
+          <target>Modificar los datos de la detracción.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1049462362 - Action 2630738763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Modify Detraction</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Modificar Detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac Posted Pucharse Invoice - Action ModifyDetraction - Property Caption</note>
+          <target>Modificar Detracción</target>
         </trans-unit>
         <trans-unit id="PageExtension 1049462362 - Control 2319381006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
           <source>Detractions</source>

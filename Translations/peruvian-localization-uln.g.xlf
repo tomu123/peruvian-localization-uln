@@ -7473,6 +7473,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Modificar detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2690467875 - Control 2614479299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Detraction</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Modify Detraction - Control Detraction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2690467875 - Control 1001786756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Detraction Emision Date</source>
           <note from="Developer" annotates="general" priority="2">ESM="Fecha Detracción"</note>

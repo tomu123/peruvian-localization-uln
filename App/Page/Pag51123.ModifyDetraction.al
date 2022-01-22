@@ -16,18 +16,23 @@ page 51123 "Modify Detraction"
                 {
                     ApplicationArea = All;
                     Caption = 'Document No.', Comment = 'ESM="N° Comprobante"';
+                    Editable = false;
                 }
-                field(DetractionOperationNo_; DetractionOperationNo)
+                group(Detraction)
                 {
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    Caption = 'Detraction Operation No', Comment = 'ESM="Detracción Operación"';
-                }
-                field(DetractionEmisionDate_; DetractionEmisionDate)
-                {
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    Caption = 'Detraction Emision Date', Comment = 'ESM="Fecha Detracción"';
+                    Caption = 'Detraction', Comment = 'ESM="Detracción"';
+                    field(DetractionOperationNo_; DetractionOperationNo)
+                    {
+                        ApplicationArea = All;
+                        ShowMandatory = true;
+                        Caption = 'Detraction Operation No', Comment = 'ESM="Detracción Operación"';
+                    }
+                    field(DetractionEmisionDate_; DetractionEmisionDate)
+                    {
+                        ApplicationArea = All;
+                        ShowMandatory = true;
+                        Caption = 'Detraction Emision Date', Comment = 'ESM="Fecha Detracción"';
+                    }
                 }
             }
         }
@@ -41,14 +46,14 @@ page 51123 "Modify Detraction"
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     var
     begin
-        // if not (CloseAction in [Action::OK, Action::LookupOK]) then
-        //     exit else begin
-        //     if not ((DetractionOperationNo <> '') and (DetractionEmisionDate <> 0D)) then
-        //         Error('El importe debe ser mayor a 0')
-        // end;
-        // PurchInvHeader."Purch. Detraction Operation" := DetractionOperationNo;
-        // PurchInvHeader."Purch Date Detraction" := DetractionEmisionDate;
-        // PurchInvHeader.Modify();
+        if not (CloseAction in [Action::OK, Action::LookupOK]) then
+            exit else begin
+            if not ((DetractionOperationNo <> '') and (DetractionEmisionDate <> 0D)) then
+                Error('Todos los campos deben estar llenos.')
+        end;
+        PurchInvHeader."Purch. Detraction Operation" := DetractionOperationNo;
+        PurchInvHeader."Purch Date Detraction" := DetractionEmisionDate;
+        PurchInvHeader.Modify();
     end;
 
     var
