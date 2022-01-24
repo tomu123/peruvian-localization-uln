@@ -21877,6 +21877,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum Source Code to User - EnumValue Cr. Memo Quota Ref. - Property Caption</note>
           <target>NC Cuota Ref.</target>
         </trans-unit>
+        <trans-unit id="Enum 1445406086 - EnumValue 645259234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cr. Memo Quota Sava</source>
+          <note from="Developer" annotates="general" priority="2">ESM="NC Cuota Sava"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Source Code to User - EnumValue Cr. Memo Quota Sava - Property Caption</note>
+          <target>NC Cuota Sava</target>
+        </trans-unit>
         <trans-unit id="Enum 1445406086 - EnumValue 114973576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Financing Cancelled Total</source>
           <note from="Developer" annotates="general" priority="2">ESM="Canc. Total Financiamiento"</note>
@@ -22026,6 +22032,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="NC Cuota Ref."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ST Source Code Type - EnumValue Cr. Memo Quota Ref. - Property Caption</note>
           <target>NC Cuota Ref.</target>
+        </trans-unit>
+        <trans-unit id="Enum 337434209 - EnumValue 645259234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cr. Memo Quota Sava</source>
+          <note from="Developer" annotates="general" priority="2">ESM="NC Cuota Sava"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ST Source Code Type - EnumValue Cr. Memo Quota Sava - Property Caption</note>
+          <target>NC Cuota Sava</target>
         </trans-unit>
         <trans-unit id="Enum 337434209 - EnumValue 304265919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deferred Interest</source>
