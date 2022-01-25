@@ -524,6 +524,8 @@ codeunit 51029 "LD Correct Posted Documents"
         CreateReserveEntry: Codeunit "Create Reserv. Entry";
         CorrectPostedPurchInvoice: Codeunit "Correct Posted Purch. Invoice";
         NextDocumentNo: Code[20];
+        lcVendorInvoiceNo: Text;
+        lcFlag: Boolean;
     begin
         PurchSetup.Get();
         PurchSetup.TestField("Posted Credit Memo Nos.");
@@ -531,7 +533,6 @@ codeunit 51029 "LD Correct Posted Documents"
             CreateCrMemoCopyDocument(pPurchCrMemoHdr, PurchHeader, PurchHeader."Document Type"::Invoice, false);
         //CorrectPostedPurchInvoice.CreateCreditMemoCopyDocument(pPurchInvHeader, PurchHeader);
         PurchHeader."Payment Terms Code" := pPurchCrMemoHdr."Payment Terms Code";
-        PurchHeader."Vendor Invoice No." := 'FC' + pPurchCrMemoHdr."Vendor Cr. Memo No.";
         PurchHeader.Status := PurchHeader.Status::Released;
         PurchHeader."Posting No. Series" := PurchSetup."Posted Credit Memo Nos.";
         PurchHeader.Validate("Legal Status", LegalStatus);
@@ -544,7 +545,19 @@ codeunit 51029 "LD Correct Posted Documents"
             LegalStatus::OutFlow:
                 PurchHeader."Posting Description" := StrSubstNo('Factura de extorno a Nota de Crédito: %1', Format(pPurchCrMemoHdr."No."));
         end;
+        lcVendorInvoiceNo := 'FC' + pPurchCrMemoHdr."Vendor Cr. Memo No.";
+        REPEAT
+            IF NOT fnVendorCrMemoNo(lcVendorInvoiceNo, PurchHeader."Pay-to Vendor No.", 2) THEN BEGIN
+                lcFlag := TRUE;
+            END;
+            IF NOT lcFlag THEN
+                lcVendorInvoiceNo := 'E' + lcVendorInvoiceNo;
+        UNTIL lcFlag;
+        PurchHeader."Vendor Invoice No." := lcVendorInvoiceNo;
         PurchHeader.Modify();
+
+
+
         /*PurchSetup.Get();
         PurchSetup.TestField("Invoice Nos.");
         PurchSetup.TestField("Posted Receipt Nos.");
@@ -640,7 +653,7 @@ codeunit 51029 "LD Correct Posted Documents"
         end;
         lcVendorCrMemoNo := 'NC' + pPurchInvHeader."Vendor Invoice No.";
         REPEAT
-            IF NOT fnVendorCrMemoNo(lcVendorCrMemoNo, PurchHeader."Pay-to Vendor No.") THEN BEGIN
+            IF NOT fnVendorCrMemoNo(lcVendorCrMemoNo, PurchHeader."Pay-to Vendor No.", 1) THEN BEGIN
                 lcFlag := TRUE;
             END;
             IF NOT lcFlag THEN
@@ -652,16 +665,32 @@ codeunit 51029 "LD Correct Posted Documents"
         OnAfterCreatePurchCrMemoFromPostedPurchInvoice(PurchHeader, pPurchInvHeader);
     end;
 
-    local procedure fnVendorCrMemoNo(pVendorCrMemoNo: Text; pVendorNo: Code[20]): Boolean
+    local procedure fnVendorCrMemoNo(pVendorCrMemoNo: Text; pVendorNo: Code[20]; pOption: Integer): Boolean
     var
         PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
+        PurchInvoiceHdr: Record "Purch. Inv. Header";
     begin
-        PurchCrMemoHdr.Reset();
-        PurchCrMemoHdr.SetRange("Pay-to Vendor No.", pVendorNo);
-        PurchCrMemoHdr.SetRange("Legal Status", PurchCrMemoHdr."Legal Status"::OutFlow);
-        PurchCrMemoHdr.SetRange("Vendor Cr. Memo No.", pVendorCrMemoNo);
-        if PurchCrMemoHdr.FindFirst() then
-            exit(true);
+        case pOption of
+            1:
+                begin
+                    PurchCrMemoHdr.Reset();
+                    PurchCrMemoHdr.SetRange("Pay-to Vendor No.", pVendorNo);
+                    PurchCrMemoHdr.SetRange("Legal Status", PurchCrMemoHdr."Legal Status"::OutFlow);
+                    PurchCrMemoHdr.SetRange("Vendor Cr. Memo No.", pVendorCrMemoNo);
+                    if PurchCrMemoHdr.FindFirst() then
+                        exit(true);
+                end;
+            2:
+                begin
+                    PurchInvoiceHdr.Reset();
+                    PurchInvoiceHdr.SetRange("Pay-to Vendor No.", pVendorNo);
+                    PurchInvoiceHdr.SetRange("Legal Status", PurchInvoiceHdr."Legal Status"::OutFlow);
+                    PurchInvoiceHdr.SetRange("Vendor Invoice No.", pVendorCrMemoNo);
+                    if PurchInvoiceHdr.FindFirst() then
+                        exit(true);
+                end;
+        end;
+
         exit(false);
     end;
 
@@ -813,7 +842,7 @@ codeunit 51029 "LD Correct Posted Documents"
                     end;
                     IsOutFlow := PurchCrMemoHdr."Legal Status" = PurchCrMemoHdr."Legal Status"::OutFlow;
                     if IsOutFlow then begin
-                        NewVendorCrMemoNo := PurchCrMemoHdr."Vendor Cr. Memo No.";
+                        NewVendorCrMemoNo := 'E' + PurchCrMemoHdr."Vendor Cr. Memo No.";
                         NewExternalDocumentNo := NewVendorCrMemoNo;
                         PurchCrMemoHdr.Reset();
                         PurchCrMemoHdr.SetRange("No.", DocumentNo);
