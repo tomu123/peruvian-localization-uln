@@ -646,69 +646,87 @@ page 51003 "Setup Localization"
                     CurrencyTypeMgt.GetCurrencyAmount()
                 end;
             }
-
-            action(UpdateCustomer) //Eliminar
+            action(CorrectCUOTransaction)
             {
                 ApplicationArea = All;
+                Caption = 'Correct CUO Transaction';
+                Image = ErrorLog;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
-                trigger OnAction();
+                trigger OnAction()
                 var
-                    Customer: Record Customer;
-                    lcCount: Integer;
-                    ConsulRuc: Codeunit "Cnslt. Ruc Management";
-                    lcAux: Integer;
+                    CUOMgt: Codeunit "CUO Management";
                 begin
-                    if not (UserId in ['SUPER', 'SUPER4']) then
-                        Error('Usted no puede utilizar este botom');
-                    DialogText.Open('Actualizando Clientes #1###### de #2######');
-                    Customer.Reset();
-                    Customer.SetRange("VAT Registration Type", '6');
-                    Customer.SetRange(ModifyCust, false);
-                    lcCount := Customer.Count;
-                    if Customer.findset() then
-                        repeat
-                            DialogText.Update(1, lcCount);
-                            lcAux += 1;
-                            DialogText.Update(2, lcAux);
-                            if StrLen(Customer."No.") = 11 then
-                                ConsulRuc.CreateCustomerExternalMass(Customer."No.");
-
-                        until Customer.next() = 0;
-                    DialogText.Close();
-                    Message('Proceso terminado');
+                    if not Confirm('Liz. ¿Estás segura que quieres actualizar los Correlativos CUO?') then
+                        exit;
+                    CUOMgt.CorrectCorrelativeCUO();
                 end;
             }
-            action(UpdateVendor) //Eliminar
-            {
-                ApplicationArea = All;
 
-                trigger OnAction();
-                var
-                    Vendor: Record Vendor;
-                    lcCount: Integer;
-                    ConsulRuc: Codeunit "Cnslt. Ruc Management";
-                    lcAux: Integer;
-                begin
-                    if not (UserId in ['SUPER', 'SUPER4']) then
-                        Error('Usted no puede utilizar este botom');
-                    DialogText.Open('Actualizando Proveedores #1###### de #2######');
-                    Vendor.Reset();
-                    Vendor.SetRange("VAT Registration Type", '6');
-                    Vendor.SetRange(ModifyVendor, false);
-                    lcCount := Vendor.Count;
-                    if Vendor.findset() then
-                        repeat
-                            DialogText.Update(1, lcCount);
-                            lcAux += 1;
-                            DialogText.Update(2, lcAux);
-                            if StrLen(Vendor."No.") = 11 then
-                                ConsulRuc.CreateVendorExternalMass(Vendor."No.");
+            // action(UpdateCustomer) //Eliminar
+            // {
+            //     ApplicationArea = All;
 
-                        until Vendor.next() = 0;
-                    DialogText.Close();
-                    Message('Proceso terminado');
-                end;
-            }
+            //     trigger OnAction();
+            //     var
+            //         Customer: Record Customer;
+            //         lcCount: Integer;
+            //         ConsulRuc: Codeunit "Cnslt. Ruc Management";
+            //         lcAux: Integer;
+            //     begin
+            //         if not (UserId in ['SUPER', 'SUPER4']) then
+            //             Error('Usted no puede utilizar este botom');
+            //         DialogText.Open('Actualizando Clientes #1###### de #2######');
+            //         Customer.Reset();
+            //         Customer.SetRange("VAT Registration Type", '6');
+            //         Customer.SetRange(ModifyCust, false);
+            //         lcCount := Customer.Count;
+            //         if Customer.findset() then
+            //             repeat
+            //                 DialogText.Update(1, lcCount);
+            //                 lcAux += 1;
+            //                 DialogText.Update(2, lcAux);
+            //                 if StrLen(Customer."No.") = 11 then
+            //                     ConsulRuc.CreateCustomerExternalMass(Customer."No.");
+
+            //             until Customer.next() = 0;
+            //         DialogText.Close();
+            //         Message('Proceso terminado');
+            //     end;
+            // }
+            // action(UpdateVendor) //Eliminar
+            // {
+            //     ApplicationArea = All;
+
+            //     trigger OnAction();
+            //     var
+            //         Vendor: Record Vendor;
+            //         lcCount: Integer;
+            //         ConsulRuc: Codeunit "Cnslt. Ruc Management";
+            //         lcAux: Integer;
+            //     begin
+            //         if not (UserId in ['SUPER', 'SUPER4']) then
+            //             Error('Usted no puede utilizar este botom');
+            //         DialogText.Open('Actualizando Proveedores #1###### de #2######');
+            //         Vendor.Reset();
+            //         Vendor.SetRange("VAT Registration Type", '6');
+            //         Vendor.SetRange(ModifyVendor, false);
+            //         lcCount := Vendor.Count;
+            //         if Vendor.findset() then
+            //             repeat
+            //                 DialogText.Update(1, lcCount);
+            //                 lcAux += 1;
+            //                 DialogText.Update(2, lcAux);
+            //                 if StrLen(Vendor."No.") = 11 then
+            //                     ConsulRuc.CreateVendorExternalMass(Vendor."No.");
+
+            //             until Vendor.next() = 0;
+            //         DialogText.Close();
+            //         Message('Proceso terminado');
+            //     end;
+            // }
         }
     }
 

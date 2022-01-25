@@ -10618,6 +10618,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action ConsultarTipoCambio - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 3281437253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct CUO Transaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectCUOTransaction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4047494536 - Action 2931725998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Consistent Error</source>
           <note from="Developer" annotates="general" priority="2"></note>
