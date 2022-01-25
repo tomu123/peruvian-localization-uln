@@ -755,6 +755,11 @@ codeunit 51009 "Retention Management"
                 ControlFile.DownLoadFile(ControlFile);
             end;
     end;
+
+    local procedure SetPreview(Preview: Boolean)
+    begin
+        PreviewMde := Preview;
+    end;
     //***  End PDT 626 ***
 
     //Integration proccess
@@ -763,7 +768,7 @@ codeunit 51009 "Retention Management"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Batch", 'OnBeforeCode', '', false, false)]
     local procedure OnBeforeCodeBatch(var GenJournalLine: Record "Gen. Journal Line"; PreviewMode: Boolean; CommitIsSuppressed: Boolean)
     begin
-        PreviewMde := PreviewMode;
+        SetPreview(PreviewMode);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCode', '', false, false)]
@@ -1091,7 +1096,7 @@ codeunit 51009 "Retention Management"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterInsertRetentionLedgerEntry(var RetentionLE: Record "Retention Ledger Entry"; PreviewMode: Boolean)
+    local procedure OnAfterInsertRetentionLedgerEntry(var RetentionLE: Record "Retention Ledger Entry"; var PreviewMode: Boolean)
     begin
     end;
 
