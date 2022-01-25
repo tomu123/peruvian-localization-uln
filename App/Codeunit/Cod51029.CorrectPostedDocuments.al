@@ -614,6 +614,8 @@ codeunit 51029 "LD Correct Posted Documents"
     var
         PurchSetup: Record "Purchases & Payables Setup";
         CorrectPostedPurchInvoice: Codeunit "Correct Posted Purch. Invoice";
+        lcVendorCrMemoNo: Text;
+        lcFlag: Boolean;
     begin
         PurchSetup.Get();
         PurchSetup.TestField("Posted Credit Memo Nos.");
@@ -636,10 +638,31 @@ codeunit 51029 "LD Correct Posted Documents"
             LegalStatus::OutFlow:
                 PurchHeader."Posting Description" := StrSubstNo('Nota de Crédito de extorno a Factura: %1', Format(pPurchInvHeader."No."));
         end;
-        PurchHeader."Vendor Cr. Memo No." := 'NC' + pPurchInvHeader."Vendor Invoice No.";
+        lcVendorCrMemoNo := 'NC' + pPurchInvHeader."Vendor Invoice No.";
+        REPEAT
+            IF NOT fnVendorCrMemoNo(lcVendorCrMemoNo, PurchHeader."Pay-to Vendor No.") THEN BEGIN
+                lcFlag := TRUE;
+            END;
+            IF NOT lcFlag THEN
+                lcVendorCrMemoNo := 'E' + lcVendorCrMemoNo;
+        UNTIL lcFlag;
+        PurchHeader."Vendor Cr. Memo No." := lcVendorCrMemoNo;
         PurchHeader.Modify();
 
         OnAfterCreatePurchCrMemoFromPostedPurchInvoice(PurchHeader, pPurchInvHeader);
+    end;
+
+    local procedure fnVendorCrMemoNo(pVendorCrMemoNo: Text; pVendorNo: Code[20]): Boolean
+    var
+        PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
+    begin
+        PurchCrMemoHdr.Reset();
+        PurchCrMemoHdr.SetRange("Pay-to Vendor No.", pVendorNo);
+        PurchCrMemoHdr.SetRange("Legal Status", PurchCrMemoHdr."Legal Status"::OutFlow);
+        PurchCrMemoHdr.SetRange("Vendor Cr. Memo No.", pVendorCrMemoNo);
+        if PurchCrMemoHdr.FindFirst() then
+            exit(true);
+        exit(false);
     end;
 
     local procedure CreatePurchaseCopyDocument(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchaseHeader: Record "Purchase Header"; DocumentType: Enum "Purchase Document Type"; SkipCopyFromDescription: Boolean)
