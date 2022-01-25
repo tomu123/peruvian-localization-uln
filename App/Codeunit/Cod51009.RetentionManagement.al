@@ -758,7 +758,14 @@ codeunit 51009 "Retention Management"
     //***  End PDT 626 ***
 
     //Integration proccess
+    //local procedure OnBeforeCode(var GenJournalLine: Record "Gen. Journal Line"; PreviewMode: Boolean; CommitIsSuppressed: Boolean)
     //OnBeforeCode(var GenJnlLine: Record "Gen. Journal Line"; CheckLine: Boolean; var IsPosted: Boolean; var GLReg: Record "G/L Register")
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Batch", 'OnBeforeCode', '', false, false)]
+    local procedure OnBeforeCodeBatch(var GenJournalLine: Record "Gen. Journal Line"; PreviewMode: Boolean; CommitIsSuppressed: Boolean)
+    begin
+        PreviewMde := PreviewMode;
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCode', '', false, false)]
     local procedure OnBeforeCode(var GenJnlLine: Record "Gen. Journal Line"; CheckLine: Boolean; var IsPosted: Boolean; var GLReg: Record "G/L Register")
     var
@@ -807,7 +814,7 @@ codeunit 51009 "Retention Management"
                 Modify();
             until Next() = 0;
             CreateRetentionEntry();
-            OnAfterInsertRetentionLedgerEntry(RetentionLedgerEntry);
+            OnAfterInsertRetentionLedgerEntry(RetentionLedgerEntry, PreviewMde);
             //Define Electronic Retention
         end;
     end;
@@ -1084,11 +1091,12 @@ codeunit 51009 "Retention Management"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterInsertRetentionLedgerEntry(var RetentionLE: Record "Retention Ledger Entry")
+    local procedure OnAfterInsertRetentionLedgerEntry(var RetentionLE: Record "Retention Ledger Entry"; PreviewMode: Boolean)
     begin
     end;
 
     var
+        PreviewMde: Boolean;
         Setup: Record "Setup Localization";
         GenJnlLine: Record "Gen. Journal Line";
         VendorLedgerEntry: Record "Vendor Ledger Entry";
