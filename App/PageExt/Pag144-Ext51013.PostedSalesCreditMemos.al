@@ -15,7 +15,17 @@ pageextension 51013 "Legal Doc. Pstd Sales CrMemos" extends "Posted Sales Credit
                 ApplicationArea = Basic, Suite;
             }
         }
-
+        addafter(Paid)
+        {
+            field("Applies-to Doc. No."; "Applies-to Doc. No.")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            field("Active Supply No."; "Active Supply No.")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+        }
     }
 
     actions

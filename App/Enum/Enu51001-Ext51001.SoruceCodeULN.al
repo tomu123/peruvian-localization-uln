@@ -155,4 +155,8 @@ enum 51001 "ST Source Code Type"
     {
         Caption = 'Reverse Provision', Comment = 'ESM="Revertir Provisión"';
     }
+    value(38; "Cr. Memo Quota Sava")
+    {
+        Caption = 'Cr. Memo Quota Sava', Comment = 'ESM="NC Cuota Sava"';
+    }
 }

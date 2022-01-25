@@ -74,6 +74,7 @@ report 51013 "ST Adjust Exchange Rates"
 
                     //++ begin ULN::RRR 001  2020.07.17  v.001
                     STCurrencyFactor := 0;
+                    "Bank Account".TestField("Bank Acc. Posting Group");
                     if STBankAccPstgGroup.Get("Bank Acc. Posting Group") then begin
                         case STBankAccPstgGroup."Currency Exch. Type" of
                             STBankAccPstgGroup."Currency Exch. Type"::Active:

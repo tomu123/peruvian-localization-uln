@@ -7,6 +7,14 @@ codeunit 51045 "CUO Management"
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeInsertGLEntryBuffer', '', false, false)]
     local procedure SetOnBeforeInsertGLEntryBuffer_Codeunit12(var TempGLEntryBuf: Record "G/L Entry" temporary)
+    //var
+    //    CUOEntry2: Record "ULN CUO Entry";
+    //    EntryNo: Integer;
+    begin
+        SetProcessCUO(TempGLEntryBuf)
+    end;
+
+    procedure SetProcessCUO(var TempGLEntryBuf: Record "G/L Entry" temporary)
     var
         CUOEntry2: Record "ULN CUO Entry";
         EntryNo: Integer;
@@ -140,6 +148,39 @@ codeunit 51045 "CUO Management"
         end;
     end;
 
+    procedure CorrectCorrelativeCUO()
+    var
+        GLEntry_: Record "G/L Entry";
+        LastCorrelativoCUO_: Code[30];
+        FirstLine_: Boolean;
+    begin
+        SLSetup.Get();
+        CUOEntry.Reset();
+        CUOEntry.ModifyAll("Last. used CUO Correlative", '');
+
+        CUOEntry.Reset();
+        CUOEntry.FindFirst();
+        if CUOEntry.FindSet() then
+            repeat
+                LastCorrelativoCUO_ := '';
+                FirstLine_ := true;
+                GLEntry_.Reset();
+                GLEntry_.SetRange("Document No.", CUOEntry."Document No.");
+                if GLEntry_.FindSet() then
+                    repeat
+                        if FirstLine_ then begin
+                            LastCorrelativoCUO_ := GetLastCorrelativeCUO(GLEntry_);
+                            FirstLine_ := false
+                        end else
+                            LastCorrelativoCUO_ := IncStr(LastCorrelativoCUO_);
+                        GLEntry_."Correlative CUO" := LastCorrelativoCUO_;
+                        GLEntry_.Modify()
+                    until GLEntry_.Next() = 0;
+                CUOEntry."Last. used CUO Correlative" := LastCorrelativoCUO_;
+                CUOEntry.Modify()
+            until CUOEntry.Next() = 0;
+        Message('Éxito rotundo');
+    end;
 
     procedure CreateCUOForBlankLines()
     var

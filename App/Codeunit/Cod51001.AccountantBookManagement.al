@@ -321,12 +321,13 @@ codeunit 51001 "Accountant Book Management"
         MySeparator: Text[10];
         TotalRecords: Integer;
         CountRecords: Integer;
-        IsExistsFile: Boolean;
+        IsFileWithData: Boolean;
         CodLibro: Text[10];
     begin
         CreateTempFile();
         CountRecords := 0;
         MySeparator := '|';
+        IsFileWithData := false;
         case BookCode of
             '501', '601':
                 begin
@@ -337,11 +338,11 @@ codeunit 51001 "Accountant Book Management"
                         if BookCode = '601' then
                             SetCurrentKey("Posting Date", "Transaction No.");
                         TotalRecords := Count;
-                        if FindFirst() then
+                        if FindFirst() then begin
+                            IsFileWithData := true;
                             repeat
                                 MyLineText := '';
                                 CountRecords += 1;
-                                IsExistsFile := true;
                                 MyLineText += Period + MySeparator;//Field 01
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
@@ -380,17 +381,19 @@ codeunit 51001 "Accountant Book Management"
                                 InsertLineToTempFile(MyLineText);
                                 UpdateWindows(2, CountRecords, TotalRecords);
                             until Next() = 0;
+                        end;
+
                     end;
                 end;
             '503':
                 begin
                     with GLAccountBuffer do begin
                         Reset();
-                        if FindFirst() then
+                        if FindFirst() then begin
+                            IsFileWithData := true;
                             repeat
                                 MyLineText := '';
                                 CountRecords += 1;
-                                IsExistsFile := true;
                                 MyLineText += Format(EndDate, 0, '<Year4><Month,2><Day,2>') + MySeparator;//Field 01
                                 MyLineText += GLAccountBuffer."No." + MySeparator;//Field 02
                                 MyLineText += GLAccountBuffer.Name + MySeparator;//Field 03
@@ -401,11 +404,12 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += '1' + MySeparator;//Field 08
                                 InsertLineToTempFile(MyLineText);
                             until Next() = 0;
+                        end;
+
                     end;
                 end;
         end;
-        if IsExistsFile then
-            PostFileToControlFileRecord();
+        PostFileToControlFileRecord(IsFileWithData);
     end;
 
     procedure GetGenJnlBookBuffer(var pGenJnlBookBuffer: Record "Gen. Journal Book Buffer" temporary)
@@ -1168,22 +1172,23 @@ codeunit 51001 "Accountant Book Management"
         MySeparator: Text[10];
         TotalRecords: Integer;
         CountRecords: Integer;
-        IsExistsFile: Boolean;
+        IsFileWithData: Boolean;
     begin
         CreateTempFile();
         CountRecords := 0;
         MySeparator := '|';
+        IsFileWithData := false;
         case BookCode of
             '801':
                 begin
                     with PurchRecordBuffer do begin
                         Reset();
                         TotalRecords := Count;
-                        if FindFirst() then
+                        if FindFirst() then begin
+                            IsFileWithData := true;
                             repeat
                                 MyLineText := '';
                                 CountRecords += 1;
-                                IsExistsFile := true;
                                 MyLineText += Period + MySeparator;//Field 01
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
@@ -1215,7 +1220,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23
                                 MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
                                 MyLineText += FormatCurrency("Currency Code") + MySeparator;//Field 25
-                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 26
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:3><Standard Format,2>') + MySeparator;//Field 26 //FMM 21.01.22 No aparecian los 3 decimales en tipo cambio
                                 MyLineText += Format("Mod. Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Fiedl 27
                                 MyLineText += "Mod. Legal Document" + MySeparator;//Field 28
                                 MyLineText += "Mod. Serie" + MySeparator;//Field 29
@@ -1243,8 +1248,8 @@ codeunit 51001 "Accountant Book Management"
                                 InsertLineToTempFile(MyLineText);
                                 UpdateWindows(2, CountRecords, TotalRecords);
                             until Next() = 0;
-                        if IsExistsFile then
-                            PostFileToControlFileRecord();
+                        end;
+                        PostFileToControlFileRecord(IsFileWithData);
                     end;
                 end;
             '802':
@@ -1252,11 +1257,11 @@ codeunit 51001 "Accountant Book Management"
                     with PurchRecordBuffer do begin
                         Reset();
                         TotalRecords := Count;
-                        if FindFirst() then
+                        if FindFirst() then begin
+                            IsFileWithData := true;
                             repeat
                                 MyLineText := '';
                                 CountRecords += 1;
-                                IsExistsFile := true;
                                 MyLineText += Period + MySeparator;//Field 01
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
@@ -1273,7 +1278,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += '' + MySeparator;//Field 14
                                 MyLineText += Format("Taxed VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 15
                                 MyLineText += FormatCurrency("Currency Code") + MySeparator;//Field 16
-                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 17
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:3><Standard Format,2>') + MySeparator;//Field 17 //FMM 21.01.22 No aparecian los 3 decimales en tipo cambio
                                 MyLineText += "Country Residence Not Address" + MySeparator;//Field 18
                                 MyLineText += "Vendor Name" + MySeparator;//Field 19
                                 MyLineText += "Foreing Residence Not Address" + MySeparator;//Field 20
@@ -1297,8 +1302,8 @@ codeunit 51001 "Accountant Book Management"
                                 InsertLineToTempFile(MyLineText);
                                 UpdateWindows(2, CountRecords, TotalRecords);
                             until Next() = 0;
-                        if IsExistsFile then
-                            PostFileToControlFileRecord();
+                        end;
+                        PostFileToControlFileRecord(IsFileWithData);
                     end;
                 end;
         end;
@@ -1310,22 +1315,23 @@ codeunit 51001 "Accountant Book Management"
         MySeparator: Text[10];
         TotalRecords: Integer;
         CountRecords: Integer;
-        IsExistsFile: Boolean;
+        IsFileWithData: Boolean;
     begin
         CreateTempFile();
         CountRecords := 0;
         MySeparator := '|';
+        IsFileWithData := false;
         case BookCode of
             '1401':
                 begin
                     with SalesRecordBuffer do begin
                         Reset();
                         TotalRecords := Count;
-                        if FindFirst() then
+                        if FindFirst() then begin
+                            IsFileWithData := true;
                             repeat
                                 MyLineText := '';
                                 CountRecords += 1;
-                                IsExistsFile := true;
                                 MyLineText += Period + MySeparator;//Field 01
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
@@ -1334,7 +1340,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += "Legal Document" + MySeparator;//Field 06
                                 MyLineText += "Serie Document" + MySeparator;//Field 07
                                 MyLineText += format("Number Document") + MySeparator;//Field 08
-                                IF "Legal Document" IN ['00', '03', '12', '13', '87'] = FALSE then
+                                IF "Legal Document" IN ['00', '12', '13', '87'] = FALSE then //FMM 21.01.22 Kath solicito quitar para las boletas
                                     MyLineText += MySeparator //Field 09
                                 ELSE
                                     MyLineText += Format("Field 9 Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 09
@@ -1358,7 +1364,7 @@ codeunit 51001 "Accountant Book Management"
                                     MyLineText += 'PEN' + MySeparator//Field 26 
                                 else
                                     MyLineText += "Currency Code" + MySeparator;//Field 26
-                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 27
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:3><Standard Format,2>') + MySeparator;//Field 27 //FMM 21.01.22 No aparecian los 3 decimales en tipo cambio
                                 MyLineText += Format("Mod. Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Fiedl 28
                                 MyLineText += "Mod. Legal Document" + MySeparator;//Field 29
                                 MyLineText += "Mod. Serie" + MySeparator;//Field 30
@@ -1374,8 +1380,8 @@ codeunit 51001 "Accountant Book Management"
                                 InsertLineToTempFile(MyLineText);
                                 UpdateWindows(2, CountRecords, TotalRecords);
                             until Next() = 0;
-                        if IsExistsFile then
-                            PostFileToControlFileRecord();
+                        end;
+                        PostFileToControlFileRecord(IsFileWithData);
                     end;
                 end;
 
@@ -1415,7 +1421,7 @@ codeunit 51001 "Accountant Book Management"
         ConstrutOutStream.WriteText;
     end;
 
-    procedure PostFileToControlFileRecord()
+    procedure PostFileToControlFileRecord(IsFileWithData: Boolean)
     var
         CompInf: Record "Company Information";
         ControlFile: Record "ST Control File";
@@ -1423,14 +1429,19 @@ codeunit 51001 "Accountant Book Management"
         FileName: Text;
         FileExt: Text;
         EntryNo: Integer;
+        ContentIndicator: Text;
         ConfirmDownload: Label 'Do you want to download the following file?', Comment = 'ESM="¿Quieres descargar el siguiente archivo?"';
     begin
+        ContentIndicator := '0';
+        if IsFileWithData then
+            ContentIndicator := '1';
+
         CompInf.Get();
         TempFileBlob.CreateInStream(NewFileInStream, TextEncoding::UTF8);
-        FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>000') + BookCode + '00001111';
+        FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>000') + BookCode + '00001' + ContentIndicator + '11';
         CASE BookCode OF
             '1401':
-                FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>00') + BookCode + '00001111';
+                FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>00') + BookCode + '00001' + ContentIndicator + '11';
 
         END;
         FileExt := 'txt';
@@ -1438,7 +1449,10 @@ codeunit 51001 "Accountant Book Management"
         if EntryNo <> 0 then
             if Confirm(ConfirmDownload, false) then begin
                 ControlFile.Get(EntryNo);
-                ControlFile.DownLoadFile(ControlFile);
+                if (IsFileWithData) then
+                    ControlFile.DownLoadFile(ControlFile)
+                else
+                    ControlFile.DownloadEmptyFile(ControlFile);
             end;
     end;
 

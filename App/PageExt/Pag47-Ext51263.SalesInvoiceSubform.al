@@ -10,6 +10,10 @@ pageextension 51263 "ST Sales Invoice Subform" extends "Sales Invoice Subform"
         {
             Visible = true;
         }
+        modify("VAT Prod. Posting Group")
+        {
+            Visible = true;
+        }
     }
 
     actions

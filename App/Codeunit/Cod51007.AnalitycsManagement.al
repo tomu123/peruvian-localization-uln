@@ -227,6 +227,7 @@ codeunit 51007 "Analitycs Management"
         DimSetEntry: Record "Dimension Set Entry";
         DimValue: Record "Dimension Value";
         GLEntry2: Record "G/L Entry";
+        NextCUOCorrelative: Code[30];
     begin
         SetSetup();
         if SLSetup."Analityc Global Dimension" = '' then
@@ -244,15 +245,21 @@ codeunit 51007 "Analitycs Management"
         DimValue.TestField("Debit Analityc G/L Acc. No.");
         DimValue.TestField("Credit Analityc G/L Acc. No.");
 
+        CUOMgt.SetProcessCUO(TempGLEntryBuf);
+        NextCUOCorrelative := TempGLEntryBuf."Correlative CUO";
+
         GLEntry2.Init();
         GLEntry2.TransferFields(GLEntry, false);
         GLEntry2."Entry No." := NextEntryNo;
         GLEntry2."G/L Account No." := DimValue."Debit Analityc G/L Acc. No.";
         GLEntry2."Analityc Entry" := true;
         GLEntry2."Analityc Base Entry No." := GLEntry."Entry No.";
+        GLEntry2."Correlative CUO" := NextCUOCorrelative;
         GLEntry2.Insert();
 
         NextEntryNo += 1;
+        CUOMgt.SetProcessCUO(TempGLEntryBuf);
+        NextCUOCorrelative := TempGLEntryBuf."Correlative CUO";
 
         GLEntry2.Init();
         GLEntry2.TransferFields(GLEntry, false);
@@ -273,6 +280,7 @@ codeunit 51007 "Analitycs Management"
         end;
         GLEntry2."Analityc Entry" := true;
         GLEntry2."Analityc Base Entry No." := GLEntry."Entry No.";
+        GLEntry2."Correlative CUO" := NextCUOCorrelative;
         GLEntry2.Insert();
 
         NextEntryNo += 1;
@@ -288,6 +296,7 @@ codeunit 51007 "Analitycs Management"
 
     var
         SLSetup: Record "Setup Localization";
+        CUOMgt: Codeunit "CUO Management";
         StartDate: Date;
         EndDate: Date;
         Windows: Dialog;

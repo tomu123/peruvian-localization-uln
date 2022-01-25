@@ -62,4 +62,8 @@ enum 51002 "Source Code to User"
     {
         Caption = 'Settlement DDLL', Comment = 'ESM="Liquidación DDLL"';
     }
+    value(15; "Cr. Memo Quota Sava")
+    {
+        Caption = 'Cr. Memo Quota Sava', Comment = 'ESM="NC Cuota Sava"';
+    }
 }

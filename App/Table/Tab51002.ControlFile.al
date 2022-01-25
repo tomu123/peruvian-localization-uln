@@ -181,6 +181,21 @@ table 51002 "ST Control File"
         DownloadFromStream(NewFileInStream, DialogTitle, '', 'All Files (*.*)|*.*', ToFileName);
     end;
 
+    procedure DownloadEmptyFile(var ControlFile: Record "ST Control File")
+    var
+        NewFileInStream: InsTream;
+        NewFileOutStream: OutStream;
+        ToFileName: text[250];
+        TempBlob: Codeunit "Temp Blob";
+        FileIsNotExist: Label 'The file is not exists.', Comment = 'ESM="EL archivo no existe."';
+        DialogTitle: Label 'Download File', Comment = 'ESM="Descargar archivo."';
+    begin
+        ControlFile.CalcFields("File Blob");
+        ControlFile."File Blob".CreateInStream(NewFileInStream);
+        ToFileName := ControlFile."File Name" + '.' + ControlFile."File Extension";
+        DownloadFromStream(NewFileInStream, DialogTitle, '', 'All Files (*.*)|*.*', ToFileName);
+    end;
+
     procedure DownLoadFileANSII(var ControlFile: Record "ST Control File")
     var
         NewFileInStream: InsTream;
