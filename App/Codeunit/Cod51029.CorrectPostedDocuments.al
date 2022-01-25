@@ -301,6 +301,7 @@ codeunit 51029 "LD Correct Posted Documents"
         BankAccLgEntry: Record "Bank Account Ledger Entry";
         ValueEntry: Record "Value Entry";
         CostEntry: Record "Cost Entry";
+        CUOEntry: Record "ULN CUO Entry";//ULN::RRR
         NewDocumentNo: Code[20];
         IsOutFlow: Boolean;
         LegalStatus: Option;
@@ -416,6 +417,10 @@ codeunit 51029 "LD Correct Posted Documents"
             CostEntry.SetRange("Document No.", DocumentNo);
             if CostEntry.FindSet() then
                 CostEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            CUOEntry.SetRange("Document No.", DocumentNo);
+            if CUOEntry.FindSet() then
+                CUOEntry.ModifyAll("Document No.", NewDocumentNo);
         end;
 
         OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
@@ -731,6 +736,7 @@ codeunit 51029 "LD Correct Posted Documents"
         BankAccLgEntry: Record "Bank Account Ledger Entry";
         ValueEntry: Record "Value Entry";
         CostEntry: Record "Cost Entry";
+        CUOEntry: Record "ULN CUO Entry";
         NewVendorInvoiceNo: Code[20];
         NewVendorCrMemoNo: Code[20];
         NewExternalDocumentNo: Code[20];
@@ -874,7 +880,6 @@ codeunit 51029 "LD Correct Posted Documents"
                 ValueEntry.ModifyAll("Document No.", NewDocumentNo);
             end;
 
-
             ItemLedgeEntry.SetRange("Document No.", DocumentNo);
             if ItemLedgeEntry.FindSet() then begin
                 ItemLedgeEntry.ModifyAll("External Document No.", NewExternalDocumentNo);
@@ -900,6 +905,10 @@ codeunit 51029 "LD Correct Posted Documents"
             CostEntry.SetRange("Document No.", DocumentNo);
             if CostEntry.FindSet() then
                 CostEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            CUOEntry.SetRange("Document No.", DocumentNo);
+            if CUOEntry.FindSet() then
+                CUOEntry.ModifyAll("Document No.", NewDocumentNo);
         end;
 
         OnAfterRenamePurchDocument(DocumentNo, NewDocumentNo, IsOutFlow);
