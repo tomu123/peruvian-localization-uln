@@ -628,6 +628,7 @@ table 51013 "Payment Schedule"
                             lcRecGenJnllLine."Message to Recipient" := PaymentSchedule."Beneficiary Name"; //ULN::FM 13-08-2021
                             lcRecGenJnllLine."Recipient Bank Account" := PaymentSchedule."Preferred Bank Account Code"; //ULN::FM 13-08-2021
                             lcRecGenJnllLine.Validate("ST Recipient Bank Account", PaymentSchedule."Preferred Bank Account Code");
+                            lcRecGenJnllLine.Validate("Currency Code", PaymentSchedule."Currency Code");
                             //++ end ULN::RRR  002     2018.01.30    v.001
 
                             lcRecGenJnllLine.Validate(Amount, PaymentSchedule."Total a Pagar" * -1);//ULN::RRR  002     2018.01.30    v.001
