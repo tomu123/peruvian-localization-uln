@@ -384,11 +384,12 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
         WorkflowManagement: Codeunit "Workflow Management";
     begin
         if not "Status approved" then begin
-            if WorkflowManagement.EnabledWorkflowExist(DATABASE::Item, WorkflowEventHandling.RunWorkflowOnVendorChangedCode()) then
-                if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Rec) then
-                    ApprovalsMgmt.OnSendVendorForApproval(Rec);
-            "Status approved" := true;
-            Modify();
+            //if WorkflowManagement.EnabledWorkflowExist(DATABASE::Vendor, WorkflowEventHandling.RunWorkflowOnVendorChangedCode()) then
+            if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Rec) then begin
+                ApprovalsMgmt.OnSendVendorForApproval(Rec);
+                "Status approved" := true;
+                Modify();
+            end;
         end;
     end;
 }

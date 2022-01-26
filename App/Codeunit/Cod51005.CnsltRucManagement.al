@@ -137,6 +137,8 @@ codeunit 51005 "Cnslt. Ruc Management"
     end;
 
     local procedure CreateVendor()
+    var
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
         Vendor.Init();
         case SLSetup."Create Option Vendor" of
@@ -167,6 +169,13 @@ codeunit 51005 "Cnslt. Ruc Management"
         RecordRef_.GetTable(Vendor);
         ConfTemplMgt.UpdateRecord(ConfTempHdr, RecordRef_);
         ShowVendor(true);
+        if not ExcludeApprovalVendor then begin
+            if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Vendor) then begin
+                ApprovalsMgmt.OnSendVendorForApproval(Vendor);
+                Vendor."Status approved" := true;
+                Vendor.Modify();
+            end;
+        end;
     end;
 
     local procedure UpdateVendor()
