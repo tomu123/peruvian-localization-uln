@@ -1,5 +1,6 @@
 codeunit 51009 "Retention Management"
 {
+    SingleInstance = true;
     trigger OnRun()
     begin
 

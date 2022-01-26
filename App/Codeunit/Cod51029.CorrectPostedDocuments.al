@@ -309,7 +309,7 @@ codeunit 51029 "LD Correct Posted Documents"
     begin
         if StrLen(DocumentNo) + 1 > 20 then
             Error(StrSubstNo(ErrorRenameSDoc, DocumentNo));
-        NewDocumentNo := 'E' + DocumentNo;
+        NewDocumentNo := GetExtQuantity(DocumentNo, 2) + DocumentNo;
 
         case SourceTableID of
             112:
@@ -425,6 +425,67 @@ codeunit 51029 "LD Correct Posted Documents"
 
         OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
     end;
+
+    local procedure GetExtQuantity(pDoc: Code[20]; pTipo: Integer): Text
+    var
+        lclCantidad: Integer;
+        lclPurchInvHeader: Record "Purch. Inv. Header";
+        lclPurchInvHeader2: Record "Purch. Inv. Header";
+        lclPurchCrMemHeader: Record "Purch. Cr. Memo Hdr.";
+        lclPurchCrMemHeader2: Record "Purch. Cr. Memo Hdr.";
+        lclSalesInvHeader: Record "Sales Invoice Header";
+        lclSalesInvHeader2: Record "Sales Invoice Header";
+        lclSalesCrMemHeader: Record "Sales Cr.Memo Header";
+        lclSalesCrMemHeader2: Record "Sales Cr.Memo Header";
+    begin
+        lclCantidad := 0;
+
+        CASE pTipo OF
+            1:
+                BEGIN
+                    lclPurchInvHeader.RESET;
+                    lclPurchInvHeader.SETRANGE("No.", pDoc);
+                    IF lclPurchInvHeader.FINDSET THEN BEGIN
+                        lclPurchInvHeader2.RESET;
+                        lclPurchInvHeader2.SETFILTER("No.", '%1', '*' + pDoc);
+                        lclCantidad := lclPurchInvHeader2.COUNT();
+                    END;
+
+                    lclPurchCrMemHeader.RESET;
+                    lclPurchCrMemHeader.SETRANGE("No.", pDoc);
+                    IF lclPurchCrMemHeader.FINDSET THEN BEGIN
+                        lclPurchCrMemHeader2.RESET;
+                        lclPurchCrMemHeader2.SETFILTER("No.", '%1', '*' + pDoc);
+                        lclCantidad := lclPurchCrMemHeader2.COUNT();
+                    END;
+                END;
+            2:
+                BEGIN
+                    lclSalesInvHeader.RESET;
+                    lclSalesInvHeader.SETRANGE("No.", pDoc);
+                    IF lclSalesInvHeader.FINDSET THEN BEGIN
+                        lclSalesInvHeader2.RESET;
+                        lclSalesInvHeader2.SETFILTER("No.", '%1', '*' + pDoc);
+                        lclCantidad := lclSalesInvHeader2.COUNT();
+                    END;
+
+                    lclSalesCrMemHeader.RESET;
+                    lclSalesCrMemHeader.SETRANGE("No.", pDoc);
+                    IF lclSalesCrMemHeader.FINDSET THEN BEGIN
+                        lclSalesCrMemHeader2.RESET;
+                        lclSalesCrMemHeader2.SETFILTER("No.", '%1', '*' + pDoc);
+                        lclCantidad := lclSalesCrMemHeader2.COUNT();
+                    END;
+                END;
+        END;
+        IF lclCantidad > 5 THEN
+            ERROR('No puede extornar un documento mas de 5 veces.');
+        IF lclCantidad = 0 THEN
+            exit('E')
+        ELSE
+            exit(PADSTR('', lclCantidad, 'E'));
+    end;
+
 
     //******************************************** End Sales *****************************************************
 
