@@ -114,7 +114,7 @@ page 51014 "SUNAT Vendor Register List"
             action("Upload Retention Agent")
             {
                 ApplicationArea = All;
-                Caption = 'Upload Retention Agent';
+                Caption = 'Upload Retention Agent', Comment = 'ESM="Importar Agente Retención"';
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
@@ -124,7 +124,7 @@ page 51014 "SUNAT Vendor Register List"
             action("Upload Perception Agent")
             {
                 ApplicationArea = All;
-                Caption = 'Upload Perception Agent';
+                Caption = 'Upload Perception Agent', Comment = 'ESM="Importar Agente Percepción"';
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
@@ -134,7 +134,7 @@ page 51014 "SUNAT Vendor Register List"
             action("Upload Good Contributor")
             {
                 ApplicationArea = All;
-                Caption = 'Upload Good Contributor';
+                Caption = 'Upload Good Contributor', Comment = 'ESM="Importar Buen Contribuyente"';
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;

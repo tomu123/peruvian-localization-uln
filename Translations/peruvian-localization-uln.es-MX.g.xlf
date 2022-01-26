@@ -11406,6 +11406,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action ConsultarTipoCambio - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 3281437253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct CUO Transaction</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectCUOTransaction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4047494536 - Action 2931725998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Consistent Error</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11734,18 +11739,21 @@
         </trans-unit>
         <trans-unit id="Page 644788926 - Action 1105881693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Upload Good Contributor</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importar Buen Contribuyente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Good Contributor - Property Caption</note>
+          <target>Importar Buen Contribuyente</target>
         </trans-unit>
         <trans-unit id="Page 644788926 - Action 3342516625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Upload Perception Agent</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importar Agente Percepción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Perception Agent - Property Caption</note>
+          <target>Importar Agente Percepción</target>
         </trans-unit>
         <trans-unit id="Page 644788926 - Action 1221583242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Upload Retention Agent</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Importar Agente Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Retention Agent - Property Caption</note>
+          <target>Importar Agente Retención</target>
         </trans-unit>
         <trans-unit id="Page 1572209099 - Control 3158617031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Departament</source>

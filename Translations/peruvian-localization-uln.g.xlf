@@ -10930,17 +10930,17 @@
         </trans-unit>
         <trans-unit id="Page 644788926 - Action 1105881693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Upload Good Contributor</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importar Buen Contribuyente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Good Contributor - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 644788926 - Action 3342516625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Upload Perception Agent</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importar Agente Percepción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Perception Agent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 644788926 - Action 1221583242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Upload Retention Agent</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importar Agente Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Retention Agent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1572209099 - Control 3158617031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
