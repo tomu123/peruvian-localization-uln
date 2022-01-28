@@ -276,18 +276,18 @@ page 51003 "Setup Localization"
                 {
                     ApplicationArea = All;
                 }
-                field("Detraction Vendor"; Rec."Detraction Vendor")
-                {
-                    ApplicationArea = All;
-                }
+                // field("Detraction Vendor"; Rec."Detraction Vendor")
+                // {
+                //     ApplicationArea = All;
+                // }
                 field("Correlative SUNAT"; Rec."Correlative SUNAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Lot Number Detraction"; Rec."Lot Number Detraction")
-                {
-                    ApplicationArea = All;
-                }
+                // field("Lot Number Detraction"; Rec."Lot Number Detraction")
+                // {
+                //     ApplicationArea = All;
+                // }
                 field("SUNAT Generation Date"; Rec."SUNAT Generation Date")
                 {
                     ApplicationArea = All;

@@ -416,6 +416,7 @@ codeunit 51004 "DetrAction Calculation"
         Clear(Campos);
         GLSetup.GET;
         SLSetup.Get();
+        SLSetup.TestField("SUNAT Generation Date");
         VendLedgEntryTemp.DELETEALL;
         Clear(StrString);
         Clear(StrLine);
@@ -509,6 +510,7 @@ codeunit 51004 "DetrAction Calculation"
                                 intCount += 1;
                             end;
                     until VendLedgEntryTemp.Next() = 0;
+                Campos[3] := format(SLSetup."SUNAT Generation Date", 0, '<Year,2>');
                 if PENAmount > 0 then Begin
                     StrPENAmount := format(Round(PENAmount, 1)) + '00';
                     StrPENAmount := DelChr(StrPENAmount, '=', ',');
