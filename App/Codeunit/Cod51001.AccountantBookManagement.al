@@ -448,7 +448,7 @@ codeunit 51001 "Accountant Book Management"
         VATEntry.SetRange(Type, VATEntry.Type::Purchase);
         case BookCode of
             '801':
-                VATEntry.SetFilter("Legal Document", '<>%1&<>%2&<>%3&<>%4&<>%5', '91', '97', '98', '00', '02');
+                VATEntry.SetFilter("Legal Document", '<>%1&<>%2&<>%3&<>%4&<>%5&<>%6', '91', '97', '98', '00', '02', '09');
             '802':
                 VATEntry.SetFilter("Legal Document", '%1|%2|%3|%4', '91', '97', '98');
         end;
@@ -495,7 +495,8 @@ codeunit 51001 "Accountant Book Management"
         lcCustLedgerEntry.Reset();
         lcCustLedgerEntry.SetRange("Document No.", pVATEntry."Document No.");
         lcCustLedgerEntry.SetRange("Posting Date", pVATEntry."Posting Date");
-        lcCustLedgerEntry.SetRange("Document Type", lcCustLedgerEntry."Document Type"::Invoice);
+        //lcCustLedgerEntry.SetRange("Document Type", lcCustLedgerEntry."Document Type"::Invoice); //FMM 31.01.22
+        lcCustLedgerEntry.SetFilter("Document Type", '%1|%2', lcCustLedgerEntry."Document Type"::Invoice, lcCustLedgerEntry."Document Type"::"Credit Memo");
         if lcCustLedgerEntry.FindFirst() then
             exit(true);
         exit(false);
@@ -508,7 +509,8 @@ codeunit 51001 "Accountant Book Management"
         lcVendorLedgerEntry.Reset();
         lcVendorLedgerEntry.SetRange("Document No.", pVATEntry."Document No.");
         lcVendorLedgerEntry.SetRange("Posting Date", pVATEntry."Posting Date");
-        lcVendorLedgerEntry.SetRange("Document Type", lcVendorLedgerEntry."Document Type"::Invoice);
+        //lcVendorLedgerEntry.SetRange("Document Type", lcVendorLedgerEntry."Document Type"::Invoice); //FMM 31.01.22
+        lcVendorLedgerEntry.SetFilter("Document Type", '%1|%2', lcVendorLedgerEntry."Document Type"::Invoice, lcVendorLedgerEntry."Document Type"::"Credit Memo");
         if lcVendorLedgerEntry.FindFirst() then
             exit(true);
         exit(false);
@@ -578,7 +580,7 @@ codeunit 51001 "Accountant Book Management"
         VATEntry.SetRange(Type, VATEntry.Type::Sale);
         case BookCode of
             '1401':
-                VATEntry.SETFILTER("Legal Document", '<>%1&<>%2&<>%3&<>%4&<>%5', '91', '97', '98', '02', '00');
+                VATEntry.SETFILTER("Legal Document", '<>%1&<>%2&<>%3&<>%4&<>%5&<>%6', '91', '97', '98', '02', '00', '09');
         end;
         TotalRecords := VATEntry.Count;
         if VATEntry.FindFirst() then
@@ -994,6 +996,8 @@ codeunit 51001 "Accountant Book Management"
         CASE pSalesInvHdr."Legal Status" OF
             pSalesInvHdr."Legal Status"::Anulled:
                 begin
+                    SalesRecordBuffer."VAT Registration Type" := '0';
+                    SalesRecordBuffer."VAT Registration No." := '00000000000';
                     SalesRecordBuffer."Customer Name" := lblAnulled;
                 end;
         END
@@ -1002,6 +1006,7 @@ codeunit 51001 "Accountant Book Management"
     local procedure SetCustomerFromSalesCrMemo(var pSalesCrMemoHdr: Record "Sales Cr.Memo Header")
     var
         Customer: Record Customer;
+        lblAnulled: Label 'Anulled', Comment = 'ESM="Anulado"';
     begin
         case SLSetup."AB Field reference sales. book" of
             SLSetup."AB Field reference sales. book"::"Sell-Customer":
@@ -1019,6 +1024,14 @@ codeunit 51001 "Accountant Book Management"
                     SalesRecordBuffer."Customer Name" := pSalesCrMemoHdr."Bill-to Customer No.";
                 end;
         end;
+        CASE pSalesCrMemoHdr."Legal Status" OF
+            pSalesCrMemoHdr."Legal Status"::Anulled:
+                begin
+                    SalesRecordBuffer."VAT Registration Type" := '0';
+                    SalesRecordBuffer."VAT Registration No." := '00000000000';
+                    SalesRecordBuffer."Customer Name" := lblAnulled;
+                end;
+        END
     end;
 
     local procedure AddPurchTaxedValues(var VATEntry: Record "VAT Entry")
@@ -1110,16 +1123,34 @@ codeunit 51001 "Accountant Book Management"
             pAmount := ABS(pAmount);
     end;
 
+    local procedure formatByLegalDocument2(pAmount: Decimal; pLegalDocument: Code[10]): Decimal
+    var
+
+    begin
+        IF pLegalDocument IN ['07', '87', '97'] then
+            pAmount := -(ABS(pAmount))
+        else
+            pAmount := ABS(pAmount);
+
+        exit(pAmount);
+    end;
+
     procedure SetPurchRecordBufferFromPurchInvHdrModicated(var PurchInvHeader: Record "Purch. Inv. Header")
     begin
         PurchRecordBuffer."Mod. Document Date" := PurchInvHeader."Applies-to Document Date Ref.";
         PurchRecordBuffer."Mod. Legal Document" := PurchInvHeader."Legal Document Ref.";
         PurchRecordBuffer."Mod. Serie" := PurchInvHeader."Applies-to Serie Ref.";
         PurchRecordBuffer."Mod. Document" := PurchInvHeader."Applies-to Number Ref.";
+        // LegalDocMgt.ValidateLegalDocumentFormat(PurchInvHeader."Vendor Invoice No.", //FMM 31.01.22
+        //                                         PurchRecordBuffer."Mod. Legal Document",
+        //                                         PurchRecordBuffer."Serie Document",
+        //                                         PurchRecordBuffer."Number Document",
+        //                                         false,
+        //                                         false);
         LegalDocMgt.ValidateLegalDocumentFormat(PurchInvHeader."Vendor Invoice No.",
                                                 PurchRecordBuffer."Mod. Legal Document",
-                                                PurchRecordBuffer."Serie Document",
-                                                PurchRecordBuffer."Number Document",
+                                                PurchRecordBuffer."Mod. Serie",
+                                                PurchRecordBuffer."Mod. Document",
                                                 false,
                                                 false);
     end;
@@ -1130,10 +1161,16 @@ codeunit 51001 "Accountant Book Management"
         SalesRecordBuffer."Mod. Legal Document" := SalesInvHeader."Legal Document Ref.";
         SalesRecordBuffer."Mod. Serie" := SalesInvHeader."Applies-to Serie Ref.";
         SalesRecordBuffer."Mod. Document" := SalesInvHeader."Applies-to Number Ref.";
-        LegalDocMgt.ValidateLegalDocumentFormat(SalesInvHeader."External Document No.",
+        // LegalDocMgt.ValidateLegalDocumentFormat(SalesInvHeader."External Document No.", //FMM 31.01.22
+        //                                         SalesRecordBuffer."Mod. Legal Document",
+        //                                         SalesRecordBuffer."Serie Document",
+        //                                         SalesRecordBuffer."Number Document",
+        //                                         false,
+        //                                         false);
+        LegalDocMgt.ValidateLegalDocumentFormat(SalesInvHeader."Applies-to Doc. No. Ref.",
                                                 SalesRecordBuffer."Mod. Legal Document",
-                                                SalesRecordBuffer."Serie Document",
-                                                SalesRecordBuffer."Number Document",
+                                                SalesRecordBuffer."Mod. Serie",
+                                                SalesRecordBuffer."Mod. Document",
                                                 false,
                                                 false);
     end;
@@ -1347,19 +1384,19 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += "VAT Registration Type" + MySeparator;//Field 10
                                 MyLineText += "VAT Registration No." + MySeparator;//Field 11
                                 MyLineText += "Customer Name" + MySeparator;//Field 12
-                                MyLineText += Format("Amount Export invoiced", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 13
-                                MyLineText += Format("Taxed Base", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 14
-                                MyLineText += Format("Taxed Base Discount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 15
-                                MyLineText += Format("Taxed VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 16
-                                MyLineText += Format("Disc. Municipal Promotion Tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 17
-                                MyLineText += Format("Total Amount Exonerated", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 18
-                                MyLineText += Format("Total Amount Unaffected", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 19
-                                MyLineText += Format("ISC Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 20
-                                MyLineText += Format("Taxed Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
-                                MyLineText += Format("Taxed VAT  Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22
-                                MyLineText += Format("Bag tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23                            
-                                MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
-                                MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 25
+                                MyLineText += Format(formatByLegalDocument2("Amount Export invoiced", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 13
+                                MyLineText += Format(formatByLegalDocument2("Taxed Base", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 14
+                                MyLineText += Format(formatByLegalDocument2("Taxed Base Discount", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 15
+                                MyLineText += Format(formatByLegalDocument2("Taxed VAT", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 16
+                                MyLineText += Format(formatByLegalDocument2("Disc. Municipal Promotion Tax", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 17
+                                MyLineText += Format(formatByLegalDocument2("Total Amount Exonerated", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 18
+                                MyLineText += Format(formatByLegalDocument2("Total Amount Unaffected", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 19
+                                MyLineText += Format(formatByLegalDocument2("ISC Amount", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 20
+                                MyLineText += Format(formatByLegalDocument2("Taxed Stacked Rice", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
+                                MyLineText += Format(formatByLegalDocument2("Taxed VAT  Stacked Rice", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22
+                                MyLineText += Format(formatByLegalDocument2("Bag tax", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23                            
+                                MyLineText += Format(formatByLegalDocument2("Others Amount", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
+                                MyLineText += Format(formatByLegalDocument2("Total Amount", "Legal Document"), 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 25
                                 if "Currency Code" = '' then
                                     MyLineText += 'PEN' + MySeparator//Field 26 
                                 else
@@ -1384,7 +1421,6 @@ codeunit 51001 "Accountant Book Management"
                         PostFileToControlFileRecord(IsFileWithData);
                     end;
                 end;
-
         end;
     end;
 

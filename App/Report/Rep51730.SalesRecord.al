@@ -102,9 +102,9 @@ report 51730 "Sales Record"
             {
                 // IncludeCaption = true;
             }
-            column(Others_Amount; "Others Amount")
+            column(Others_Amount; formatByLegalDocument("Others Amount", "Legal Document"))
             {
-                IncludeCaption = true;
+                //IncludeCaption = true;
             }
             column(ImporteTotal; formatByLegalDocument("Total Amount", "Legal Document"))
             {

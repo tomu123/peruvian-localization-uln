@@ -1020,6 +1020,7 @@ codeunit 51009 "Retention Management"
         Vendor: Record Vendor;
         PurchInvHeader: Record "Purch. Inv. Header";
         ErrorDocumentDetraction: Label 'Document No %1 is detraction.', Comment = 'ESM="El documento N° %1 tiene detracción."';
+        lcVendorLedgerEntry: Record "Vendor Ledger Entry";
     begin
         Vendor.Get(VendorNo);
         if (Vendor."Good Contributor") and (PostingDate >= Vendor."Good Contributor Start Date") then
@@ -1029,9 +1030,17 @@ codeunit 51009 "Retention Management"
         if (Vendor."Retention Agent") and (PostingDate >= Vendor."Perception Agent Start Date") then
             exit(false);
         if AppliedToDocNo <> '' then
-            if PurchInvHeader.Get(AppliedToDocNo) then
+            if PurchInvHeader.Get(AppliedToDocNo) then begin
                 if PurchInvHeader."Purch. Detraction" then
                     exit(false);
+            end else begin
+                lcVendorLedgerEntry.Reset();
+                lcVendorLedgerEntry.SetCurrentKey("Document No.");
+                lcVendorLedgerEntry.SetRange("Document No.", AppliedToDocNo);
+                lcVendorLedgerEntry.SetFilter("Legal Document", '<>01&<>03&<>07&<>08');
+                if lcVendorLedgerEntry.FindFirst() then
+                    exit(false);
+            end;
         exit(true);
     end;
 
@@ -1047,6 +1056,7 @@ codeunit 51009 "Retention Management"
     var
         Vendor: Record Vendor;
         PurchInvHeader: Record "Purch. Inv. Header";
+        lcVendorLedgerEntry: Record "Vendor Ledger Entry";
     begin
         RetentionStatus := true;
         Setup.Get();
@@ -1058,9 +1068,17 @@ codeunit 51009 "Retention Management"
         if (Vendor."Retention Agent") and (PostingDate >= Vendor."Perception Agent Start Date") then
             RetentionStatus := false;
         if AppliedToDocNo <> '' then
-            if PurchInvHeader.Get(AppliedToDocNo) then
+            if PurchInvHeader.Get(AppliedToDocNo) then begin
                 if PurchInvHeader."Purch. Detraction" then
                     RetentionStatus := false;
+            end else begin
+                lcVendorLedgerEntry.Reset();
+                lcVendorLedgerEntry.SetCurrentKey("Document No.");
+                lcVendorLedgerEntry.SetRange("Document No.", AppliedToDocNo);
+                lcVendorLedgerEntry.SetFilter("Legal Document", '<>01&<>03&<>07&<>08');
+                if lcVendorLedgerEntry.FindFirst() then
+                    RetentionStatus := false;
+            end;
         if AmountLCY < Setup."Retention Limit Amount" then
             RetentionStatus := false;
     end;

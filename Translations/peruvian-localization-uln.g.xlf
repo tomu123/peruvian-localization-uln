@@ -5228,6 +5228,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="¿Quieres descargar el siguiente archivo?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Accountant Book Management - Method PostFileToControlFileRecord - NamedType ConfirmDownload</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1949248452 - Method 3950251237 - NamedType 4132555291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anulled</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Anulado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Accountant Book Management - Method SetCustomerFromSalesCrMemo - NamedType lblAnulled</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1949248452 - Method 147080091 - NamedType 4132555291" size-unit="char" translate="yes" xml:space="preserve">
           <source>Anulled</source>
           <note from="Developer" annotates="general" priority="2">ESM="Anulado"</note>

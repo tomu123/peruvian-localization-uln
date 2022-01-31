@@ -4004,7 +4004,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Importe Total</Value>
+                                  <Value>Impuesto a las Bolsas Plásticas</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -8516,7 +8516,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!ImporteTotal.Value)</Value>
+                                  <Value>0.00</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <Format>n2</Format>
@@ -8551,7 +8551,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>0.00</Value>
+                                  <Value>=Sum(Fields!Others_Amount.Value)</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <Format>n2</Format>
@@ -8714,7 +8714,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -9351,7 +9350,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ImporteTotal.Value</Value>
+                                  <Value>0.00</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <Format>n2</Format>
@@ -9386,7 +9385,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>0.00</Value>
+                                  <Value>=Fields!Others_Amount.Value</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <Format>n2</Format>
@@ -10232,7 +10231,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!ImporteTotal.Value)</Value>
+                                  <Value>0.00</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -10273,7 +10272,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>0.00</Value>
+                                  <Value>=Sum(Fields!Others_Amount.Value)</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -12002,7 +12001,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!ImporteTotal.Value)</Value>
+                                  <Value>0.00</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -12043,10 +12042,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>0.00</Value>
+                                  <Value>=Sum(Fields!Others_Amount.Value)</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -13774,7 +13774,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!ImporteTotal.Value)</Value>
+                                  <Value>0.00</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -13815,10 +13815,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>0.00</Value>
+                                  <Value>=Sum(Fields!Others_Amount.Value)</Value>
                                   <Style>
                                     <FontSize>6pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -14402,15 +14403,6 @@
       </DefaultValue>
       <Prompt>Customer_NameCaption</Prompt>
     </ReportParameter>
-    <ReportParameter Name="Others_AmountCaption">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>Others_AmountCaption</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>Others_AmountCaption</Prompt>
-    </ReportParameter>
     <ReportParameter Name="Currency_CodeCaption">
       <DataType>String</DataType>
       <DefaultValue>
@@ -14496,7 +14488,7 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>26</NumberOfRows>
+      <NumberOfRows>25</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -14581,51 +14573,46 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>16</RowIndex>
-          <ParameterName>Others_AmountCaption</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>17</RowIndex>
           <ParameterName>Currency_CodeCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>18</RowIndex>
+          <RowIndex>17</RowIndex>
           <ParameterName>TipoCambioCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>19</RowIndex>
+          <RowIndex>18</RowIndex>
           <ParameterName>FechaRefCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>20</RowIndex>
+          <RowIndex>19</RowIndex>
           <ParameterName>TipoRefCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>21</RowIndex>
+          <RowIndex>20</RowIndex>
           <ParameterName>SerieRefCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>22</RowIndex>
+          <RowIndex>21</RowIndex>
           <ParameterName>NoRefCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>23</RowIndex>
+          <RowIndex>22</RowIndex>
           <ParameterName>CompanyVATRegNoCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>24</RowIndex>
+          <RowIndex>23</RowIndex>
           <ParameterName>CompanyVATRegNameCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>25</RowIndex>
+          <RowIndex>24</RowIndex>
           <ParameterName>Document_No_Caption</ParameterName>
         </CellDefinition>
       </CellDefinitions>
