@@ -290,8 +290,10 @@ codeunit 51001 "Accountant Book Management"
                     end;
                 end;//End Case others
         end;//End Case Sentence
-        if GenJnlBookBuffer."Legal Document No." = '' then
+        if GenJnlBookBuffer."Legal Document No." = '' then begin
             GenJnlBookBuffer."Legal Document No." := '00';
+        end;
+
 
         if GenJnlBookBuffer."Due Date" = 0D then
             GenJnlBookBuffer."Due Date" := GLEntry."Posting Date";
@@ -301,6 +303,7 @@ codeunit 51001 "Accountant Book Management"
             GenJnlBookBuffer."Operation Date" := GLEntry."Posting Date";
         GenJnlBookBuffer."Account Date" := GLEntry."Posting Date";
         GenJnlBookBuffer."Gloss and description" := GLEntry.Description;
+        GenJnlBookBuffer."Gloss an description ref." := GLEntry."Posting Text";
         if GLEntry."Debit Amount" < 0 then
             GenJnlBookBuffer."Credit Amount" := Abs(GLEntry."Debit Amount")
         else
@@ -313,6 +316,8 @@ codeunit 51001 "Accountant Book Management"
         if GLEntry."Legal Status" = GLEntry."Legal Status"::OutFlow then
             GenJnlBookBuffer."Legal Document No." := '00';
         LegalDocMgt.ValidateLegalDocumentFormat(GenJnlBookBuffer."Document No.", GenJnlBookBuffer."Legal Document No.", GenJnlBookBuffer."Serie Document", GenJnlBookBuffer."Number Document", false, false);
+        if GenJnlBookBuffer."Serie Document" = '' then //FMM 31.01.22
+            GenJnlBookBuffer."Serie Document" := '0000';
     end;
 
     procedure "CreateFileEBookFromGenJournalRecord"()
