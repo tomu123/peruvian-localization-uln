@@ -137,7 +137,10 @@ report 51500 "Rpts. Purchase Order"
                 column(Cant; "Purchase Line".Quantity)
                 {
                 }
-                column(UnPrice; "Purchase Line"."Unit Cost (LCY)")
+                // column(UnPrice; "Purchase Line"."Unit Cost (LCY)") //FMM 01.02.22
+                // { 
+                // }
+                column(UnPrice; "Purchase Line"."Unit Cost")
                 {
                 }
                 column(Descuento; "Purchase Line"."Line Discount Amount")

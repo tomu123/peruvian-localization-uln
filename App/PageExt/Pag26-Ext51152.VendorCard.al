@@ -14,6 +14,30 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
                 ApplicationArea = All;
             }
         }
+        modify("Last Date Modified")
+        {
+            Visible = false;
+        }
+        addlast(General)
+        {
+            field(Last_Date_Modified; "Last Date Modified")
+            {
+                ApplicationArea = All;
+                Importance = Additional;
+            }
+            field("Insert Date"; "Insert Date")
+            {
+                ApplicationArea = All;
+                Importance = Additional;
+                Editable = false;
+            }
+            field("User Insert"; "User Insert")
+            {
+                ApplicationArea = All;
+                Importance = Additional;
+                Editable = false;
+            }
+        }
         modify("Preferred Bank Account Code")
         {
             Caption = 'Preferred Bank Account Code', Comment = 'ESM="Banco destino MN"';
@@ -392,4 +416,5 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
             end;
         end;
     end;
+
 }

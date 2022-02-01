@@ -219,7 +219,16 @@ tableextension 51082 "ST Vendor" extends Vendor
             DataClassification = ToBeClassified;
             Caption = 'Generic Purchase', Comment = 'ESM="Compra genérica"';
         }
-
+        field(51026; "User Insert"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'User Insert', Comment = 'ESM="Creado por"';
+        }
+        field(51027; "Insert Date"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Insert Date', Comment = 'ESM="Fecha de Creación"';
+        }
         field(57900; Department; Text[100])
         {
             Caption = 'Dummy Field', comment = 'ESM="Campo Región de Chile no se usa para peru"';
@@ -241,5 +250,13 @@ tableextension 51082 "ST Vendor" extends Vendor
             if (("VAT Registration Type" <> '') and ("VAT Registration Type" = '1') and (StrLen("VAT Registration No.") <> 8)) or
                 (("VAT Registration Type" <> '') and ("VAT Registration Type" = '6') and (StrLen("VAT Registration No.") <> 12)) then
                 Error(ErrorVatRegistrationNo);
+    end;
+
+    trigger OnAfterInsert()
+    var
+        myInt: Integer;
+    begin
+        "Insert Date" := CreateDateTime(Today, Time);
+        "User Insert" := UserId;
     end;
 }

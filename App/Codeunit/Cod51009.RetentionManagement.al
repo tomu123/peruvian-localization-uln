@@ -124,6 +124,7 @@ codeunit 51009 "Retention Management"
     local procedure SetSetup()
     begin
         Setup.Get();
+        Clear(LastVendorNo);
     end;
 
     local procedure CheckSetup(IsManual: Boolean)

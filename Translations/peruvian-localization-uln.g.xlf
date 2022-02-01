@@ -19968,6 +19968,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Fec. Inicio Buen Contribuyente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field Good Contributor Start Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2553632317 - Field 3266708605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Insert Date</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de Creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field Insert Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2553632317 - Field 2768338304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>ModifyVendor</source>
           <note from="Developer" annotates="general" priority="2">ESM="Proveedor modificado"</note>
@@ -20047,6 +20052,11 @@
           <source>Ubigeo</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field Ubigeo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2553632317 - Field 2622323666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>User Insert</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field User Insert - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2553632317 - Field 544368334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>VAT Registration Type</source>

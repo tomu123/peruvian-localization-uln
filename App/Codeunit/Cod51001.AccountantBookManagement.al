@@ -303,7 +303,7 @@ codeunit 51001 "Accountant Book Management"
             GenJnlBookBuffer."Operation Date" := GLEntry."Posting Date";
         GenJnlBookBuffer."Account Date" := GLEntry."Posting Date";
         GenJnlBookBuffer."Gloss and description" := GLEntry.Description;
-        GenJnlBookBuffer."Gloss an description ref." := GLEntry."Posting Text";
+        GenJnlBookBuffer."Gloss an description ref." := CopyStr(GLEntry."Posting Text", 1, 200);
         if GLEntry."Debit Amount" < 0 then
             GenJnlBookBuffer."Credit Amount" := Abs(GLEntry."Debit Amount")
         else
