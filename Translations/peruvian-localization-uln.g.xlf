@@ -15943,6 +15943,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Posted Purch. Invoices - Action CorrectLegalDocAction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 512675085 - Control 345578175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Application</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Posted Sales Invoice - Control Aplicacion - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 512675085 - Control 2614479299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Detraction</source>
           <note from="Developer" annotates="general" priority="2">ESM="Detracción"</note>

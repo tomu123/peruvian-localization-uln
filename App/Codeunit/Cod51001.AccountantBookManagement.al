@@ -117,23 +117,23 @@ codeunit 51001 "Accountant Book Management"
                             GenJnlBookBuffer.Insert();
                             UpdateWindows(1, CountRecords, TotalRecords);
                         until GLEntry.Next() = 0;
-                    GLAccount.RESET;
-                    GLAccount.SetRange("Date Filter", 0D, CalcDate('<-1D>', StartDate));
-                    //GLAccount.CalcFields("Balance at Date");
-                    GLAccount.SetFilter("Balance at Date", '<>0');
-                    if (GLAccount.FINDSET) then
-                        repeat
-                            GenJnlBookBuffer.Reset();
-                            GenJnlBookBuffer.SetFilter("G/L Account No.", GLAccount."No.");
-                            if (Not GenJnlBookBuffer.FINDSET) then begin
-                                EntryNo += 1;
-                                GenJnlBookBuffer.Init();
-                                GenJnlBookBuffer."Entry No." := EntryNo;
-                                GenJnlBookBuffer."G/L Account No." := GLAccount."No.";
-                                GenJnlBookBuffer."G/L Account Name" := GLAccount.Name;
-                                GenJnlBookBuffer.Insert();
-                            end;
-                        until GLAccount.Next() = 0;
+                    // GLAccount.RESET;
+                    // GLAccount.SetRange("Date Filter", 0D, CalcDate('<-1D>', StartDate));
+                    // //GLAccount.CalcFields("Balance at Date");
+                    // GLAccount.SetFilter("Balance at Date", '<>0');
+                    // if (GLAccount.FINDSET) then
+                    //     repeat
+                    //         GenJnlBookBuffer.Reset();
+                    //         GenJnlBookBuffer.SetFilter("G/L Account No.", GLAccount."No.");
+                    //         if (Not GenJnlBookBuffer.FINDSET) then begin
+                    //             EntryNo += 1;
+                    //             GenJnlBookBuffer.Init();
+                    //             GenJnlBookBuffer."Entry No." := EntryNo;
+                    //             GenJnlBookBuffer."G/L Account No." := GLAccount."No.";
+                    //             GenJnlBookBuffer."G/L Account Name" := GLAccount.Name;
+                    //             GenJnlBookBuffer.Insert();
+                    //         end;
+                    //     until GLAccount.Next() = 0;
                 end;
             '503':
                 begin
@@ -176,6 +176,7 @@ codeunit 51001 "Accountant Book Management"
         Cust: Record Customer;
         Vend: Record Vendor;
         Empl: Record Employee;
+        MySerie: Code[20];
     begin
         case GLEntry."Source Type" of
             GLEntry."Source Type"::Vendor:
@@ -318,6 +319,11 @@ codeunit 51001 "Accountant Book Management"
         LegalDocMgt.ValidateLegalDocumentFormat(GenJnlBookBuffer."Document No.", GenJnlBookBuffer."Legal Document No.", GenJnlBookBuffer."Serie Document", GenJnlBookBuffer."Number Document", false, false);
         if GenJnlBookBuffer."Serie Document" = '' then //FMM 31.01.22
             GenJnlBookBuffer."Serie Document" := '0000';
+        //FMM 02.02.22 Cuando la serie son todas letras el legal document debe ser 00
+        MySerie := GenJnlBookBuffer."Serie Document";
+        MySerie := DelChr(MySerie, '=', DelChr(MySerie, '=', '0123456789'));
+        IF STRLEN(MySerie) = 0 THEN
+            GenJnlBookBuffer."Legal Document No." := '00';
     end;
 
     procedure "CreateFileEBookFromGenJournalRecord"()
@@ -328,6 +334,7 @@ codeunit 51001 "Accountant Book Management"
         CountRecords: Integer;
         IsFileWithData: Boolean;
         CodLibro: Text[10];
+        GLAccount: Record "G/L Account";
     begin
         CreateTempFile();
         CountRecords := 0;
@@ -363,7 +370,14 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Account Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 13
                                 MyLineText += Format("Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 14
                                 MyLineText += Format("Operation Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 15
-                                MyLineText += "Gloss and description" + MySeparator;//Field 16
+                                if "Gloss and description" <> '' then
+                                    MyLineText += "Gloss and description" + MySeparator //Field 16
+                                else begin
+                                    if GLAccount.Get("G/L Account No.") then
+                                        MyLineText += GLAccount.Name + MySeparator//Field 16
+                                    ELSE
+                                        MyLineText += MySeparator;//Field 16
+                                end;
                                 MyLineText += "Gloss an description ref." + MySeparator;//Field 17
                                 MyLineText += Format("Debit Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 18
                                 MyLineText += Format("Credit Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 19
@@ -841,7 +855,7 @@ codeunit 51001 "Accountant Book Management"
                             end;
                 end;
                 // SalesRecordBuffer."Clas. Property and Services" := SalesCrMemoHdr."Legal Property Type";
-                if VATEntry."Legal Document" in ['03', '16', '21'] then
+                if VATEntry."Legal Document" in ['16', '21'] then//if VATEntry."Legal Document" in ['03', '16', '21'] then //FMM 02.02.22
                     SalesRecordBuffer.Status := 0
                 else begin
                     case true of
@@ -893,7 +907,7 @@ codeunit 51001 "Accountant Book Management"
 
                 end;
                 //SalesRecordBuffer."Clas. Property and Services" := SalesInvHeader."Legal Property Type";
-                if VATEntry."Legal Document" in ['03', '16', '21'] then
+                if VATEntry."Legal Document" in ['16', '21'] then//if VATEntry."Legal Document" in ['03', '16', '21'] then //FMM 02.02.22
                     SalesRecordBuffer.Status := 0
                 else begin
                     case true of
@@ -1235,7 +1249,10 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
                                 MyLineText += Format("Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 04
-                                MyLineText += Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 05
+                                IF "Legal Document" IN ['14'] then
+                                    MyLineText += Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator//Field 05
+                                else
+                                    MyLineText += MySeparator;//Field 05
                                 MyLineText += "Legal Document" + MySeparator;//Field 06
                                 if "Legal Document" <> '05' then //FMM::24-12-21 Segun regla de comprobantes para el tipo 05
                                     MyLineText += "Serie Document" + MySeparator//Field 07
@@ -1378,7 +1395,10 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
                                 MyLineText += Format("Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 04
-                                MyLineText += Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 05
+                                IF "Legal Document" IN ['14'] then
+                                    MyLineText += Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator//Field 05
+                                else
+                                    MyLineText += MySeparator;//Field 05
                                 MyLineText += "Legal Document" + MySeparator;//Field 06
                                 MyLineText += "Serie Document" + MySeparator;//Field 07
                                 MyLineText += format("Number Document") + MySeparator;//Field 08

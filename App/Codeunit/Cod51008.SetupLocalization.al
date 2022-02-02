@@ -779,6 +779,8 @@ codeunit 51008 "Setup Localization"
         DocumentAttachmentError: Label 'attached file not exist.', Comment = 'ESM=" archivo adjunto no existe."';
         DocumentAttachmentErrorXML: Label 'attached file XML not exist.', Comment = 'ESM=" archivo adjunto XML no existe."';
     begin
+        if PurchaseHeader."Posting Date" < PurchaseHeader."Document Date" then
+            Error('La fecha registro del documento es menor a la fecha de emisión.');
         if PurchaseHeader."Electronic Bill" then begin
             if PurchaseHeader."Legal Status" <> PurchaseHeader."Legal Status"::OutFlow then begin
                 if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin

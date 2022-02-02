@@ -38,6 +38,58 @@ pageextension 51087 "Detrac. Posted Sales Invoice" extends "Posted Sales Invoice
                     ApplicationArea = All;
                 }
             }
+            group(Aplicacion)
+            {
+                Visible = true;
+                Caption = 'Application';
+
+                field("Applies-to Doc. Type2"; "Applies-to Doc. Type")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Applies-to Doc. No.2"; "Applies-to Doc. No.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Manual Document Ref."; "Manual Document Ref.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                // field("Electronic Doc. Ref"; "Electronic Doc. Ref")
+                // {
+                //     ApplicationArea = All;
+                //     Editable = false;
+                // }
+                field("Applies-to Doc. No. Ref."; "Applies-to Doc. No. Ref.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Legal Document Ref."; "Legal Document Ref.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Applies-to Serie Ref."; "Applies-to Serie Ref.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Applies-to Number Ref."; "Applies-to Number Ref.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Applies-to Document Date Ref."; "Applies-to Document Date Ref.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+
+            }
         }
         //Titulo gratuito
         addafter(Closed)
