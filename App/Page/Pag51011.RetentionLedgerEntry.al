@@ -119,6 +119,23 @@ page 51011 "Retention Ledger Entry"
                 Image = Report;
                 RunObject = report "RET Retention Report";
             }
+            action(UnApply)
+            {
+                ApplicationArea = All;
+                Caption = 'UnApply', Comment = 'ESM="Desliquidar"';
+                Image = UnApply;
+                trigger OnAction()
+                var
+                    VendEntryApplyPostedEntries: Codeunit "VendEntry-Apply Posted Entries";
+                    VendLE: Record "Vendor Ledger Entry";
+                begin
+                    VendLE.Reset();
+                    VendLE.SetRange("Vendor No.", "Vendor No.");
+                    VendLE.SetRange("Document No.", "Source Document No.");
+                    if VendLE.FindFirst() then
+                        VendEntryApplyPostedEntries.UnApplyVendLedgEntry(VendLE."Entry No.");
+                end;
+            }
         }
         area(Processing)
         {
