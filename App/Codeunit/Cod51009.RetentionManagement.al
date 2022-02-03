@@ -34,7 +34,7 @@ codeunit 51009 "Retention Management"
                     OnBeforeCalculateRetention(GenJnlLine);
                     GetSourceTypeVendorLedgerEntry(GenJnlLine, IsInvoice, IsCrMemo, IsLetter);
                     if IsInvoice or IsCrMemo or IsLetter then
-                        "Retention Amount" += (Amount * Setup."Retention Percentage %") / 100;
+                        "Retention Amount" += Round((Amount * Setup."Retention Percentage %") / 100, 0.01);
                     if IsInvoice then
                         "Retention Amount" := "Retention Amount" * -1;
                     if IsLetter then
