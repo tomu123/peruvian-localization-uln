@@ -437,6 +437,8 @@ codeunit 51029 "LD Correct Posted Documents"
         lclSalesInvHeader2: Record "Sales Invoice Header";
         lclSalesCrMemHeader: Record "Sales Cr.Memo Header";
         lclSalesCrMemHeader2: Record "Sales Cr.Memo Header";
+        RetentionLedgerEntry: Record "Retention Ledger Entry";
+        RetentionLedgerEntry2: Record "Retention Ledger Entry";
     begin
         lclCantidad := 0;
 
@@ -475,6 +477,16 @@ codeunit 51029 "LD Correct Posted Documents"
                         lclSalesCrMemHeader2.RESET;
                         lclSalesCrMemHeader2.SETFILTER("No.", '%1', '*' + pDoc);
                         lclCantidad := lclSalesCrMemHeader2.COUNT();
+                    END;
+                END;
+            3:
+                BEGIN
+                    RetentionLedgerEntry.RESET;
+                    RetentionLedgerEntry.SETRANGE("Retention No.", pDoc);
+                    IF RetentionLedgerEntry.FINDSET THEN BEGIN
+                        RetentionLedgerEntry2.RESET;
+                        RetentionLedgerEntry2.SETFILTER("Retention No.", '%1', '*' + pDoc);
+                        lclCantidad := RetentionLedgerEntry2.COUNT();
                     END;
                 END;
         END;
@@ -1218,10 +1230,12 @@ codeunit 51029 "LD Correct Posted Documents"
     begin
         if StrLen(pDocumentNo) + 1 > 20 then
             Error(StrSubstNo(ErrorRenameSDoc, pDocumentNo));
-        NewDocumentNo := 'E' + pDocumentNo;
+        NewDocumentNo := GetExtQuantity(pDocumentNo, 3) + pDocumentNo;
 
         if RetentionLedgerEntry.Get(pEntryNo) then begin
             RetentionLedgerEntry."Retention No." := NewDocumentNo;
+            RetentionLedgerEntry.Reversed := true;
+            RetentionLedgerEntry.Modify();
             DetailRetentionLedEntry.Reset();
             DetailRetentionLedEntry.SetCurrentKey("Retention No.");
             DetailRetentionLedEntry.SetRange("Retention No.", pDocumentNo);
@@ -1230,8 +1244,6 @@ codeunit 51029 "LD Correct Posted Documents"
                     DetailRetentionLedEntry."Retention No." := NewDocumentNo;
                     DetailRetentionLedEntry.Modify();
                 until DetailRetentionLedEntry.Next() = 0;
-
-            RetentionLedgerEntry.Modify();
         end;
         OnAfterRenameRetentionDocument(pDocumentNo, NewDocumentNo);
     end;

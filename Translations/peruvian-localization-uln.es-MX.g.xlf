@@ -6208,6 +6208,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit LD Correct Posted Documents - Method RenamePurchDocument - NamedType ErrorRenameSDoc</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1025554125 - Method 2555275005 - NamedType 3128920501" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The number of characters has been exceeded to rename document %1.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit LD Correct Posted Documents - Method RenameRetentionDocument - NamedType ErrorRenameSDoc</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1025554125 - Method 4182099097 - NamedType 3128920501" size-unit="char" translate="yes" xml:space="preserve">
           <source>The number of characters has been exceeded to rename document %1.</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -11131,17 +11136,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionActions - Property Caption</note>
           <target>Rentenciones</target>
         </trans-unit>
-        <trans-unit id="Page 3511451743 - Action 1335402577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Anulled</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Anulado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Anulle - Property Caption</note>
-          <target>Anulado</target>
-        </trans-unit>
         <trans-unit id="Page 3511451743 - Action 2116845018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Electronic Reverse</source>
           <note from="Developer" annotates="general" priority="2">ESM="Reversión Electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action ElectronicReversed - Property Caption</note>
           <target>Reversión Electrónica</target>
+        </trans-unit>
+        <trans-unit id="Page 3511451743 - Action 1952506131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct Ext.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Extornar - Property Caption</note>
+          <target>Extornar</target>
         </trans-unit>
         <trans-unit id="Page 2400727267 - Control 684242166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Parameters</source>
@@ -17068,6 +17073,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Posted Purch. Invoices - Action CorrectLegalDocAction - Property Caption</note>
           <target>Extornar</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 512675085 - Control 345578175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Application</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Posted Sales Invoice - Control Aplicacion - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 512675085 - Control 2614479299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Detraction</source>

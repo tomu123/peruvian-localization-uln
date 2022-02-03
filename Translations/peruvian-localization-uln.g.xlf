@@ -10388,15 +10388,15 @@
           <note from="Developer" annotates="general" priority="2">ESM="Rentenciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionActions - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3511451743 - Action 1335402577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Anulled</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Anulado"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Anulle - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3511451743 - Action 2116845018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Electronic Reverse</source>
           <note from="Developer" annotates="general" priority="2">ESM="Reversión Electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action ElectronicReversed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3511451743 - Action 1952506131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct Ext.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action Extornar - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2400727267 - Control 684242166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Parameters</source>

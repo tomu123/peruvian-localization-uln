@@ -126,22 +126,24 @@ page 51011 "Retention Ledger Entry"
             group(RetentionActions)
             {
                 Caption = 'Retention Action', Comment = 'ESM="Rentenciones"';
-                action(Anulle)
+                action(Extornar)
                 {
                     ApplicationArea = All;
-                    Caption = 'Anulled', Comment = 'ESM="Anulado"';
+                    Caption = 'Correct Ext.', Comment = 'ESM="Extornar"';
                     Image = Cancel;
                     trigger OnAction()
+                    var
+                        lcRetencionNo: Code[20];
                     begin
                         if Rec.IsEmpty then
                             exit;
                         if Rec.Reversed then
                             Error('La retención tiene el estado revertido.');
-                        Rec.Reversed := true;
-                        Rec.Modify();
-                        CorrectPostedDocument.RenameRetentionDocument(Rec."Retention No.", Rec."Entry No.");
+
+                        lcRetencionNo := Rec."Retention No.";
+                        CorrectPostedDocument.RenameRetentionDocument(lcRetencionNo, Rec."Entry No.");
                         CurrPage.Update();
-                        Message('Retención N° %1 anulada correctamente.', Rec."Retention No.");
+                        Message('Retención N° %1 anulada correctamente.', lcRetencionNo);
                     end;
                 }
 
