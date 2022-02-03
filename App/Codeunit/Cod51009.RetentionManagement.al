@@ -125,6 +125,8 @@ codeunit 51009 "Retention Management"
     begin
         Setup.Get();
         Clear(LastVendorNo);
+        DtldRetLedgerEntryBuffer.Reset();
+        DtldRetLedgerEntryBuffer.DeleteAll();
     end;
 
     local procedure CheckSetup(IsManual: Boolean)
@@ -1032,6 +1034,8 @@ codeunit 51009 "Retention Management"
             exit(false);
         if AppliedToDocNo <> '' then
             if PurchInvHeader.Get(AppliedToDocNo) then begin
+                if PurchInvHeader."Legal Document" in ['01', '03', '07', '08'] = false then
+                    exit(false);
                 if PurchInvHeader."Purch. Detraction" then
                     exit(false);
             end else begin
@@ -1070,6 +1074,8 @@ codeunit 51009 "Retention Management"
             RetentionStatus := false;
         if AppliedToDocNo <> '' then
             if PurchInvHeader.Get(AppliedToDocNo) then begin
+                if PurchInvHeader."Legal Document" in ['01', '03', '07', '08'] = false then
+                    RetentionStatus := false;
                 if PurchInvHeader."Purch. Detraction" then
                     RetentionStatus := false;
             end else begin

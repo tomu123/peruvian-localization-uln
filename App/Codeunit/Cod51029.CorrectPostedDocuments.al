@@ -1208,6 +1208,33 @@ codeunit 51029 "LD Correct Posted Documents"
                 end;
         end;
     end;
+
+    procedure RenameRetentionDocument(pDocumentNo: Code[20]; pEntryNo: Integer)
+    var
+        RetentionLedgerEntry: Record "Retention Ledger Entry";
+        DetailRetentionLedEntry: Record "Detailed Retention Ledg. Entry";
+        NewDocumentNo: Code[20];
+        ErrorRenameSDoc: Label 'The number of characters has been exceeded to rename document %1.';
+    begin
+        if StrLen(pDocumentNo) + 1 > 20 then
+            Error(StrSubstNo(ErrorRenameSDoc, pDocumentNo));
+        NewDocumentNo := 'E' + pDocumentNo;
+
+        if RetentionLedgerEntry.Get(pEntryNo) then begin
+            RetentionLedgerEntry."Retention No." := NewDocumentNo;
+            DetailRetentionLedEntry.Reset();
+            DetailRetentionLedEntry.SetCurrentKey("Retention No.");
+            DetailRetentionLedEntry.SetRange("Retention No.", pDocumentNo);
+            if DetailRetentionLedEntry.FindFirst() then
+                repeat
+                    DetailRetentionLedEntry."Retention No." := NewDocumentNo;
+                    DetailRetentionLedEntry.Modify();
+                until DetailRetentionLedEntry.Next() = 0;
+
+            RetentionLedgerEntry.Modify();
+        end;
+        OnAfterRenameRetentionDocument(pDocumentNo, NewDocumentNo);
+    end;
     //********************************************* End Subcriptions ************************************************
 
 
@@ -1239,6 +1266,11 @@ codeunit 51029 "LD Correct Posted Documents"
 
     [IntegrationEvent(false, false)]
     local procedure OnAfterRenameSalesDocument(SourceDocumentNo: Code[20]; NewDocumentNo: Code[20]; IsOutFlow: Boolean)
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnAfterRenameRetentionDocument(SourceDocumentNo: Code[20]; NewDocumentNo: Code[20])
     begin
     end;
 

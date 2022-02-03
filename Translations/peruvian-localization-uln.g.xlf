@@ -5713,6 +5713,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit LD Correct Posted Documents - Method RenamePurchDocument - NamedType ErrorRenameSDoc</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1025554125 - Method 2555275005 - NamedType 3128920501" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The number of characters has been exceeded to rename document %1.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit LD Correct Posted Documents - Method RenameRetentionDocument - NamedType ErrorRenameSDoc</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1025554125 - Method 4182099097 - NamedType 3128920501" size-unit="char" translate="yes" xml:space="preserve">
           <source>The number of characters has been exceeded to rename document %1.</source>
           <note from="Developer" annotates="general" priority="2"></note>

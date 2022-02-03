@@ -139,6 +139,8 @@ page 51011 "Retention Ledger Entry"
                             Error('La retención tiene el estado revertido.');
                         Rec.Reversed := true;
                         Rec.Modify();
+                        CorrectPostedDocument.RenameRetentionDocument(Rec."Retention No.", Rec."Entry No.");
+                        CurrPage.Update();
                         Message('Retención N° %1 anulada correctamente.', Rec."Retention No.");
                     end;
                 }
@@ -203,8 +205,13 @@ page 51011 "Retention Ledger Entry"
         NavigatePage.Run;
     end;
 
+
+
+
     var
         SLSetup: Record "Setup Localization";
         RetentionMgt: Codeunit "Retention Management";
         ShowElectronic: Boolean;
+        CorrectPostedDocument: Codeunit "LD Correct Posted Documents";
+
 }
