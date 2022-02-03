@@ -38,6 +38,10 @@ pageextension 51131 "ST Vendor Ledger Entries" extends "Vendor Ledger Entries"
         }
         addafter("Document No.")
         {
+            field("Retention No."; "Retention No.")
+            {
+                ApplicationArea = All;
+            }
             field("Legal Document"; "Legal Document")
             {
                 ApplicationArea = All;
