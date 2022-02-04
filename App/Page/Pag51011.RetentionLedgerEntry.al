@@ -122,7 +122,7 @@ page 51011 "Retention Ledger Entry"
             action(UnApply)
             {
                 ApplicationArea = All;
-                Caption = 'UnApply', Comment = 'ESM="Desliquidar"';
+                Caption = 'Desliquidar', Comment = 'ESM="Desliquidar"';
                 Image = UnApply;
                 trigger OnAction()
                 var
