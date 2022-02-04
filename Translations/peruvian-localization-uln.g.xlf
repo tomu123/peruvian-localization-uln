@@ -10383,6 +10383,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Reporte Retenciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionReport - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3511451743 - Action 12718425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UnApply</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Desliquidar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action UnApply - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3318911803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Action</source>
           <note from="Developer" annotates="general" priority="2">ESM="Rentenciones"</note>
