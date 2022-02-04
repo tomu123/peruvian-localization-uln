@@ -1110,13 +1110,13 @@ codeunit 51009 "Retention Management"
                     RetentionStatus := false;
     end;
 
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforePostGenJnlLine', '', false, false)]
+    //[EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforePostGenJnlLine', '', false, false)]
     // local procedure OnBeforePostGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; Balancing: Boolean)
     // var
     //     CustPostGroup: Record "Customer Posting Group";
     //     VendPostGroup: Record "Vendor Posting Group";
-    //     FAPostGroup: Record "FA Posting Group";
-    //     VendPostGroup: Record "Vendor Posting Group";
+    //     BankAccount: Record "Bank Account Posting Group";
+    //     EmpPostGroup: Record "Employee Posting Group";
     // begin
     //     with GenJournalLine do
     //         case "Account Type" of
@@ -1133,13 +1133,15 @@ codeunit 51009 "Retention Management"
     //                     CheckGLAccDimError(GenJournalLine, VendPostGroup."Payables Account");
     //                 end;
     //             "Account Type"::Employee:
-    //                 PostEmployee(GenJnlLine);
+    //                 begin
+    //                     EmpPostGroup.Get(GenJournalLine."Posting Group");
+    //                     CheckGLAccDimError(GenJournalLine, EmpPostGroup."Payables Account");
+    //                 end;
     //             "Account Type"::"Bank Account":
-    //                 PostBankAcc(GenJnlLine, Balancing);
-    //             "Account Type"::"Fixed Asset":
-    //                 VendPostGroup.Get(GenJournalLine."Posting Group");
-    //             "Account Type"::"IC Partner":
-    //                 PostICPartner(GenJnlLine);
+    //                 begin
+    //                     BankAccount.Get(GenJournalLine."Account No.");
+    //                     CheckGLAccDimError(GenJournalLine, BankAccount."G/L Account No.");
+    //                 end;
     //         end;
     // end;
 
@@ -1148,7 +1150,7 @@ codeunit 51009 "Retention Management"
         DimMgt: Codeunit DimensionManagement;
         TableID: array[10] of Integer;
         AccNo: array[10] of Code[20];
-        DimensionUsedErr: Label 'A dimension used in %1 %2, %3, %4 has caused an error. %5.', Comment = 'Comment';
+        DimensionUsedErr: Label 'A dimension used in %1 %2, %3, %4 has caused an error. %5.', Comment = 'ESM="Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5."';
     begin
         if (GenJnlLine.Amount = 0) and (GenJnlLine."Amount (LCY)" = 0) then
             exit;

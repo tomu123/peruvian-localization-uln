@@ -6726,6 +6726,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckCalculate - NamedType EmptyRetentionLinesMark</note>
           <target>No tiene ninguna linea marcada para retención.</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 805120848 - NamedType 3186350222" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A dimension used in %1 %2, %3, %4 has caused an error. %5.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckGLAccDimError - NamedType DimensionUsedErr</note>
+          <target>Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5.</target>
+        </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 3140856375 - NamedType 3907543976" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line %1 has the retention check marked, please calculate withholding for the line.</source>
           <note from="Developer" annotates="general" priority="2">ESM="La linea %1 tiene marcado el check de retención, favor de calcular retención para la linea."</note>
@@ -11129,6 +11135,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="Reporte Retenciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionReport - Property Caption</note>
           <target>Reporte Retenciones</target>
+        </trans-unit>
+        <trans-unit id="Page 3511451743 - Action 12718425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UnApply</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Desliquidar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action UnApply - Property Caption</note>
+          <target>Desliquidar</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 3318911803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Action</source>
