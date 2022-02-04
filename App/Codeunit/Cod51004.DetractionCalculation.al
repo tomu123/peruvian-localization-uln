@@ -70,7 +70,8 @@ codeunit 51004 "DetrAction Calculation"
                 TipoCambio := 1;
 
             pPurchHeader."Purch Amount DetrAction (DL)" := pPurchHeader."Purch. Amount DetrAction" * TipoCambio;
-            pPurchHeader."Purch Amount DetrAction (DL)" := Round(pPurchHeader."Purch Amount DetrAction (DL)", 1, '=');
+            //pPurchHeader."Purch Amount DetrAction (DL)" := Round(pPurchHeader."Purch Amount DetrAction (DL)",1, '=');
+            pPurchHeader."Purch Amount DetrAction (DL)" := Round(pPurchHeader."Purch Amount DetrAction (DL)", GLSetup."Amount Rounding Precision");
 
             if pPurchHeader."Currency Code" = '' then
                 pPurchHeader."Purch. Amount DetrAction" := Round(pPurchHeader."Purch Amount DetrAction (DL)" * pPurchHeader."Currency Factor", GLSetup."Amount Rounding Precision");
