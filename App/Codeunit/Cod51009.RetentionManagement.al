@@ -823,7 +823,6 @@ codeunit 51009 "Retention Management"
                 Modify();
             until Next() = 0;
             CreateRetentionEntry();
-            OnAfterInsertRetentionLedgerEntry(RetentionLedgerEntry, PreviewMde);
             //Define Electronic Retention
         end;
     end;
@@ -921,6 +920,7 @@ codeunit 51009 "Retention Management"
                     RetentionLedgerEntry."Manual Retention" := "Manual Retention";
                     RetentionLedgerEntry.Insert();
                     NextRetLedgerEntryNo += 1;
+                    OnAfterInsertRetentionLedgerEntry(RetentionLedgerEntry, PreviewMde);
                 until Next() = 0;
         end;
     end;
@@ -1108,6 +1108,64 @@ codeunit 51009 "Retention Management"
             if PurchInvHeader.Get(AppliedToDocNo) then
                 if PurchInvHeader."Purch. Detraction" then
                     RetentionStatus := false;
+    end;
+
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforePostGenJnlLine', '', false, false)]
+    // local procedure OnBeforePostGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; Balancing: Boolean)
+    // var
+    //     CustPostGroup: Record "Customer Posting Group";
+    //     VendPostGroup: Record "Vendor Posting Group";
+    //     FAPostGroup: Record "FA Posting Group";
+    //     VendPostGroup: Record "Vendor Posting Group";
+    // begin
+    //     with GenJournalLine do
+    //         case "Account Type" of
+    //             "Account Type"::"G/L Account":
+    //                 CheckGLAccDimError(GenJournalLine, GenJournalLine."Account No.");
+    //             "Account Type"::Customer:
+    //                 begin
+    //                     CustPostGroup.Get(GenJournalLine."Posting Group");
+    //                     CheckGLAccDimError(GenJournalLine, CustPostGroup."Receivables Account");
+    //                 end;
+    //             "Account Type"::Vendor:
+    //                 begin
+    //                     VendPostGroup.Get(GenJournalLine."Posting Group");
+    //                     CheckGLAccDimError(GenJournalLine, VendPostGroup."Payables Account");
+    //                 end;
+    //             "Account Type"::Employee:
+    //                 PostEmployee(GenJnlLine);
+    //             "Account Type"::"Bank Account":
+    //                 PostBankAcc(GenJnlLine, Balancing);
+    //             "Account Type"::"Fixed Asset":
+    //                 VendPostGroup.Get(GenJournalLine."Posting Group");
+    //             "Account Type"::"IC Partner":
+    //                 PostICPartner(GenJnlLine);
+    //         end;
+    // end;
+
+    local procedure CheckGLAccDimError(GenJnlLine: Record "Gen. Journal Line"; GLAccNo: Code[20])
+    var
+        DimMgt: Codeunit DimensionManagement;
+        TableID: array[10] of Integer;
+        AccNo: array[10] of Code[20];
+        DimensionUsedErr: Label 'A dimension used in %1 %2, %3, %4 has caused an error. %5.', Comment = 'Comment';
+    begin
+        if (GenJnlLine.Amount = 0) and (GenJnlLine."Amount (LCY)" = 0) then
+            exit;
+
+        TableID[1] := DATABASE::"G/L Account";
+        AccNo[1] := GLAccNo;
+        if DimMgt.CheckDimValuePosting(TableID, AccNo, GenJnlLine."Dimension Set ID") then
+            exit;
+
+        if GenJnlLine."Line No." <> 0 then
+            Error(
+              DimensionUsedErr,
+              GenJnlLine.TableCaption, GenJnlLine."Journal Template Name",
+              GenJnlLine."Journal Batch Name", GenJnlLine."Line No.",
+              DimMgt.GetDimValuePostingErr);
+
+        Error(DimMgt.GetDimValuePostingErr);
     end;
 
     //--   
