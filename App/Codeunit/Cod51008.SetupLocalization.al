@@ -291,6 +291,9 @@ codeunit 51008 "Setup Localization"
                 end else
                     Error('Tipo de cambio de existe.');
             end;
+            //FMM 04.02.22
+            if PurchaseHeader."Purch. Detraction" then
+                PurchaseHeader.Validate("Purch. % Detraction");
             if OldCurrencyFactor <> PurchaseHeader."Currency Factor" then
                 Message('Se ha modificado el tipo de cambio a la fecha %1', CurrencyDate);
         end else begin
