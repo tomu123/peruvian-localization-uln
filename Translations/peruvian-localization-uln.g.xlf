@@ -6200,11 +6200,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 805120848 - NamedType 3186350222" size-unit="char" translate="yes" xml:space="preserve">
           <source>A dimension used in %1 %2, %3, %4 has caused an error. %5.</source>
-<<<<<<< HEAD
           <note from="Developer" annotates="general" priority="2">ESM="Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5."</note>
-=======
-          <note from="Developer" annotates="general" priority="2">Comment</note>
->>>>>>> f344c86f5b60e6e609a7624c0f4ef23884576c41
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckGLAccDimError - NamedType DimensionUsedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 3140856375 - NamedType 3907543976" size-unit="char" translate="yes" xml:space="preserve">
