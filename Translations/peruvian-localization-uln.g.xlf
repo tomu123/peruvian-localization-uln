@@ -16060,7 +16060,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 383949680 - Action 595570189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4135951594">
           <source>Correct Ext.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Purch. CrMemos - Action CorrectLegalDocAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 701109401 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">

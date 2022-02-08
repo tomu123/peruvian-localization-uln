@@ -203,8 +203,12 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader.Validate("Applies-to Doc. No.", pSalesCrMemoHdr."No.");
         SalesHeader."Posting Description" := 'Nota de Credito a Factura :' + SalesHeader."No.";
         SalesHeader.Validate("Shipping No. Series", SalesSetup."Posted Shipment Nos.");
-        SalesHeader."Applies-to Document Date Ref." := pSalesCrMemoHdr."Posting Date";
+        //SalesHeader."Applies-to Document Date Ref." := pSalesCrMemoHdr."Posting Date"; //FMM 07.02.22
         SalesHeader.Insert();
+        SalesHeader.Validate("Customer Posting Group", pSalesCrMemoHdr."Customer Posting Group");
+        SalesHeader."Currency Code" := pSalesCrMemoHdr."Currency Code";
+        SalesHeader.Validate("Applies-to Document Date Ref.", pSalesCrMemoHdr."Applies-to Document Date Ref.");
+        SalesHeader.Modify();
 
         SalesCrMemoLine.Reset();
         SalesCrMemoLine.SetRange("Document No.", pSalesCrMemoHdr."No.");

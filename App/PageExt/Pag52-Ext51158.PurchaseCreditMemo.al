@@ -184,13 +184,12 @@ pageextension 51158 "ST Purchase Credit Memo" extends "Purchase Credit Memo"
                 ApplicationArea = All;
                 Editable = "Manual Document Ref.";
             }
-            field("Applies-to Number Ref."; "Applies-to Number Ref.")
+            field("Applies-to Serie Ref."; "Applies-to Serie Ref.")
             {
                 ApplicationArea = All;
                 Editable = "Manual Document Ref.";
             }
-
-            field("Applies-to Serie Ref."; "Applies-to Serie Ref.")
+            field("Applies-to Number Ref."; "Applies-to Number Ref.")
             {
                 ApplicationArea = All;
                 Editable = "Manual Document Ref.";

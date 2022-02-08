@@ -2523,8 +2523,24 @@ codeunit 51038 "Mgmt Collection"
     var
         SLSetup: Record "Setup Localization";
         pag1294: page 1294;
+        CurrExchRate: Record "Currency Exchange Rate";
+        GLSetup: Record "General Ledger Setup";
     begin
         SLSetup.Get();
+        GLSetup.Get();
+        if not SLSetup."Validate Curr. Exch. Posting" then
+            exit;
+        CurrExchRate.Reset();
+        CurrExchRate.SetRange("Currency Code", GLSetup."Additional Reporting Currency");
+        CurrExchRate.SetRange("Starting Date", Today);
+        CurrExchRate.FindFirst();
+
+        //FMM 07.02.22
+        CurrExchRate.Reset();
+        CurrExchRate.SetRange("Currency Code", GLSetup."Additional Reporting Currency");
+        CurrExchRate.SetRange("Starting Date", GenJournalLine."Posting Date");
+        CurrExchRate.FindFirst();
+
         SLSetup.TestField("RB Journal Template Name");
         SLSetup.TestField("RB Journal Batch Name");
         GenJournalLine."Journal Template Name" := SLSetup."RB Journal Template Name";
