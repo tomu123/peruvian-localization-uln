@@ -2525,6 +2525,9 @@ codeunit 51038 "Mgmt Collection"
         pag1294: page 1294;
         CurrExchRate: Record "Currency Exchange Rate";
         GLSetup: Record "General Ledger Setup";
+        AppliedPmtEntry: Record "Applied Payment Entry";
+        CustLedgEntry: Record "Cust. Ledger Entry";
+        VendLedgEntry: Record "Vendor Ledger Entry";
     begin
         SLSetup.Get();
         GLSetup.Get();
@@ -2548,6 +2551,32 @@ codeunit 51038 "Mgmt Collection"
         GenJournalLine."External Document No." := BankAccReconciliationLine."Transaction ID";
         GenJournalLine."ST Document No. Conciliation" := BankAccReconciliationLine.GetAppliedToDocumentNo();
         GenJournalLine."ST IS Conciliation" := true;
+
+        //FMM 08.02.2022 Modificar el Posting Group de las lineas del diario
+        AppliedPmtEntry.Reset();
+        AppliedPmtEntry.SetRange("Bank Account No.", BankAccReconciliationLine."Bank Account No.");
+        AppliedPmtEntry.SetRange("Statement No.", BankAccReconciliationLine."Statement No.");
+        AppliedPmtEntry.SetRange("Statement Line No.", BankAccReconciliationLine."Statement Line No.");
+        if AppliedPmtEntry.FindFirst() then begin
+            if AppliedPmtEntry."Applies-to Entry No." <> 0 then begin
+                case AppliedPmtEntry."Account Type" of
+                    AppliedPmtEntry."Account Type"::Customer:
+                        begin
+                            CustLedgEntry.Get(AppliedPmtEntry."Applies-to Entry No.");
+                            GenJournalLine."Posting Group" := CustLedgEntry."Customer Posting Group";
+                        end;
+                    AppliedPmtEntry."Account Type"::Vendor:
+                        begin
+                            VendLedgEntry.Get(AppliedPmtEntry."Applies-to Entry No.");
+                            GenJournalLine."Posting Group" := VendLedgEntry."Vendor Posting Group";
+                        end;
+                    AppliedPmtEntry."Account Type"::"Bank Account":
+                        begin
+
+                        end;
+                end;
+            end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, database::"Cust. Ledger Entry", 'OnAfterCopyCustLedgerEntryFromGenJnlLine', '', false, false)]
