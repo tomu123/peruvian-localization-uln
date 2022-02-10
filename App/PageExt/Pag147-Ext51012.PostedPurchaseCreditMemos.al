@@ -26,7 +26,7 @@ pageextension 51012 "Legal Doc. Pstd Purch. CrMemos" extends "Posted Purchase Cr
             action(CorrectLegalDocAction)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Correct Ext.';
+                Caption = 'Correct Ext.', Comment = 'ESM="Extornar"';
                 ToolTip = 'Reverse this posted invoice and automatically create a new invoice with the same information that you can correct before posting. This posted invoice will automatically be canceled.';
                 Image = Undo;
                 Promoted = true;

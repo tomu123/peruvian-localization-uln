@@ -306,8 +306,8 @@ codeunit 51000 "Legal Document Management"
             SalesHeader.TestField("Applies-to Doc. No.");
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeRunWithoutCheck', '', false, false)]
-    procedure Set_OnBeforeRunWithoutCheck(var GenJournalLine: Record "Gen. Journal Line")
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnAfterRunWithoutCheck', '', false, false)]
+    procedure Set_OnAfterRunWithoutCheck(var GenJnlLine: Record "Gen. Journal Line")
     var
         GLSetup: Record "General Ledger Setup";
         SLSetup: Record "Setup Localization";
@@ -322,6 +322,14 @@ codeunit 51000 "Legal Document Management"
         CurrExchRate.SetRange("Currency Code", GLSetup."Additional Reporting Currency");
         CurrExchRate.SetRange("Starting Date", Today);
         CurrExchRate.FindFirst();
+
+        //FMM 07.02.22
+        if GenJnlLine."Posting Date" <> 0D then begin
+            CurrExchRate.Reset();
+            CurrExchRate.SetRange("Currency Code", GLSetup."Additional Reporting Currency");
+            CurrExchRate.SetRange("Starting Date", GenJnlLine."Posting Date");
+            CurrExchRate.FindFirst();
+        end;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnAfterCheckPurchaseApprovalPossible', '', false, false)]

@@ -291,6 +291,9 @@ codeunit 51008 "Setup Localization"
                 end else
                     Error('Tipo de cambio de existe.');
             end;
+            //FMM 04.02.22
+            if PurchaseHeader."Purch. Detraction" then
+                PurchaseHeader.Validate("Purch. % Detraction");
             if OldCurrencyFactor <> PurchaseHeader."Currency Factor" then
                 Message('Se ha modificado el tipo de cambio a la fecha %1', CurrencyDate);
         end else begin
@@ -778,41 +781,42 @@ codeunit 51008 "Setup Localization"
         DocumentAttachmentErrorPDF: Label 'attached file PDF not exist.', Comment = 'ESM=" archivo adjunto PDF no existe."';
         DocumentAttachmentError: Label 'attached file not exist.', Comment = 'ESM=" archivo adjunto no existe."';
         DocumentAttachmentErrorXML: Label 'attached file XML not exist.', Comment = 'ESM=" archivo adjunto XML no existe."';
+        lcDocumentElectronic: Boolean;
     begin
         if PurchaseHeader."Posting Date" < PurchaseHeader."Document Date" then
             Error('La fecha registro del documento es menor a la fecha de emisión.');
-        if PurchaseHeader."Electronic Bill" then begin
-            if PurchaseHeader."Legal Status" <> PurchaseHeader."Legal Status"::OutFlow then begin
-                if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
+        lcDocumentElectronic := true;
+        OnBeforeValidateDocumentElectronic(PurchaseHeader, lcDocumentElectronic);
+        if lcDocumentElectronic then begin
+            if PurchaseHeader."Electronic Bill" then begin
+                if PurchaseHeader."Legal Status" <> PurchaseHeader."Legal Status"::OutFlow then begin
+                    if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
+                        lclRecDocumentAttachment.SetRange("Table ID", 38);
+                        lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
+                        lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
+                        lclRecDocumentAttachment.SetRange("File Type", lclRecDocumentAttachment."File Type"::PDF);
+                        if not lclRecDocumentAttachment.FindSet() then
+                            Error(DocumentAttachmentErrorPDF);
+                    end;
+                    if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
+                        lclRecDocumentAttachment.SetRange("Table ID", 38);
+                        lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
+                        lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
+                        lclRecDocumentAttachment.SetRange("File Type", lclRecDocumentAttachment."File Type"::XML);
+                        if not lclRecDocumentAttachment.FindSet() then
+                            Error(DocumentAttachmentErrorXML);
+                    end;
+                end;
+            end else begin
+                if PurchaseHeader."Legal Status" <> PurchaseHeader."Legal Status"::OutFlow then begin
                     lclRecDocumentAttachment.SetRange("Table ID", 38);
                     lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
                     lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
-                    lclRecDocumentAttachment.SetRange("File Type", lclRecDocumentAttachment."File Type"::PDF);
                     if not lclRecDocumentAttachment.FindSet() then
-                        Error(DocumentAttachmentErrorPDF);
+                        Error(DocumentAttachmentError);
                 end;
-                if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
-                    lclRecDocumentAttachment.SetRange("Table ID", 38);
-                    lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
-                    lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
-                    lclRecDocumentAttachment.SetRange("File Type", lclRecDocumentAttachment."File Type"::XML);
-                    if not lclRecDocumentAttachment.FindSet() then
-                        Error(DocumentAttachmentErrorXML);
-                end;
-            end;
-        end else begin
-            if PurchaseHeader."Legal Status" <> PurchaseHeader."Legal Status"::OutFlow then begin
-                lclRecDocumentAttachment.SetRange("Table ID", 38);
-                lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
-                lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
-                if not lclRecDocumentAttachment.FindSet() then
-                    Error(DocumentAttachmentError);
             end;
         end;
-
-
-
-
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCreateGLEntryGainLossInsertGLEntry', '', false, false)]
@@ -1325,5 +1329,9 @@ codeunit 51008 "Setup Localization"
         Notification: Notification;
         C: Codeunit "Gen. Jnl.-Post Line";
 
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeValidateDocumentElectronic(PurchaseHeader: Record "Purchase Header"; var lcDocumentElectronic: Boolean)
+    begin
+    end;
 }
 
