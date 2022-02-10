@@ -207,11 +207,13 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
             {
                 Caption = 'Departament', comment = 'ESM="Departamento"';
                 ApplicationArea = All;
+                Editable = false;
             }
             field(City2; Rec.City)
             {
-                Caption = 'City', comment = 'ESM="Ciudad"';
+                Caption = 'City', comment = 'ESM="Provincia"';
                 ApplicationArea = All;
+                Editable = false;
             }
         }
         addafter(County)

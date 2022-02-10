@@ -107,7 +107,7 @@ table 51005 "Retention Ledger Entry"
             DataClassification = ToBeClassified;
             Caption = 'Electronic Response';
         }
-        field(51018; "Elec. Response Description"; Text[250])
+        field(51018; "Elec. Response Description"; Text[2045])
         {
             DataClassification = ToBeClassified;
             Caption = 'Elec. Resp. Description';
