@@ -1110,40 +1110,43 @@ codeunit 51009 "Retention Management"
                     RetentionStatus := false;
     end;
 
-    //[EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforePostGenJnlLine', '', false, false)]
-    // local procedure OnBeforePostGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; Balancing: Boolean)
-    // var
-    //     CustPostGroup: Record "Customer Posting Group";
-    //     VendPostGroup: Record "Vendor Posting Group";
-    //     BankAccount: Record "Bank Account Posting Group";
-    //     EmpPostGroup: Record "Employee Posting Group";
-    // begin
-    //     with GenJournalLine do
-    //         case "Account Type" of
-    //             "Account Type"::"G/L Account":
-    //                 CheckGLAccDimError(GenJournalLine, GenJournalLine."Account No.");
-    //             "Account Type"::Customer:
-    //                 begin
-    //                     CustPostGroup.Get(GenJournalLine."Posting Group");
-    //                     CheckGLAccDimError(GenJournalLine, CustPostGroup."Receivables Account");
-    //                 end;
-    //             "Account Type"::Vendor:
-    //                 begin
-    //                     VendPostGroup.Get(GenJournalLine."Posting Group");
-    //                     CheckGLAccDimError(GenJournalLine, VendPostGroup."Payables Account");
-    //                 end;
-    //             "Account Type"::Employee:
-    //                 begin
-    //                     EmpPostGroup.Get(GenJournalLine."Posting Group");
-    //                     CheckGLAccDimError(GenJournalLine, EmpPostGroup."Payables Account");
-    //                 end;
-    //             "Account Type"::"Bank Account":
-    //                 begin
-    //                     BankAccount.Get(GenJournalLine."Account No.");
-    //                     CheckGLAccDimError(GenJournalLine, BankAccount."G/L Account No.");
-    //                 end;
-    //         end;
-    // end;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforePostGenJnlLine', '', false, false)]
+    local procedure OnBeforePostGenJnlLine(var GenJournalLine: Record "Gen. Journal Line"; Balancing: Boolean)
+    var
+        CustPostGroup: Record "Customer Posting Group";
+        VendPostGroup: Record "Vendor Posting Group";
+        BankAccount: Record "Bank Account Posting Group";
+        EmpPostGroup: Record "Employee Posting Group";
+    begin
+        with GenJournalLine do begin
+            case "Account Type" of
+                "Account Type"::"G/L Account":
+                    CheckGLAccDimError(GenJournalLine, GenJournalLine."Account No.");
+                "Account Type"::Customer:
+                    begin
+                        CustPostGroup.Get(GenJournalLine."Posting Group");
+                        CheckGLAccDimError(GenJournalLine, CustPostGroup."Receivables Account");
+                        if "Currency Code" <> CustPostGroup."Currency Code" then
+                            Error('Todos los movimientos debe ser en la misma divisa.');
+                    end;
+                "Account Type"::Vendor:
+                    begin
+                        VendPostGroup.Get(GenJournalLine."Posting Group");
+                        CheckGLAccDimError(GenJournalLine, VendPostGroup."Payables Account");
+                    end;
+                "Account Type"::Employee:
+                    begin
+                        EmpPostGroup.Get(GenJournalLine."Posting Group");
+                        CheckGLAccDimError(GenJournalLine, EmpPostGroup."Payables Account");
+                    end;
+                "Account Type"::"Bank Account":
+                    begin
+                        BankAccount.Get(GenJournalLine."Account No.");
+                        CheckGLAccDimError(GenJournalLine, BankAccount."G/L Account No.");
+                    end;
+            end;
+        end;
+    end;
 
     local procedure CheckGLAccDimError(GenJnlLine: Record "Gen. Journal Line"; GLAccNo: Code[20])
     var
