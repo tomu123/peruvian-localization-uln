@@ -1123,35 +1123,35 @@ codeunit 51009 "Retention Management"
             case "Account Type" of
                 "Account Type"::"G/L Account":
                     begin
-                        CheckGLAccDimError(GenJournalLine, GenJournalLine."Account No.");
+                        //CheckGLAccDimError(GenJournalLine, GenJournalLine."Account No.");
                         if "Bal. Account No." <> '' then
                             CheckPostingGroupError(GenJournalLine);
                     end;
                 "Account Type"::Customer:
                     begin
                         CustPostGroup.Get(GenJournalLine."Posting Group");
-                        CheckGLAccDimError(GenJournalLine, CustPostGroup."Receivables Account");
+                        //CheckGLAccDimError(GenJournalLine, CustPostGroup."Receivables Account");
                         if "Currency Code" <> CustPostGroup."Currency Code" then
                             Error(PostingGroupErr);
                     end;
                 "Account Type"::Vendor:
                     begin
                         VendPostGroup.Get(GenJournalLine."Posting Group");
-                        CheckGLAccDimError(GenJournalLine, VendPostGroup."Payables Account");
+                        //CheckGLAccDimError(GenJournalLine, VendPostGroup."Payables Account");
                         if "Currency Code" <> VendPostGroup."Currency Code" then
                             Error(PostingGroupErr);
                     end;
                 "Account Type"::Employee:
                     begin
                         EmpPostGroup.Get(GenJournalLine."Posting Group");
-                        CheckGLAccDimError(GenJournalLine, EmpPostGroup."Payables Account");
+                        //CheckGLAccDimError(GenJournalLine, EmpPostGroup."Payables Account");
                         if "Currency Code" <> EmpPostGroup."Currency Code" then
                             Error(PostingGroupErr);
                     end;
                 "Account Type"::"Bank Account":
                     begin
                         BankAccount.Get(GenJournalLine."Account No.");
-                        CheckGLAccDimError(GenJournalLine, BankAccount."G/L Account No.");
+                        //CheckGLAccDimError(GenJournalLine, BankAccount."G/L Account No.");
                         if "Bal. Account No." <> '' then
                             CheckPostingGroupError(GenJournalLine);
                     end;

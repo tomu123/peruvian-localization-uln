@@ -37,6 +37,12 @@ tableextension 51145 "ST Employee" extends Employee
             Caption = 'Preferred Bank Account Code ME', Comment = 'ESM="Cód. Banco. Preferencia ME"';
             TableRelation = "ST Employee Bank Account".Code where("Employee No." = field("No."));
         }
+        field(51007; "Canal Job"; Option)
+        {
+            OptionMembers = " ",CCO,Gestor,Excutive,Staff,Directive;
+            OptionCaption = ' ,CCO,Gestor,Excutive,Staff,Directive', Comment = 'ESM=" ,CCO,Gestor,Ejecutivo,Staff,Directivo"';
+            Caption = 'Canal Job', Comment = 'ESM="Canal Proyecto"';
+        }
         //Ubigeo
         modify(County)
         {
