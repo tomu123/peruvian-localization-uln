@@ -8,10 +8,12 @@ pageextension 51243 "ST Bank AccReconciliationLines" extends "Bank Acc. Reconcil
             field("Transaction Text"; "Transaction Text")
             {
                 ApplicationArea = All;
+                Editable = False;
             }
             field("Description 2"; "Description 2")
             {
                 ApplicationArea = All;
+                Editable = False;
             }
         }
         addafter(Control16)
@@ -29,14 +31,47 @@ pageextension 51243 "ST Bank AccReconciliationLines" extends "Bank Acc. Reconcil
                 {
                     ShowCaption = false;
                 }
-
             }
+        }
 
+        modify("Transaction Date")
+        {
+            Editable = False;
+        }
+        modify("Document No.")
+        {
+            Editable = False;
+        }
+        modify("Statement Amount")
+        {
+            Editable = False;
+        }
+        modify(Description)
+        {
+            Editable = False;
+        }
+        modify("Additional Transaction Info")
+        {
+            Editable = False;
+        }
+        modify(Type)
+        {
+            Editable = False;
+        }
+        modify("Applied Amount")
+        {
+            Editable = False;
+        }
+        modify(Difference)
+        {
+            Editable = False;
         }
         modify(TotalDiff)
         {
             Caption = 'Total Movimientos', Comment = 'ESM="Total Movimientos"';
+            Editable = False;
         }
+
     }
 
     trigger OnAfterGetCurrRecord()
