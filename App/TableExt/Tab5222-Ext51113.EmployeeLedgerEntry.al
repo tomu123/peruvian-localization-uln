@@ -33,16 +33,16 @@ tableextension 51113 "Employee Ledger Entry" extends "Employee Ledger Entry"
             AutoFormatExpression = "Closed by Currency Code";
             AccessByPermission = tabledata Currency = R;
         }
-        // field(51008; "Adjusted Currency Factor"; Decimal)
-        // {
-        //     DataClassification = ToBeClassified;
-        //     Caption = 'Adjusted Currency Factor', Comment = 'ESM="Factor divisa ajustada"';
-        // }
-        // field(51009; "Original Currency Factor"; Decimal)
-        // {
-        //     DataClassification = ToBeClassified;
-        //     Caption = 'Original Currency Factor', Comment = 'ESM="Factor divisa original"';
-        // }
+        /*field(51008; "Adjusted Currency Factor"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Adjusted Currency Factor', Comment = 'ESM="Factor divisa ajustada"';
+        }
+        field(51009; "Original Currency Factor"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Original Currency Factor', Comment = 'ESM="Factor divisa original"';
+        }*/
         field(51010; "External Document No."; Code[35])
         {
             DataClassification = ToBeClassified;
