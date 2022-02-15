@@ -17293,6 +17293,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Compra genérica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Analityc G/L Account - Field PR Generic Purchase - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1874461389 - Field 675239242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
+          <source>Adjusted Currency Factor</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Factor divisa ajustada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Adjusted Currency Factor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1874461389 - Field 2168275062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
           <source>Closed by Currency Amount</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cerrado por importe en divisa"</note>
@@ -17322,6 +17327,11 @@
           <source>Global Dimension FE</source>
           <note from="Developer" annotates="general" priority="2">ESM="FE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Global Dimension FE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1874461389 - Field 3826939645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
+          <source>Original Currency Factor</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Factor divisa original"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Original Currency Factor - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1874461389 - Field 2280937076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
           <source>Payables Account</source>
