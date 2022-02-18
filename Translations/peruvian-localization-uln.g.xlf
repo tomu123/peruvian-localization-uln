@@ -6200,11 +6200,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 805120848 - NamedType 3186350222" size-unit="char" translate="yes" xml:space="preserve">
           <source>A dimension used in %1 %2, %3, %4 has caused an error. %5.</source>
-<<<<<<< HEAD
-          <note from="Developer" annotates="general" priority="2">Comment</note>
-=======
           <note from="Developer" annotates="general" priority="2">ESM="Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5."</note>
->>>>>>> a863a766cc839b5610de5f5b83e2efe13dbec841
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckGLAccDimError - NamedType DimensionUsedErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 3140856375 - NamedType 3907543976" size-unit="char" translate="yes" xml:space="preserve">
@@ -6216,6 +6212,11 @@
           <source>Do you want to download the following file?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method PostFileToControlFileRecord - NamedType ConfirmDownload</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 1160803957 - NamedType 519063157" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Departament undefined for "Country Code" %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Departamento no definido para Cód. País %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ValidateRententionInsert - NamedType UndefinedDepartement</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 290746390 - NamedType 1106567674" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No %1 is detraction.</source>
@@ -17209,7 +17210,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3362382913 - Control 1041034975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>City</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Ciudad"</note>
+          <note from="Developer" annotates="general" priority="2">ESM="Provincia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Vendor Card - Control City2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3362382913 - Control 3374398455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
