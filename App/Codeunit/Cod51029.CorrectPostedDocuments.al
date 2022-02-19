@@ -430,7 +430,7 @@ codeunit 51029 "LD Correct Posted Documents"
         OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
     end;
 
-    local procedure GetExtQuantity(pDoc: Code[20]; pTipo: Integer): Text
+    procedure GetExtQuantity(pDoc: Code[20]; pTipo: Integer): Text
     var
         lclCantidad: Integer;
         lclPurchInvHeader: Record "Purch. Inv. Header";
