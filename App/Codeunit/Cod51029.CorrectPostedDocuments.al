@@ -1141,8 +1141,8 @@ codeunit 51029 "LD Correct Posted Documents"
         AppliedDocumentNo := '';
         if SalesHeader."Applies-to Doc. No." <> '' then begin
             AppliedDocumentNo := SalesHeader."Applies-to Doc. No.";
-            if SalesHeader."Applies-to Document Date Ref." <> 0D then
-                PostingDate := SalesHeader."Applies-to Document Date Ref.";
+            // if SalesHeader."Applies-to Document Date Ref." <> 0D then
+            //     PostingDate := SalesHeader."Applies-to Document Date Ref.";
             if SalesHeader."Legal Document Ref." <> '' then
                 LegalDocument := SalesHeader."Legal Document Ref.";
         end;
