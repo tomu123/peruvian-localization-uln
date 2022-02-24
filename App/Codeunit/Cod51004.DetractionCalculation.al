@@ -498,7 +498,7 @@ codeunit 51004 "DetrAction Calculation"
                 Campos[2] := Company."VAT Registration No.";
                 Campos[4] := format(LotString);
                 VendLedgEntryTemp.Reset();
-                if VendLedgEntryTemp.FindFirst() then
+                if VendLedgEntryTemp.FindFirst() then begin
                     repeat
                         PurchInvHeader.Reset();
                         PurchInvHeader.SetRange("No.", VendLedgEntryTemp."document No.");
@@ -511,6 +511,7 @@ codeunit 51004 "DetrAction Calculation"
                                 intCount += 1;
                             end;
                     until VendLedgEntryTemp.Next() = 0;
+                end;
                 Campos[3] := format(SLSetup."SUNAT Generation Date", 0, '<Year,2>');
                 if PENAmount > 0 then Begin
                     StrPENAmount := format(Round(PENAmount, 1)) + '00';
