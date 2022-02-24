@@ -10668,6 +10668,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Maestro Datos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action MasterData - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 1334252824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action ModifyCustomer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2278416699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19667,6 +19672,16 @@
           <source>Preferred Bank Acc. Code ME</source>
           <note from="Developer" annotates="general" priority="2">ESM="Banco Recaudación ME"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Preferred Bank Account Code ME - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1346423013 - Field 3331643634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Revised Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cliente revisado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Revised Customer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1346423013 - Field 3331643634 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Open,Revised</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Pendiente,Revisado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Revised Customer - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1346423013 - Field 2732717330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>SUNAT Condition</source>

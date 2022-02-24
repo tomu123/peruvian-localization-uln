@@ -664,6 +664,25 @@ page 51003 "Setup Localization"
                     CUOMgt.CorrectCorrelativeCUO();
                 end;
             }
+            action(ModifyCustomer)
+            {
+                ApplicationArea = All;
+                Caption = 'Modify Customer';
+                Image = ErrorLog;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                begin
+                    if UserId <> 'SUPER' then
+                        Error('Su usuario no tiene permisos.');
+                    Customer.Reset();
+                    Customer.ModifyAll("Revised Customer", Customer."Revised Customer"::Revised);
+                end;
+            }
 
             // action(UpdateCustomer) //Eliminar
             // {

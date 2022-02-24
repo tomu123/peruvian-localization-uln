@@ -3,7 +3,13 @@ pageextension 51029 "Cnslt. Ruc Customer List" extends "Customer List"
     layout
     {
         // Add changes to page layout here
-
+        addafter(Name)
+        {
+            field("Revised Customer"; "Revised Customer")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
     actions

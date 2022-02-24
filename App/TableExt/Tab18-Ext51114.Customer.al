@@ -60,6 +60,12 @@ tableextension 51114 "ST Customer" extends Customer
             Caption = 'ModifyCust', comment = 'ESM="Cliente modificado"';
             DataClassification = ToBeClassified;
         }
+        field(57902; "Revised Customer"; Option)
+        {
+            Caption = 'Revised Customer', comment = 'ESM="Cliente revisado"';
+            OptionCaption = 'Open,Revised', Comment = 'ESM="Pendiente,Revisado"';
+            OptionMembers = Open,Revised;
+        }
 
         //Ubigeo Begin **********************************************************************************************************
         modify(County)

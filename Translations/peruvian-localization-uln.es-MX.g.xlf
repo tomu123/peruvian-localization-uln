@@ -3456,6 +3456,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field Foreing Residence Not Address - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3876948818 - Field 773347574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICEBPER</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field ICEBPER - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3876948818 - Field 1573881479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ISC Amount</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -18542,7 +18547,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Acc. Book VAT Posting Setup - Field Purchase Record Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1185308230 - Field 479080674 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
-          <source>TAXED AND / OR EXPORTED,TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED,NOT TAXED,ISC,OTHER TAXES AND CHARGES,TAX REFUND</source>
+          <source>TAXED AND / OR EXPORTED,TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED,NOT TAXED,ISC,OTHER TAXES AND CHARGES,TAX REFUND,ICEBER</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Acc. Book VAT Posting Setup - Field Purchase Record Type - Property OptionCaption</note>
         </trans-unit>
@@ -18582,6 +18587,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Analityc G/L Account - Field PR Generic Purchase - Property Caption</note>
           <target>Compra genérica</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1874461389 - Field 675239242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
+          <source>Adjusted Currency Factor</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Factor divisa ajustada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Adjusted Currency Factor - Property Caption</note>
+          <target>Factor divisa ajustada</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1874461389 - Field 2168275062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
           <source>Closed by Currency Amount</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cerrado por importe en divisa"</note>
@@ -18617,6 +18628,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="FE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Global Dimension FE - Property Caption</note>
           <target>FE</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1874461389 - Field 3826939645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
+          <source>Original Currency Factor</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Factor divisa original"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Original Currency Factor - Property Caption</note>
+          <target>Factor divisa original</target>
         </trans-unit>
         <trans-unit id="TableExtension 1874461389 - Field 2280937076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
           <source>Payables Account</source>
@@ -21315,6 +21332,18 @@
           <note from="Developer" annotates="general" priority="2">ESM="Banco Recaudación ME"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Preferred Bank Account Code ME - Property Caption</note>
           <target>Banco Recaudación ME</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1346423013 - Field 3331643634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Revised Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cliente revisado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Revised Customer - Property Caption</note>
+          <target>Cliente revisado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1346423013 - Field 3331643634 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Open,Revised</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Pendiente,Revisado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field Revised Customer - Property OptionCaption</note>
+          <target>Pendiente,Revisado</target>
         </trans-unit>
         <trans-unit id="TableExtension 1346423013 - Field 2732717330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>SUNAT Condition</source>
