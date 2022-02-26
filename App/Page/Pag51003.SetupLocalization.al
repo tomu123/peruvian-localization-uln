@@ -664,26 +664,55 @@ page 51003 "Setup Localization"
                     CUOMgt.CorrectCorrelativeCUO();
                 end;
             }
-            action(ModifyCustomer)
-            {
-                ApplicationArea = All;
-                Caption = 'Modify Customer';
-                Image = ErrorLog;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+            // action(ModifyCustomer)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Modify Customer';
+            //     Image = ErrorLog;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     PromotedIsBig = true;
 
-                trigger OnAction()
-                var
-                    Customer: Record Customer;
-                begin
-                    if UserId <> 'SUPER' then
-                        Error('Su usuario no tiene permisos.');
-                    Customer.Reset();
-                    Customer.ModifyAll("Revised Customer", Customer."Revised Customer"::Revised);
-                end;
-            }
-
+            //     trigger OnAction()
+            //     var
+            //         Customer: Record Customer;
+            //     begin
+            //         if UserId <> 'SUPER' then
+            //             Error('Su usuario no tiene permisos.');
+            //         Customer.Reset();
+            //         Customer.ModifyAll("Revised Customer", Customer."Revised Customer"::Revised);
+            //     end;
+            // }
+            // action(CorrectExtorno)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Corregir Estado FE';
+            //     trigger OnAction()
+            //     var
+            //         myInt: Integer;
+            //         SalesInvHead: Record "Sales Invoice Header";
+            //         GLEntry: Record "G/L Entry";
+            //         VatEntry: Record "VAT Entry";
+            //         CustLedEntry: Record "Cust. Ledger Entry";
+            //         ItemLedEntry: Record "Item Ledger Entry";
+            //         ValueEntry: Record "Value Entry";
+            //     begin
+            //         if UserId <> 'SUPER' then
+            //             Error('Su usuarrio no tiene permisos');
+            //         SalesInvHead.Get('F001-00027775');
+            //         SalesInvHead."Legal Status" := SalesInvHead."Legal Status"::Success;
+            //         SalesInvHead.Modify();
+            //         GLEntry.Reset();
+            //         GLEntry.SetRange("Document No.", 'F001-00027775');
+            //         GLEntry.ModifyAll("Legal Status", GLEntry."Legal Status"::Success);
+            //         VatEntry.Reset();
+            //         VatEntry.SetRange("Document No.", 'F001-00027775');
+            //         VatEntry.ModifyAll("Legal Status", VatEntry."Legal Status"::Success);
+            //         CustLedEntry.Get(61588);
+            //         CustLedEntry."Legal Status" := CustLedEntry."Legal Status"::Success;
+            //         CustLedEntry.Modify();
+            //     end;
+            // }
             // action(UpdateCustomer) //Eliminar
             // {
             //     ApplicationArea = All;

@@ -101,7 +101,7 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
-            column(ICEBPER; ICEBPER)
+            column(ICBPER; ICBPER)
             {
                 IncludeCaption = true;
             }

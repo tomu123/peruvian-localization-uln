@@ -1086,10 +1086,10 @@ codeunit 51001 "Accountant Book Management"
                     "ISC Amount" += VATEntry.Base;
                 VATPostingSetup."Purchase Record Type"::"OTHER TAXES AND CHARGES":
                     "Others Amount" += VATEntry.Base;
-                VATPostingSetup."Purchase Record Type"::ICEBER:
-                    ICEBPER += VATEntry.Amount;
+                VATPostingSetup."Purchase Record Type"::ICBPER:
+                    ICBPER += VATEntry.Amount;
             end;
-            "Total Amount" := "Taxed Base" + "Taxed VAT" + "Untaxed Base" + "Untaxed VAT" + "Refund Base" + "Refund VAT" + "NOT Taxed VAT" + "ISC Amount" + "Others Amount" + ICEBPER; //FMM 18.02.22
+            "Total Amount" := "Taxed Base" + "Taxed VAT" + "Untaxed Base" + "Untaxed VAT" + "Refund Base" + "Refund VAT" + "NOT Taxed VAT" + "ISC Amount" + "Others Amount" + ICBPER; //FMM 18.02.22
             "Payment indicator" := fnGetPurchPaymentIndicador(VATEntry); //ULN FM 06-12-21 Indicador de pago
         end;
 
@@ -1277,7 +1277,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Refund VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 19
                                 MyLineText += Format("NOT Taxed VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 20
                                 MyLineText += Format("ISC Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
-                                MyLineText += Format(ICEBPER, 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22 Impuesto a la bolsa //FMM 18.02.22
+                                MyLineText += Format(ICBPER, 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22 Impuesto a la bolsa //FMM 18.02.22
                                 MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23
                                 MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
                                 MyLineText += FormatCurrency("Currency Code") + MySeparator;//Field 25

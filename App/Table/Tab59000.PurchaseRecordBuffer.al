@@ -208,7 +208,7 @@ table 59000 "Purchase Record Buffer"
             DataClassification = ToBeClassified;
         }
         //FMM 18.02.22
-        field(59050; "ICEBPER"; Decimal)
+        field(59050; "ICBPER"; Decimal)
         {
             DataClassification = ToBeClassified;
         }

@@ -2528,10 +2528,13 @@ codeunit 51038 "Mgmt Collection"
         AppliedPmtEntry: Record "Applied Payment Entry";
         CustLedgEntry: Record "Cust. Ledger Entry";
         VendLedgEntry: Record "Vendor Ledger Entry";
+        SourceCodeSetup: Record "Source Code Setup";
     begin
         SLSetup.Get();
         GLSetup.Get();
         if not SLSetup."Validate Curr. Exch. Posting" then
+            exit;
+        if SourceCodeSetup."Code Close" = GenJournalLine."Source Code" then
             exit;
         CurrExchRate.Reset();
         CurrExchRate.SetRange("Currency Code", GLSetup."Additional Reporting Currency");

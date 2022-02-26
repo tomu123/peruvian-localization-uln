@@ -3158,10 +3158,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field Foreing Residence Not Address - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3876948818 - Field 773347574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICEBPER</source>
+        <trans-unit id="Table 3876948818 - Field 2636284545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICBPER</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field ICEBPER - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field ICBPER - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3876948818 - Field 1573881479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ISC Amount</source>
@@ -10668,11 +10668,6 @@
           <note from="Developer" annotates="general" priority="2">ESM="Maestro Datos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action MasterData - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 4047494536 - Action 1334252824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Modify Customer</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action ModifyCustomer - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2278416699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16113,6 +16108,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Anular"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales Inv. - Action CancellLegalDocAction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 697845627 - Action 701109401 - Method 1377591017 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 697845627">
+          <source>El documento %1 supera los 7 dias ¿Desea anular el comprobante?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales Inv. - Action CancellLegalDocAction - Method OnAction - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 697845627 - Action 595570189 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Reverse this posted invoice and automatically create a new invoice with the same information that you can correct before posting. This posted invoice will automatically be canceled.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17264,7 +17264,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Acc. Book VAT Posting Setup - Field Purchase Record Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1185308230 - Field 479080674 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
-          <source>TAXED AND / OR EXPORTED,TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED,NOT TAXED,ISC,OTHER TAXES AND CHARGES,TAX REFUND,ICEBER</source>
+          <source>TAXED AND / OR EXPORTED,TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED,NOT TAXED,ISC,OTHER TAXES AND CHARGES,TAX REFUND,ICBPER</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Acc. Book VAT Posting Setup - Field Purchase Record Type - Property OptionCaption</note>
         </trans-unit>
