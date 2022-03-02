@@ -30,6 +30,28 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
                 Editable = false;
             }
         }
+        addbefore("Due Date")
+        {
+            field(DocumentDate_; "Document Date")
+            {
+                ApplicationArea = All;
+            }
+        }
+        addafter("Due Date")
+        {
+            field(PaymentMethodCode_; "Payment Terms Code")
+            {
+                ApplicationArea = All;
+            }
+        }
+        modify("Document Date")
+        {
+            Visible = false;
+        }
+        modify("Payment Terms Code")
+        {
+            Visible = false;
+        }
     }
 
     actions

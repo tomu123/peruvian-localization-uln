@@ -36,6 +36,10 @@ pageextension 51067 "Setup General Ledger Entries" extends "General Ledger Entri
             {
                 ApplicationArea = All;
             }
+            field("System-Created Entry"; "System-Created Entry")
+            {
+                ApplicationArea = All;
+            }
         }
         addafter("External Document No.")
         {

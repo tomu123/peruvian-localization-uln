@@ -2352,7 +2352,7 @@ report 51013 "ST Adjust Exchange Rates"
             //++ begin ULN::RRR 001  2020.07.17  v.001
             if "Adjusted Currency Factor" <> STCurrencyFactor then begin
                 "Adjusted Currency Factor" := STCurrencyFactor;
-                "AB Adjusted Currency Factor" := STCurrencyFactor; //FMM 17.02.22
+                // "AB Adjusted Currency Factor" := STCurrencyFactor; //FMM 17.02.22
                 Modify;
             end;
             //++ END ULN::RRR 001  2020.07.17  v.001

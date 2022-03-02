@@ -1251,6 +1251,28 @@ codeunit 51029 "LD Correct Posted Documents"
         end;
         OnAfterRenameRetentionDocument(pDocumentNo, NewDocumentNo);
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnBeforeTestStatusOpen', '', false, false)]
+    local procedure OnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; PurchaseHeader: Record "Purchase Header")
+    begin
+        if PurchaseLine."Document Type" <> PurchaseLine."Document Type"::Order then
+            exit;
+        if PurchaseLine.Type = PurchaseLine.Type::" " then
+            exit;
+        PurchaseLine."System-Created Entry" := true;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterTestStatusOpen', '', false, false)]
+    local procedure OnAfterTestStatusOpen(var PurchaseLine: Record "Purchase Line"; PurchaseHeader: Record "Purchase Header")
+    var
+        auxFlag: Boolean;
+    begin
+        if PurchaseLine."Document Type" <> PurchaseLine."Document Type"::Order then
+            exit;
+        if PurchaseLine.Type = PurchaseLine.Type::" " then
+            exit;
+        PurchaseLine."System-Created Entry" := false;
+    end;
     //********************************************* End Subcriptions ************************************************
 
 
