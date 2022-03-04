@@ -3678,6 +3678,16 @@
           <note from="Developer" annotates="general" priority="2">ESM="Cód. Hash"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Hash Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3511451743 - Field 3478782985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Legal Status</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Estado legal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Legal Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3511451743 - Field 3478782985 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Success,Anulled,OutFlow</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Normal,Anulado,Extornado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Legal Status - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Retention</source>
           <note from="Developer" annotates="general" priority="2">ESM= "Retención Manual"</note>
