@@ -3678,6 +3678,16 @@
           <note from="Developer" annotates="general" priority="2">ESM="Cód. Hash"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Hash Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3511451743 - Field 3478782985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Legal Status</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Estado legal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Legal Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3511451743 - Field 3478782985 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Success,Anulled,OutFlow</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Normal,Anulado,Extornado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Legal Status - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 3511451743 - Field 1159100994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manual Retention</source>
           <note from="Developer" annotates="general" priority="2">ESM= "Retención Manual"</note>
@@ -6228,6 +6238,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method PostFileToControlFileRecord - NamedType ConfirmDownload</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 1160803957 - NamedType 519063157" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Departament undefined for "Country Code" %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Departamento no definido para Cód. País %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ValidateRententionInsert - NamedType UndefinedDepartement</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 290746390 - NamedType 1106567674" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No %1 is detraction.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El documento N° %1 tiene detracción."</note>
@@ -6327,21 +6342,6 @@
           <source>There are no exchange rates for currency %1 and date %2. Do you want to add them now? Otherwise, the last change you made will be reverted.</source>
           <note from="Developer" annotates="general" priority="2">%1 - currency code, %2 - posting date</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method SetOnBeforeUpdateCurrencyFactorSalesHeader - NamedType MissingExchangeRatesQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 2285122883 - NamedType 942221704" size-unit="char" translate="yes" xml:space="preserve">
-          <source>attached file PDF not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM=" archivo adjunto PDF no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method ValidateFileAdjn - NamedType DocumentAttachmentErrorPDF</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 2285122883 - NamedType 220290050" size-unit="char" translate="yes" xml:space="preserve">
-          <source>attached file not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM=" archivo adjunto no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method ValidateFileAdjn - NamedType DocumentAttachmentError</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 2285122883 - NamedType 1373649873" size-unit="char" translate="yes" xml:space="preserve">
-          <source>attached file XML not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM=" archivo adjunto XML no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method ValidateFileAdjn - NamedType DocumentAttachmentErrorXML</note>
         </trans-unit>
         <trans-unit id="Codeunit 4047494536 - Method 3501246382 - NamedType 220290050" size-unit="char" translate="yes" xml:space="preserve">
           <source>attached file not exist.</source>

@@ -28,6 +28,10 @@ page 51011 "Retention Ledger Entry"
                 {
                     ApplicationArea = All;
                 }
+                field("Legal Status"; "Legal Status")
+                {
+                    ApplicationArea = All;
+                }
                 field("Amount Retention"; Rec."Amount Retention")
                 {
                     ApplicationArea = All;

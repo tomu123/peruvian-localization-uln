@@ -151,6 +151,12 @@ table 51005 "Retention Ledger Entry"
             DataClassification = ToBeClassified;
             Caption = 'Manual Retention', Comment = 'ESM= "Retención Manual"';
         }
+        field(51026; "Legal Status"; Option)
+        {
+            Caption = 'Legal Status', Comment = 'ESM="Estado legal"';
+            OptionMembers = Success,Anulled,OutFlow;
+            OptionCaption = 'Success,Anulled,OutFlow', Comment = 'ESM="Normal,Anulado,Extornado"';
+        }
     }
 
     keys

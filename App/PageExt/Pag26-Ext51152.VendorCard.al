@@ -206,14 +206,24 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
             field(PostCode; Rec."Post Code")
             {
                 Caption = 'Departament', comment = 'ESM="Departamento"';
-                ApplicationArea = All;
-                Editable = false;
+                trigger OnValidate()
+                var
+                    myInt: Integer;
+                begin
+                    UbigeoMgt.Departament("Country/Region Code", "Post Code");
+                end;
+
             }
             field(City2; Rec.City)
             {
                 Caption = 'City', comment = 'ESM="Provincia"';
                 ApplicationArea = All;
-                Editable = false;
+                trigger OnValidate()
+                var
+                    myInt: Integer;
+                begin
+                    UbigeoMgt.Province("Country/Region Code", "Post Code", City);
+                end;
             }
         }
         addafter(County)

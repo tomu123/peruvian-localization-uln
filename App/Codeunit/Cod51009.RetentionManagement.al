@@ -816,6 +816,7 @@ codeunit 51009 "Retention Management"
             repeat
                 CheckSetup("Manual Retention");
                 VendorLedgerEntry.Get("Retention Applies-to Entry No.");
+                ValidateRententionInsert(VendorLedgerEntry);
                 VendorLedgerEntry.CalcFields("Remaining Amount", "Remaining Amt. (LCY)", "Original Amount", "Original Amt. (LCY)");
                 NextRetentionNo();
                 CreateDetailedRetentionLedgerEntry(TempGLEntryBuf);
@@ -825,6 +826,42 @@ codeunit 51009 "Retention Management"
             until Next() = 0;
             CreateRetentionEntry();
             //Define Electronic Retention
+        end;
+    end;
+
+    local procedure ValidateRententionInsert(VendLE: Record "Vendor Ledger Entry")
+    var
+        myInt: Integer;
+        Vendor: Record Vendor;
+        UbigeoMngt: Codeunit "Ubigeo Management";
+        Ubigeo: Record Ubigeo;
+        UndefinedDepartement: Label 'Departament undefined for "Country Code" %1.', Comment = 'ESM="Departamento no definido para Cód. País %1"';
+    begin
+        Vendor.Get(VendLE."Vendor No.");
+        if Vendor."VAT Registration Type" = '6' then begin
+            Vendor.TestField("Country/Region Code");
+            if Vendor."Post Code" = '' then
+                Error('El campo departamento no debe de estar vacío para el proveedor %1', Vendor."No.");
+            if Vendor."City" = '' then
+                Error('El campo ciudad no debe de estar vacío para el proveedor %1', Vendor."No.");
+            if Vendor.County = '' then
+                Error('El campo Provincia no debe de estar vacío para el proveedor %1', Vendor."No.");
+            if Vendor."Country/Region Code" <> 'PE' then
+                Error(StrSubstNo(UndefinedDepartement, Vendor."Country/Region Code"));
+            Ubigeo.Reset();
+            Ubigeo.SetRange("Departament Code", Vendor."Post Code");
+            Ubigeo.SetRange("Province Code", '00');
+            Ubigeo.SetRange("District Code", '00');
+            if Ubigeo.IsEmpty then
+                Error('No existe el departamento %1 del proveedor %2', Vendor."Post Code", Vendor."No.");
+
+            Ubigeo.Reset();
+            Ubigeo.SetRange("Departament Code", Vendor."Post Code");
+            Ubigeo.SetRange("Province Code", Vendor.City);
+            Ubigeo.SetRange("District Code", '00');
+            if Ubigeo.IsEmpty then
+                Error('No existe la provincia %1 del proveedor %2', Vendor.City, Vendor."No.");
+
         end;
     end;
 
@@ -1003,6 +1040,7 @@ codeunit 51009 "Retention Management"
         Vendor: Record Vendor;
         PurchInvHeader: Record "Purch. Inv. Header";
         ErrorDocumentDetraction: Label 'Document No %1 is detraction.', Comment = 'ESM="El documento N° %1 tiene detracción."';
+        UbigeoMngt: Codeunit "Ubigeo Management";
     begin
         if not AppliedRetention then
             exit;
