@@ -633,7 +633,7 @@ report 51726 GenJournalReturn
 
         //---------------
         IF (gTxtDato[18] <> '') and (gTxtDato[19] <> '') THEN
-            recGJLine."Job Quantity" := 1;
+            recGJLine.Validate("Job Quantity", 1);
         //--[NRO DOCUMENTO]
         if gTxtDato[16] <> '' then
             recGJLine."Document No." := gTxtDato[16]

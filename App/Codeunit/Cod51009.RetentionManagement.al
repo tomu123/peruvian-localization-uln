@@ -820,6 +820,7 @@ codeunit 51009 "Retention Management"
                 NextRetentionNo();
                 CreateDetailedRetentionLedgerEntry(TempGLEntryBuf);
                 "Retention Applies-to Entry No." := 0;
+                "Retention No." := RetentionNo;
                 Modify();
             until Next() = 0;
             CreateRetentionEntry();

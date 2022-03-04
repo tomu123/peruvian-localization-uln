@@ -88,7 +88,7 @@ pageextension 51127 "ST General Journal" extends "General Journal"
                     myInt: Integer;
                 begin
                     if ("Job No." <> '') and ("Job Task No." <> '') then
-                        "Job Quantity" := 1;
+                        Validate("Job Quantity", 1);
 
                 end;
             }
