@@ -38,34 +38,54 @@ pageextension 51183 "PR Purchase Order Subform" extends "Purchase Order Subform"
         modify("VAT Prod. Posting Group")
         {
             Visible = true;
+            Editable = gStatus;
         }
         modify("No.")
         {
             ShowMandatory = true;
+            Editable = gStatus;
         }
         modify(Type)
         {
             ShowMandatory = true;
+            Editable = gStatus;
         }
         modify("Location Code")
         {
             ShowMandatory = true;
+            Editable = gStatus;
         }
         modify(Quantity)
         {
             ShowMandatory = true;
+            Editable = gStatus;
         }
         modify("Direct Unit Cost")
         {
             ShowMandatory = true;
+            Editable = gStatus;
+        }
+        modify(Description)
+        {
+            Editable = gStatus;
+        }
+        modify("Line Amount")
+        {
+            Editable = gStatus;
         }
         modify("Job No.")
         {
             ShowMandatory = true;
+            Editable = gStatus;
         }
         modify("Job Task No.")
         {
             ShowMandatory = true;
+            Editable = gStatus;
+        }
+        modify("Unit of Measure Code")
+        {
+            Editable = gStatus;
         }
         modify("Shortcut Dimension 1 Code")
         {
@@ -104,6 +124,7 @@ pageextension 51183 "PR Purchase Order Subform" extends "Purchase Order Subform"
             field("Description 2"; "Description 2")
             {
                 ApplicationArea = All;
+                Editable = gStatus;
             }
         }
         moveafter("Description 2"; "Unit of Measure Code")
@@ -166,6 +187,23 @@ pageextension 51183 "PR Purchase Order Subform" extends "Purchase Order Subform"
     var
         DocType: Boolean;
         BudgetName: code[20];
+        gStatus: Boolean;
+
+    trigger OnAfterGetCurrRecord()
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        if PurchaseHeader.Get("Document Type"::Order, "Document No.") then
+            gStatus := PurchaseHeader.Status = PurchaseHeader.Status::Open;
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+        PurchaseHeader: Record "Purchase Header";
+    begin
+        if PurchaseHeader.Get("Document Type"::Order, "Document No.") then
+            gStatus := PurchaseHeader.Status = PurchaseHeader.Status::Open;
+    end;
 
     procedure ConsultBudget()
     var

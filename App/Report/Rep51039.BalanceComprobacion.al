@@ -142,14 +142,14 @@ report 51039 "BALANCE DE COMPROBACION"
                         DecimalValues[9] := gimporte
                     ELSE
                         DecimalValues[10] := ABS(gimporte);
-                //PC 20-05-25+++++++++++++
-                IF "G/L Account"."No." IN ['676101', '676102'] THEN BEGIN
-                    IF gimporte > 0 THEN
-                        DecimalValues[9] := gimporte
-                    ELSE
-                        DecimalValues[10] := ABS(gimporte);
-                END;
-                //PC 20-05-25+++++++++++++
+                // //PC 20-05-25+++++++++++++
+                // IF "G/L Account"."No." IN ['676101', '676102'] THEN BEGIN
+                //     IF gimporte > 0 THEN
+                //         DecimalValues[9] := gimporte
+                //     ELSE
+                //         DecimalValues[10] := ABS(gimporte);
+                // END;
+                // //PC 20-05-25+++++++++++++
 
                 IF COPYSTR("G/L Account"."No.", 1, 2) IN ['60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '88'] THEN ////se agrego la cuenta '88'
                     IF gimporte > 0 THEN

@@ -30,6 +30,28 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
                 Editable = false;
             }
         }
+        addbefore("Due Date")
+        {
+            field(DocumentDate_; "Document Date")
+            {
+                ApplicationArea = All;
+            }
+        }
+        addafter("Due Date")
+        {
+            field(PaymentMethodCode_; "Payment Terms Code")
+            {
+                ApplicationArea = All;
+            }
+        }
+        modify("Document Date")
+        {
+            Visible = false;
+        }
+        modify("Payment Terms Code")
+        {
+            Visible = false;
+        }
     }
 
     actions
@@ -72,7 +94,12 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
                 PromotedOnly = true;
                 Scope = "Repeater";
                 trigger OnAction()
+                var
+                    Text001: Label 'El documento %1 supera los 7 dias ¿Desea anular el comprobante?';
                 begin
+                    if (Today - 6) >= Rec."Posting Date" then
+                        if not Confirm(StrSubstNo(Text001, Rec."No."), false) then
+                            exit;
                     LDCorrectPstdDoc.SalesCancelInvoice(Rec);
                 end;
             }

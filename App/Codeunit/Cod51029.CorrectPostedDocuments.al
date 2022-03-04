@@ -430,7 +430,7 @@ codeunit 51029 "LD Correct Posted Documents"
         OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
     end;
 
-    local procedure GetExtQuantity(pDoc: Code[20]; pTipo: Integer): Text
+    procedure GetExtQuantity(pDoc: Code[20]; pTipo: Integer): Text
     var
         lclCantidad: Integer;
         lclPurchInvHeader: Record "Purch. Inv. Header";
@@ -1141,8 +1141,8 @@ codeunit 51029 "LD Correct Posted Documents"
         AppliedDocumentNo := '';
         if SalesHeader."Applies-to Doc. No." <> '' then begin
             AppliedDocumentNo := SalesHeader."Applies-to Doc. No.";
-            if SalesHeader."Applies-to Document Date Ref." <> 0D then
-                PostingDate := SalesHeader."Applies-to Document Date Ref.";
+            // if SalesHeader."Applies-to Document Date Ref." <> 0D then
+            //     PostingDate := SalesHeader."Applies-to Document Date Ref.";
             if SalesHeader."Legal Document Ref." <> '' then
                 LegalDocument := SalesHeader."Legal Document Ref.";
         end;
@@ -1250,6 +1250,28 @@ codeunit 51029 "LD Correct Posted Documents"
                 until DetailRetentionLedEntry.Next() = 0;
         end;
         OnAfterRenameRetentionDocument(pDocumentNo, NewDocumentNo);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnBeforeTestStatusOpen', '', false, false)]
+    local procedure OnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; PurchaseHeader: Record "Purchase Header")
+    begin
+        if PurchaseLine."Document Type" <> PurchaseLine."Document Type"::Order then
+            exit;
+        if PurchaseLine.Type = PurchaseLine.Type::" " then
+            exit;
+        PurchaseLine."System-Created Entry" := true;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnAfterTestStatusOpen', '', false, false)]
+    local procedure OnAfterTestStatusOpen(var PurchaseLine: Record "Purchase Line"; PurchaseHeader: Record "Purchase Header")
+    var
+        auxFlag: Boolean;
+    begin
+        if PurchaseLine."Document Type" <> PurchaseLine."Document Type"::Order then
+            exit;
+        if PurchaseLine.Type = PurchaseLine.Type::" " then
+            exit;
+        PurchaseLine."System-Created Entry" := false;
     end;
     //********************************************* End Subcriptions ************************************************
 

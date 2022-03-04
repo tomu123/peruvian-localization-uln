@@ -78,6 +78,10 @@ pageextension 51150 "ST Employee Card" extends "Employee Card"
         {
             Visible = false;
         }
+        modify("Job Title")
+        {
+            Visible = false;
+        }
         //Ubigeo End **********************************************************************************************************
     }
 

@@ -15,6 +15,13 @@ pageextension 51028 "Cnslt. Ruc Customer Card" extends "Customer Card"
                 Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Banco Recaudación ME"';
             }
         }
+        addlast(General)
+        {
+            field("Revised Customer"; "Revised Customer")
+            {
+                ApplicationArea = All;
+            }
+        }
         addafter("VAT Registration No.")
         {
             field("SUNAT Status"; "SUNAT Status")

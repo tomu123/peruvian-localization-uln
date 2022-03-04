@@ -6,8 +6,8 @@ tableextension 51012 "Acc. Book VAT Posting Setup" extends "VAT Posting Setup"
         field(51000; "Purchase Record Type"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "TAXED AND / OR EXPORTED","TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED","NOT TAXED","ISC","OTHER TAXES AND CHARGES","TAX REFUND";
-            OptionCaption = 'TAXED AND / OR EXPORTED,TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED,NOT TAXED,ISC,OTHER TAXES AND CHARGES,TAX REFUND';
+            OptionMembers = "TAXED AND / OR EXPORTED","TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED","NOT TAXED","ISC","OTHER TAXES AND CHARGES","TAX REFUND","ICBPER";
+            OptionCaption = 'TAXED AND / OR EXPORTED,TAXED AND / OR EXPORTED AND TO OPERATIONS NOT TAXED,NOT TAXED,ISC,OTHER TAXES AND CHARGES,TAX REFUND,ICBPER';
         }
         field(51001; "Sales Record Type"; Option)
         {

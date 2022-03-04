@@ -313,10 +313,15 @@ codeunit 51000 "Legal Document Management"
         SLSetup: Record "Setup Localization";
         GenJnlLine_: Record "Gen. Journal Line";
         CurrExchRate: Record "Currency Exchange Rate";
+        SourceCodeSetup: Record "Source Code Setup";
     begin
         SLSetup.Get();
         GLSetup.Get();
+        SourceCodeSetup.Get();
         if not SLSetup."Validate Curr. Exch. Posting" then
+            exit;
+
+        if SourceCodeSetup."Code Close" = GenJnlLine."Source Code" then
             exit;
         CurrExchRate.Reset();
         CurrExchRate.SetRange("Currency Code", GLSetup."Additional Reporting Currency");

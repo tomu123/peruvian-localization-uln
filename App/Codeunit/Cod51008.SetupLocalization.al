@@ -215,6 +215,8 @@ codeunit 51008 "Setup Localization"
         EmployeeLedgerEntry."Closed by Currency Amount" := CVLedgerEntryBuffer."Closed by Currency Amount";
         EmployeeLedgerEntry."Adjusted Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor";
         EmployeeLedgerEntry."Original Currency Factor" := CVLedgerEntryBuffer."Original Currency Factor";
+        // EmployeeLedgerEntry."AB Adjusted Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor"; //FMM 17.02.22
+        // EmployeeLedgerEntry."AB Original Currency Factor" := CVLedgerEntryBuffer."Original Currency Factor"; //FMM 17.02.22
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnBeforeApplyStdCodesToSalesLines', '', false, false)]
@@ -519,6 +521,8 @@ codeunit 51008 "Setup Localization"
     begin
         CVLedgerEntryBuffer."Adjusted Currency Factor" := EmployeeLedgerEntry."Adjusted Currency Factor";
         CVLedgerEntryBuffer."Original Currency Factor" := EmployeeLedgerEntry."Original Currency Factor";
+        // CVLedgerEntryBuffer."Adjusted Currency Factor" := EmployeeLedgerEntry."AB Adjusted Currency Factor"; //FMM 17.02.22
+        // CVLedgerEntryBuffer."Original Currency Factor" := EmployeeLedgerEntry."AB Original Currency Factor"; //FMM 17.02.22
     end;
 
     procedure GetDimensionNo(DimensionCode: Code[20]; DimValueCode: Code[20]): Integer

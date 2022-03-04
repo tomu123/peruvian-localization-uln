@@ -101,6 +101,10 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
+            column(ICBPER; ICBPER)
+            {
+                IncludeCaption = true;
+            }
             column(Total_Amount; TotalAmountIGV)
             {
                 //IncludeCaption = true;
