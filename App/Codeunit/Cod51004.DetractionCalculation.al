@@ -505,7 +505,8 @@ codeunit 51004 "DetrAction Calculation"
                         PurchInvHeader.SetRange("Purch. DetrAction", true);
                         if PurchInvHeader.Find('-') then
                             if intCount = 1 then Begin
-                                StrLot := CopyStr(format(Date2DMY(PurchInvHeader."document Date", 3)), 3, 2) + LotString;
+                                //StrLot := CopyStr(format(Date2DMY(PurchInvHeader."document Date", 3)), 3, 2) + LotString;
+                                StrLot := format(SLSetup."SUNAT Generation Date", 0, '<Year,2>') + LotString;
                                 Campos[3] := CopyStr(format(Date2DMY(PurchInvHeader."document Date", 3)), 3, 2);
                                 StrString := StrString + StrLot;
                                 intCount += 1;
