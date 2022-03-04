@@ -6732,11 +6732,21 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckGLAccDimError - NamedType DimensionUsedErr</note>
           <target>Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5.</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 1757177771 - NamedType 1824761622" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Todos los movimientos debe ser en la misma divisa.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckPostingGroupError - NamedType PostingGroupErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 3140856375 - NamedType 3907543976" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line %1 has the retention check marked, please calculate withholding for the line.</source>
           <note from="Developer" annotates="general" priority="2">ESM="La linea %1 tiene marcado el check de retención, favor de calcular retención para la linea."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method OnBeforeCode - NamedType EmptyLineForRetention</note>
           <target>La linea %1 tiene marcado el check de retención, favor de calcular retención para la linea.</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 1329162630 - NamedType 1824761622" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Todos los movimientos debe ser en la misma divisa.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method OnBeforePostGenJnlLine - NamedType PostingGroupErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 1316510755 - NamedType 369828050" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to download the following file?</source>
@@ -11137,7 +11147,7 @@
           <target>Reporte Retenciones</target>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 12718425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>UnApply</source>
+          <source>Desliquidar</source>
           <note from="Developer" annotates="general" priority="2">ESM="Desliquidar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action UnApply - Property Caption</note>
           <target>Desliquidar</target>
@@ -17194,8 +17204,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 383949680 - Action 595570189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4135951594">
           <source>Correct Ext.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Extornar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Purch. CrMemos - Action CorrectLegalDocAction - Property Caption</note>
+          <target>Extornar</target>
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 701109401 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Create and post a purchase invoice that reverses this posted purchase credit memo. This posted purchase credit memo will be canceled.</source>
@@ -18486,9 +18497,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 3362382913 - Control 1041034975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>City</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Ciudad"</note>
+          <note from="Developer" annotates="general" priority="2">ESM="Provincia"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Vendor Card - Control City2 - Property Caption</note>
-          <target>Ciudad</target>
+          <target>Provincia</target>
         </trans-unit>
         <trans-unit id="PageExtension 3362382913 - Control 3374398455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Departament</source>
@@ -18571,12 +18582,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Analityc G/L Account - Field PR Generic Purchase - Property Caption</note>
           <target>Compra genérica</target>
         </trans-unit>
-        <trans-unit id="TableExtension 1874461389 - Field 675239242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
-          <source>Adjusted Currency Factor</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Factor divisa ajustada"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Adjusted Currency Factor - Property Caption</note>
-          <target>Factor divisa ajustada</target>
-        </trans-unit>
         <trans-unit id="TableExtension 1874461389 - Field 2168275062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
           <source>Closed by Currency Amount</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cerrado por importe en divisa"</note>
@@ -18612,12 +18617,6 @@
           <note from="Developer" annotates="general" priority="2">ESM="FE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Global Dimension FE - Property Caption</note>
           <target>FE</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 1874461389 - Field 3826939645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
-          <source>Original Currency Factor</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Factor divisa original"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee Ledger Entry - Field Original Currency Factor - Property Caption</note>
-          <target>Factor divisa original</target>
         </trans-unit>
         <trans-unit id="TableExtension 1874461389 - Field 2280937076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1874461389">
           <source>Payables Account</source>
@@ -21434,6 +21433,18 @@
           <note from="Developer" annotates="general" priority="2">ESM="El numero de documento no cumple con el formato requerido."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - NamedType ErrorVatRegistrationNo</note>
           <target>El numero de documento no cumple con el formato requerido.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2576401975 - Field 4115010578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Canal Job</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Canal Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - Field Canal Job - Property Caption</note>
+          <target>Canal Proyecto</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2576401975 - Field 4115010578 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source> ,CCO,Gestor,Excutive,Staff,Directive</source>
+          <note from="Developer" annotates="general" priority="2">ESM=" ,CCO,Gestor,Ejecutivo,Staff,Directivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - Field Canal Job - Property OptionCaption</note>
+          <target> ,CCO,Gestor,Ejecutivo,Staff,Directivo</target>
         </trans-unit>
         <trans-unit id="TableExtension 2576401975 - Field 95233857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Preferred Bank Account Code ME</source>

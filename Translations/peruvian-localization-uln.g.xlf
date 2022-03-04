@@ -6203,10 +6203,20 @@
           <note from="Developer" annotates="general" priority="2">ESM="Una dimensión utilizada en %1 %2, %3, %4 ha causado un error. %5."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckGLAccDimError - NamedType DimensionUsedErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 1757177771 - NamedType 1824761622" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Todos los movimientos debe ser en la misma divisa.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckPostingGroupError - NamedType PostingGroupErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 3140856375 - NamedType 3907543976" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line %1 has the retention check marked, please calculate withholding for the line.</source>
           <note from="Developer" annotates="general" priority="2">ESM="La linea %1 tiene marcado el check de retención, favor de calcular retención para la linea."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method OnBeforeCode - NamedType EmptyLineForRetention</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 1329162630 - NamedType 1824761622" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Todos los movimientos debe ser en la misma divisa.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method OnBeforePostGenJnlLine - NamedType PostingGroupErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 1316510755 - NamedType 369828050" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to download the following file?</source>
@@ -6317,21 +6327,6 @@
           <source>There are no exchange rates for currency %1 and date %2. Do you want to add them now? Otherwise, the last change you made will be reverted.</source>
           <note from="Developer" annotates="general" priority="2">%1 - currency code, %2 - posting date</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method SetOnBeforeUpdateCurrencyFactorSalesHeader - NamedType MissingExchangeRatesQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 2285122883 - NamedType 942221704" size-unit="char" translate="yes" xml:space="preserve">
-          <source>attached file PDF not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM=" archivo adjunto PDF no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method ValidateFileAdjn - NamedType DocumentAttachmentErrorPDF</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 2285122883 - NamedType 220290050" size-unit="char" translate="yes" xml:space="preserve">
-          <source>attached file not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM=" archivo adjunto no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method ValidateFileAdjn - NamedType DocumentAttachmentError</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 2285122883 - NamedType 1373649873" size-unit="char" translate="yes" xml:space="preserve">
-          <source>attached file XML not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM=" archivo adjunto XML no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method ValidateFileAdjn - NamedType DocumentAttachmentErrorXML</note>
         </trans-unit>
         <trans-unit id="Codeunit 4047494536 - Method 3501246382 - NamedType 220290050" size-unit="char" translate="yes" xml:space="preserve">
           <source>attached file not exist.</source>
@@ -19757,6 +19752,16 @@
           <source>The length of the document does not meet the required length and format.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El numero de documento no cumple con el formato requerido."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - NamedType ErrorVatRegistrationNo</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2576401975 - Field 4115010578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Canal Job</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Canal Proyecto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - Field Canal Job - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2576401975 - Field 4115010578 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source> ,CCO,Gestor,Excutive,Staff,Directive</source>
+          <note from="Developer" annotates="general" priority="2">ESM=" ,CCO,Gestor,Ejecutivo,Staff,Directivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - Field Canal Job - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2576401975 - Field 95233857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Preferred Bank Account Code ME</source>

@@ -29,6 +29,10 @@ pageextension 51150 "ST Employee Card" extends "Employee Card"
             {
                 ApplicationArea = All;
             }
+            field("Canal Job"; "Canal Job")
+            {
+                ApplicationArea = All;
+            }
         }
         //Legal Document End
 
