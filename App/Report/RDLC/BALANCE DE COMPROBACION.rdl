@@ -2968,7 +2968,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>FORMATO 3.17.2 : "LIBRO DE INVENTARIOS Y BALANCES - BALANCE DE COMPROBACIÛN DOLARIZADO"</Value>
+                      <Value>FORMATO 3.17 : "LIBRO DE INVENTARIOS Y BALANCES - BALANCE DE COMPROBACIÓN"</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3002,7 +3002,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>EJERCICIO O PERõODO:</Value>
+                      <Value>EJERCICIO O PERÍODO:</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3070,7 +3070,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>APELLIDOS Y NOMBRES, DENOMINACIÛN O RAZÛN SOCIAL:</Value>
+                      <Value>APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                         <FontWeight>Bold</FontWeight>
