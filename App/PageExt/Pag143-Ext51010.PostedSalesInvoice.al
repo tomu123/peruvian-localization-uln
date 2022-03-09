@@ -95,7 +95,7 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
                 Scope = "Repeater";
                 trigger OnAction()
                 var
-                    Text001: Label 'El documento %1 supera los 7 dias ¿Desea anular el comprobante?';
+                    Text001: Label 'El documento %1 supera los 7 dias para su anulación.¿Desea anular el comprobante?';
                 begin
                     if (Today - 6) >= Rec."Posting Date" then
                         if not Confirm(StrSubstNo(Text001, Rec."No."), false) then
