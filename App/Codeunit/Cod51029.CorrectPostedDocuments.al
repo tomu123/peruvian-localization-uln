@@ -1239,6 +1239,7 @@ codeunit 51029 "LD Correct Posted Documents"
         if RetentionLedgerEntry.Get(pEntryNo) then begin
             RetentionLedgerEntry."Retention No." := NewDocumentNo;
             RetentionLedgerEntry.Reversed := true;
+            RetentionLedgerEntry."Legal Status" := RetentionLedgerEntry."Legal Status"::OutFlow;
             RetentionLedgerEntry.Modify();
             DetailRetentionLedEntry.Reset();
             DetailRetentionLedEntry.SetCurrentKey("Retention No.");
