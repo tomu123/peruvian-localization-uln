@@ -918,10 +918,13 @@ codeunit 51009 "Retention Management"
             "Manual Retention" := GenJnlLine."Manual Retention";
             GLEntry.Reset();
             GLEntry.SetRange("Document No.", TempGLEntryBuf."Document No.");
+            GLEntry.SetRange("External Document No.", GenJnlLine."External Document No.");
             if GLEntry.FindSet() then
                 repeat
-                    GLEntry."Retention No." := RetentionNo;
-                    GLEntry.Modify();
+                    if GLEntry."Retention No." = '' then begin
+                        GLEntry."Retention No." := RetentionNo;
+                        GLEntry.Modify();
+                    end;
                 until GLEntry.Next() = 0;
             VendLE.Reset();
             VendLE.SetRange("Document No.", TempGLEntryBuf."Document No.");

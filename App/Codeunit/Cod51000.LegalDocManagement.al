@@ -199,6 +199,8 @@ codeunit 51000 "Legal Document Management"
             DtldRetentionLedgEntry.SetRange("Source Document No.", VendorLedgerEntry."Document No.");
             if DtldRetentionLedgEntry.FindFirst() then begin
                 VendorLedgerEntry."Retention No." := DtldRetentionLedgEntry."Retention No.";
+                VendorLedgerEntry."Retention Amount" := DtldRetentionLedgEntry."Amount Retention";
+                VendorLedgerEntry."Retention Amount LCY" := DtldRetentionLedgEntry."Amount Retention LCY";
             end;
         end;
     end;
@@ -212,10 +214,20 @@ codeunit 51000 "Legal Document Management"
 
     [EventSubscriber(ObjectType::Table, Database::"G/L Entry", 'OnAfterCopyGLEntryFromGenJnlLine', '', true, true)]
     procedure SetCopyGLEntryFromGenJnlLine(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
+    var
+        DtldRetentionLedgEntry: Record "Detailed Retention Ledg. Entry";
     begin
         GLEntry."Legal Document" := GenJournalLine."Legal Document";
         GLEntry."Legal Status" := GenJournalLine."Legal Status";
         GLEntry."Retention No." := GenJournalLine."Retention No.";
+        if GLEntry."Retention No." = '' then begin
+            DtldRetentionLedgEntry.Reset();
+            DtldRetentionLedgEntry.SetRange("Vendor External Document No.", GLEntry."External Document No.");
+            DtldRetentionLedgEntry.SetRange("Source Document No.", GLEntry."Document No.");
+            if DtldRetentionLedgEntry.FindFirst() then begin
+                GLEntry."Retention No." := DtldRetentionLedgEntry."Retention No.";
+            end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterCopyGenJnlLineFromSalesHeader', '', true, true)]

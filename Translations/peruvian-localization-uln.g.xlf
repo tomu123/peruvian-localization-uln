@@ -16088,6 +16088,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Anular"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1974781378 - Action 701109401 - Method 1377591017 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1974781378">
+          <source>El documento %1 supera los 7 dias para su anulación.¿Desea anular el comprobante?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Method OnAction - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Create and post a sales credit memo that reverses this posted sales invoice. This posted purchase credit memo will be canceled.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16109,7 +16114,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales Inv. - Action CancellLegalDocAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 697845627 - Action 701109401 - Method 1377591017 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 697845627">
-          <source>El documento %1 supera los 7 dias ¿Desea anular el comprobante?</source>
+          <source>El documento %1 supera los 7 dias para su anulación.¿Desea anular el comprobante?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales Inv. - Action CancellLegalDocAction - Method OnAction - NamedType Text001</note>
         </trans-unit>
