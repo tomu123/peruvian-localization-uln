@@ -159,4 +159,8 @@ enum 51001 "ST Source Code Type"
     {
         Caption = 'Cr. Memo Quota Sava', Comment = 'ESM="NC Cuota Sava"';
     }
+    value(39; "Reverse Retention")
+    {
+        Caption = 'Reverse Retention', Comment = 'ESM="Revertir Retencion"';
+    }
 }

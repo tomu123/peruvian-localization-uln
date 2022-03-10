@@ -227,6 +227,22 @@ page 51003 "Setup Localization"
                 {
                     ApplicationArea = All;
                 }
+                field("Rev. Ret. Posting Group MN"; "Rev. Ret. Posting Group MN")
+                {
+                    ApplicationArea = All;
+                }
+                field("Rev. Ret. Posting Group ME"; "Rev. Ret. Posting Group ME")
+                {
+                    ApplicationArea = All;
+                }
+                field("Retention Journal Template"; "Retention Journal Template")
+                {
+                    ApplicationArea = All;
+                }
+                field("Retention Journal Batch"; "Retention Journal Batch")
+                {
+                    ApplicationArea = All;
+                }
             }
             group(RHRetention)
             {
