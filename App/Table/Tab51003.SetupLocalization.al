@@ -321,6 +321,30 @@ table 51003 "Setup Localization"
             DataClassification = ToBeClassified;
             Caption = 'Resolution Number', Comment = 'ESM="Número resolución"';
         }
+        field(51029; "Rev. Ret. Posting Group MN"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Rev. Retention Posting Group MN', Comment = 'ESM="Grupo Contable Retencion Provisión MN"';
+            TableRelation = "Vendor Posting Group";
+        }
+        field(51030; "Rev. Ret. Posting Group ME"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Rev. Retention Posting Group ME', Comment = 'ESM="Grupo Contable Retencion Provisión ME"';
+            TableRelation = "Vendor Posting Group";
+        }
+        field(51031; "Retention Journal Template"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Retention Journal Template', Comment = 'ESM="Libro Diario Retención"';
+            TableRelation = "Gen. Journal Template";
+        }
+        field(51032; "Retention Journal Batch"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Retention Journal Batch', Comment = 'ESM="Seccion Libro Diario Retención"';
+            TableRelation = "Gen. Journal Batch".Name WHERE("Journal Template Name" = FIELD("Retention Journal Template"));
+        }
         //Retentions End
 
         //Retention RH Begin
