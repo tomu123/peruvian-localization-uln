@@ -187,6 +187,7 @@ codeunit 51000 "Legal Document Management"
     procedure SetCopyVendLedgerEntryFromGenJnlLine(var VendorLedgerEntry: Record "Vendor Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
     var
         DtldRetentionLedgEntry: Record "Detailed Retention Ledg. Entry";
+        RetentionLE: Record "Retention Ledger Entry";
     begin
         VendorLedgerEntry."Legal Document" := GenJournalLine."Legal Document";
         VendorLedgerEntry."Legal Status" := GenJournalLine."Legal Status";
@@ -199,6 +200,14 @@ codeunit 51000 "Legal Document Management"
             DtldRetentionLedgEntry.SetRange("Source Document No.", VendorLedgerEntry."Document No.");
             if DtldRetentionLedgEntry.FindFirst() then begin
                 VendorLedgerEntry."Retention No." := DtldRetentionLedgEntry."Retention No.";
+            end;
+            if GenJournalLine."Setup Source Code" = GenJournalLine."Setup Source Code"::"Reverse Retention" then begin
+                RetentionLE.Reset();
+                RetentionLE.SetRange("Retention No.", VendorLedgerEntry."Retention No.");
+                if RetentionLE.FindFirst() then begin
+                    RetentionLE."Legal Status" := RetentionLE."Legal Status"::Anulled;
+                    RetentionLE.Modify();
+                end;
             end;
         end;
     end;

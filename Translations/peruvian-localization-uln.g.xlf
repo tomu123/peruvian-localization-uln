@@ -4308,6 +4308,16 @@
           <note from="Developer" annotates="general" priority="2">ESM="N° cuente Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Retention G/L Account No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 2911966003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retention Journal Batch</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Seccion Libro Diario Retención"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Retention Journal Batch - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 2106933455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retention Journal Template</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Libro Diario Retención"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Retention Journal Template - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4047494536 - Field 1144811663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retention Limit Amount</source>
           <note from="Developer" annotates="general" priority="2">ESM="Importe limite retención"</note>
@@ -4367,6 +4377,16 @@
           <source>Return Shipment Serial No.</source>
           <note from="Developer" annotates="general" priority="2">ESM="N° Serie Env. Dev."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Return Shipment Serial No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 1335487815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rev. Retention Posting Group ME</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Grupo Contable Retencion Provisión ME"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Rev. Ret. Posting Group ME - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 2441972026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rev. Retention Posting Group MN</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Grupo Contable Retencion Provisión MN"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Rev. Ret. Posting Group MN - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 1214388239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial No. Int. Cons.</source>
@@ -6237,6 +6257,21 @@
           <source>Do you want to download the following file?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method PostFileToControlFileRecord - NamedType ConfirmDownload</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 2325327440 - NamedType 3980353136" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existen registros en el diario, revisar información para evitar errores</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ReverseRetention - NamedType MsgNotification</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 2325327440 - NamedType 2513033233" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ver Diario</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ReverseRetention - NamedType ViewHere</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 2325327440 - NamedType 13896119" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ViewTemplateBatch</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ReverseRetention - NamedType FunctionName</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 1160803957 - NamedType 519063157" size-unit="char" translate="yes" xml:space="preserve">
           <source>Departament undefined for "Country Code" %1.</source>
@@ -10414,8 +10449,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action RetentionActions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 2116845018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Electronic Reverse</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Reversión Electrónica"</note>
+          <source>Reverse Retention</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Reversión Retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Retention Ledger Entry - Action ElectronicReversed - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3511451743 - Action 1952506131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -16088,6 +16123,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Anular"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1974781378 - Action 701109401 - Method 1377591017 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1974781378">
+          <source>El documento %1 supera los 7 dias para su anulación.¿Desea anular el comprobante?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Method OnAction - NamedType Text001</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Create and post a sales credit memo that reverses this posted sales invoice. This posted purchase credit memo will be canceled.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16109,7 +16149,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales Inv. - Action CancellLegalDocAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 697845627 - Action 701109401 - Method 1377591017 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 697845627">
-          <source>El documento %1 supera los 7 dias ¿Desea anular el comprobante?</source>
+          <source>El documento %1 supera los 7 dias para su anulación.¿Desea anular el comprobante?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales Inv. - Action CancellLegalDocAction - Method OnAction - NamedType Text001</note>
         </trans-unit>
@@ -20457,6 +20497,11 @@
           <source>Reverse Provision</source>
           <note from="Developer" annotates="general" priority="2">ESM="Revertir Provisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ST Source Code Type - EnumValue Reverse Provision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 337434209 - EnumValue 520938200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reverse Retention</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Revertir Retencion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum ST Source Code Type - EnumValue Reverse Retention - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 337434209 - EnumValue 896748167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sava Cash Invoice</source>

@@ -1255,6 +1255,143 @@ codeunit 51009 "Retention Management"
         Error(DimMgt.GetDimValuePostingErr);
     end;
 
+    procedure ReverseRetention(RetentionLE: Record "Retention Ledger Entry")
+    var
+        VendorLE: Record "Vendor Ledger Entry";
+        Vendor: Record Vendor;
+        UserSetup: Record "User Setup";
+        Num: Integer;
+        j_line: Record "Gen. Journal Line";
+        SetupLoca: Record "Setup Localization";
+        ImporteProvRet: Decimal;
+        BoolCurrencyCode: Boolean;
+        Diario: Code[20];
+        Seccion: Code[20];
+        GenJnlBatch: Record "Gen. Journal Batch";
+        GenJnlManagement: Codeunit GenJnlManagement;
+        Parameter: array[4] of Text;
+        ValueParameter: array[4] of Text;
+        MsgNotification: Label 'Existen registros en el diario, revisar información para evitar errores';
+        ViewHere: Label 'Ver Diario';
+        FunctionName: Label 'ViewTemplateBatch';
+        SLSetupMgt: Codeunit "Setup Localization";
+    begin
+        SetupLoca.Get();
+        Diario := SetupLoca."Retention Journal Template";
+        Seccion := SetupLoca."Retention Journal Batch";
+        j_line.Reset();
+        j_line.SetRange("Journal Template Name", Diario);
+        j_line.SetRange("Journal Batch Name", Seccion);
+        if j_line.FindFirst() then begin
+            Parameter[1] := 'TemplateName';
+            Parameter[2] := 'BatchName';
+            ValueParameter[1] := j_line."Journal Template Name";
+            ValueParameter[2] := j_line."Journal Batch Name";
+            SLSetupMgt.AlertAndViewWhitNotification(MsgNotification, ViewHere, Codeunit::"Retention Management", FunctionName, Parameter, ValueParameter);
+            exit;
+
+        end;
+        BoolCurrencyCode := false;
+        VendorLE.RESET;
+        VendorLE.SetRange("Vendor No.", RetentionLE."Vendor No.");
+        VendorLE.SetRange("Document No.", RetentionLE."Source Document No.");
+        VendorLE.SetRange(Open, true);
+        VendorLE.SetAutoCalcFields("Remaining Amount");
+        IF VendorLE.FINDSET THEN
+            REPEAT
+                if VendorLE."Currency Code" <> '' then
+                    BoolCurrencyCode := true;
+                Vendor.GET(VendorLE."Vendor No.");
+                Vendor.TestField(Blocked, Vendor.Blocked::" ");
+                UserSetup.GET(USERID);
+                Num := Num + 1000;
+                j_line.INIT;
+                j_line."Journal Template Name" := Diario;
+                j_line."Journal Batch Name" := Seccion;
+                j_line."Line No." := Num;
+                //    j_line."Document Type":=j_line."Document Type"::Payment;
+                j_line."Posting Date" := TODAY;
+                j_line."Document Date" := TODAY;
+                j_line."Account Type" := j_line."Account Type"::Vendor;
+                j_line.VALIDATE("Account No.", VendorLE."Vendor No.");
+                j_line.Description := VendorLE.Description;
+                j_line.VALIDATE("Applies-to Doc. No.", VendorLE."Document No.");
+                j_line.VALIDATE("Posting Group", VendorLE."Vendor Posting Group");
+                j_line."Applies-to Doc. Type" := VendorLE."Document Type";
+                j_line."Document No." := VendorLE."Document No.";
+                j_line."External Document No." := VendorLE."External Document No.";
+                j_line.VALIDATE(Amount, -VendorLE."Remaining Amount");
+                ImporteProvRet += -VendorLE."Remaining Amount";
+                //  j_line."Amount (LCY)" :=-Importe;
+                j_line."Source Code" := 'DIAPAGOS';
+                j_line.VALIDATE("Dimension Set ID", VendorLE."Dimension Set ID");
+                j_line."Posting Text" := VendorLE."Posting Text";
+                j_line."Applies-to Entry No." := VendorLE."Entry No.";
+                j_line."Setup Source Code" := j_line."Setup Source Code"::"Reverse Retention";
+                j_line.INSERT;
+                if VendorLE."Retention No." <> '' then begin
+                    j_line.INIT;
+                    Num := Num + 1000;
+                    j_line."Journal Template Name" := Diario;
+                    j_line."Journal Batch Name" := Seccion;
+                    j_line."Line No." := Num;
+                    j_line."Posting Date" := TODAY;
+                    //  j_line."Document Date":=CustLedgerEntry."Document Date";
+                    j_line."Account Type" := j_line."Account Type"::"G/L Account";
+                    j_line.VALIDATE("Account No.", SetupLoca."Retention G/L Account No.");
+                    j_line.Description := 'REVERSION DE RETENCION' + VendorLE."Document No.";
+                    j_line."Document No." := VendorLE."Document No.";
+                    j_line."External Document No." := VendorLE."External Document No.";
+                    j_line.VALIDATE(Amount, VendorLE."Retention Amount");
+                    ImporteProvRet += VendorLE."Retention Amount";
+                    j_line."Source Code" := 'DIACOBROS';
+                    //  j_line."Payment Terms Code":=CustLedgerEntry."Payment Terms Code";
+                    //  j_line.VALIDATE("Dimension Set ID",CustLedgerEntry."Dimension Set ID");
+                    j_line."Posting Text" := 'REVERSION DE RETENCION' + VendorLE."Document No.";
+                    j_line."Setup Source Code" := j_line."Setup Source Code"::"Reverse Retention";
+                    j_line.INSERT;
+                end;
+            UNTIL VendorLE.NEXT = 0;
+        j_line.INIT;
+        Num := Num + 1000;
+        j_line.INIT;
+        j_line."Journal Template Name" := Diario;
+        j_line."Journal Batch Name" := Seccion;
+        j_line."Line No." := Num;
+        //    j_line."Document Type":=j_line."Document Type"::Payment;
+        j_line."Posting Date" := TODAY;
+        j_line."Document Date" := TODAY;
+        j_line."Account Type" := j_line."Account Type"::Vendor;
+        j_line.VALIDATE("Account No.", RetentionLE."Vendor No.");
+        j_line.Description := 'PROVISION DE RETENCION' + RetentionLE."Retention No.";
+        if not BoolCurrencyCode then
+            j_line.VALIDATE("Posting Group", SetupLoca."Rev. Ret. Posting Group MN")
+        else
+            j_line.VALIDATE("Posting Group", SetupLoca."Rev. Ret. Posting Group ME");
+        j_line."Document No." := RetentionLE."Source Document No.";
+        j_line."External Document No." := VendorLE."External Document No.";
+        j_line.VALIDATE(Amount, -ImporteProvRet);
+        //  j_line."Amount (LCY)" :=-Importe;
+        j_line."Source Code" := 'DIAPAGOS';
+        j_line."Posting Text" := 'REVERSION DE RETENCION' + RetentionLE."Retention No.";
+        j_line."Setup Source Code" := j_line."Setup Source Code"::"Reverse Retention";
+        j_line.INSERT;
+
+        GenJnlBatch.GET(Diario, Seccion);
+        GenJnlManagement.TemplateSelectionFromBatch(GenJnlBatch);
+    end;
+
+    procedure ViewTemplateBatch(pNotification: Notification)
+    var
+        TemplateName: Text;
+        BatchName: Text;
+        GenJnlBatch2: Record "Gen. Journal Batch";
+    begin
+        TemplateName := pNotification.GetData('TemplateName');
+        BatchName := pNotification.GetData('BatchName');
+        GenJnlBatch2.Get(TemplateName, BatchName);
+        GenJnlMgt.TemplateSelectionFromBatch(GenJnlBatch2);
+    end;
     //--   
     [IntegrationEvent(false, false)]
     procedure OnAfterGetSourceTypeVendorLedgerEntry(var pGenJnlLine: Record "Gen. Journal Line"; var IsInvoice: Boolean; var IsCrMemo: Boolean; var IsLetter: Boolean)
@@ -1298,4 +1435,5 @@ codeunit 51009 "Retention Management"
         ErrorSelectedDate: Label 'You can only generate the PDT for one period at a time.';
         Processing: Label 'Processing  #1#######################\';
         CreatingFile: Label 'CreatingFile  #2#######################\';
+        GenJnlMgt: Codeunit GenJnlManagement;
 }
