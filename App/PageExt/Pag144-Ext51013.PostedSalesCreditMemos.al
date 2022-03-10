@@ -67,7 +67,12 @@ pageextension 51013 "Legal Doc. Pstd Sales CrMemos" extends "Posted Sales Credit
                 PromotedOnly = true;
                 Scope = "Repeater";
                 trigger OnAction()
+                var
+                    Text001: Label 'El documento %1 supera los 7 dias para su anulación.¿Desea anular el comprobante?';
                 begin
+                    if (Today - 6) >= Rec."Posting Date" then
+                        if not Confirm(StrSubstNo(Text001, Rec."No."), false) then
+                            exit;
                     LDCorrectPstdDoc.SalesCancelCreditMemo(Rec);
                 end;
             }

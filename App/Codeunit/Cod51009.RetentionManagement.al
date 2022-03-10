@@ -821,7 +821,7 @@ codeunit 51009 "Retention Management"
                 NextRetentionNo();
                 CreateDetailedRetentionLedgerEntry(TempGLEntryBuf);
                 "Retention Applies-to Entry No." := 0;
-                "Retention No." := RetentionNo;
+                //"Retention No." := RetentionNo;
                 Modify();
             until Next() = 0;
             CreateRetentionEntry();
@@ -925,13 +925,15 @@ codeunit 51009 "Retention Management"
                 until GLEntry.Next() = 0;
             VendLE.Reset();
             VendLE.SetRange("Document No.", TempGLEntryBuf."Document No.");
-            if VendLE.FindSet() then
-                repeat
+            VendLE.SetRange("External Document No.", GenJnlLine."External Document No.");
+            if VendLE.FindFirst() then begin
+                if VendLE."Retention No." = '' then begin
                     VendLE."Retention No." := RetentionNo;
                     VendLE."Retention Amount" := "Amount Retention";
                     VendLE."Retention Amount LCY" := "Amount Retention LCY";
                     VendLE.Modify();
-                until VendLE.Next() = 0;
+                end;
+            end;
             Insert();
             SaveRetention();
             NextDtldRetLedgerEntryNo += 1;

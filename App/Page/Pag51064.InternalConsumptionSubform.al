@@ -123,7 +123,7 @@ page 51064 "Internal Consumption Subform"
                 field("Appl.-to Item Entry"; "Appl.-to Item Entry")
                 {
                     Enabled = false;
-                    Visible = false;
+                    Visible = true;
                 }
                 field("Deferral Code"; "Deferral Code")
                 {

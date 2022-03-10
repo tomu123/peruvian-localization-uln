@@ -185,11 +185,22 @@ codeunit 51000 "Legal Document Management"
 
     [EventSubscriber(ObjectType::Table, Database::"Vendor Ledger Entry", 'OnAfterCopyVendLedgerEntryFromGenJnlLine', '', true, true)]
     procedure SetCopyVendLedgerEntryFromGenJnlLine(var VendorLedgerEntry: Record "Vendor Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
+    var
+        DtldRetentionLedgEntry: Record "Detailed Retention Ledg. Entry";
     begin
         VendorLedgerEntry."Legal Document" := GenJournalLine."Legal Document";
         VendorLedgerEntry."Legal Status" := GenJournalLine."Legal Status";
         VendorLedgerEntry."Accountant receipt date" := GenJournalLine."Accountant receipt date";
         VendorLedgerEntry."Retention No." := GenJournalLine."Retention No.";
+        if VendorLedgerEntry."Retention No." = '' then begin
+            DtldRetentionLedgEntry.Reset();
+            DtldRetentionLedgEntry.SetRange("Vendor External Document No.", VendorLedgerEntry."External Document No.");
+            DtldRetentionLedgEntry.SetRange("Vendor No.", VendorLedgerEntry."Vendor No.");
+            DtldRetentionLedgEntry.SetRange("Source Document No.", VendorLedgerEntry."Document No.");
+            if DtldRetentionLedgEntry.FindFirst() then begin
+                VendorLedgerEntry."Retention No." := DtldRetentionLedgEntry."Retention No.";
+            end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"VAT Entry", 'OnAfterCopyFromGenJnlLine', '', true, true)]

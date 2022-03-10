@@ -71,6 +71,8 @@ report 51039 "BALANCE DE COMPROBACION"
                 lclGLAccount: Record "G/L Account";
                 DebeSaldoPeriodo: Decimal;
                 HaberSaldoPeriodo: Decimal;
+                gAmountDebit: Decimal;
+                gAmountCredit: Decimal;
             begin
                 IF COPYSTR("G/L Account"."No.", 1, 2) = 'MS' THEN
                     CurrReport.SKIP;
@@ -84,7 +86,7 @@ report 51039 "BALANCE DE COMPROBACION"
                 gdinicial := 0;
                 gdfinal := 0;
 
-                SETRANGE("G/L Account"."Date Filter", StartDate, EndDate);
+                //SETRANGE("G/L Account"."Date Filter", StartDate, EndDate);
 
                 //CALCFIELDS("G/L Account"."Debit Amount Apertura.", "G/L Account"."Credit Amount Apertura.");
                 // lclGLAccount.Reset();
@@ -106,21 +108,28 @@ report 51039 "BALANCE DE COMPROBACION"
 
                 // CALCFIELDS("G/L Account"."Debit Amount", "G/L Account"."Credit Amount");
                 // gimporte := ("G/L Account"."Debit Amount" - "G/L Account"."Credit Amount") + (gdinicial - gdfinal);
-                gimporte := fnRecalculateAmountMIG(TRUE);//PC 20-05-21
+
+                //gimporte := fnRecalculateAmountMIG(TRUE); //PC 20-05-21 //FMM 04.03.22
+
+                fnRecalculateAmountOpenClosed(gAmountDebit, gAmountCredit, StartDate, EndDate);
+
+                SETRANGE("G/L Account"."Date Filter", DMY2DATE(1, 1, DATE2DMY(StartDate, 3)), CALCDATE('<-1D>', StartDate));
+                CALCFIELDS("G/L Account"."Debit Amount", "G/L Account"."Credit Amount");
+                gimporte := ("G/L Account"."Debit Amount" - "G/L Account"."Credit Amount") + (gAmountDebit - gAmountCredit);
                 IF gimporte > 0 THEN
                     DecimalValues[1] := gimporte
                 ELSE
                     DecimalValues[2] := ABS(gimporte);
 
                 SETRANGE("G/L Account"."Date Filter", StartDate, EndDate);
-                //CALCFIELDS("G/L Account"."Debit Amount", "G/L Account"."Credit Amount", "G/L Account"."Debit Amount Apertura.", "G/L Account"."Credit Amount Apertura.");
-                //DecimalValues[3] := "G/L Account"."Debit Amount" - "G/L Account"."Debit Amount Apertura.";
+                CALCFIELDS("G/L Account"."Debit Amount", "G/L Account"."Credit Amount");
+                DecimalValues[3] := "G/L Account"."Debit Amount" - gAmountDebit;
 
-                //DecimalValues[4] := "G/L Account"."Credit Amount" - "G/L Account"."Credit Amount Apertura.";
+                DecimalValues[4] := "G/L Account"."Credit Amount" - gAmountCredit;
                 //PC 20-05-21+++++++++++++
-                fnRecalculateAmountNoMIG(FALSE, DebeSaldoPeriodo, HaberSaldoPeriodo);
-                DecimalValues[3] := DebeSaldoPeriodo;
-                DecimalValues[4] := HaberSaldoPeriodo;
+                //fnRecalculateAmountNoMIG(FALSE, DebeSaldoPeriodo, HaberSaldoPeriodo);
+                // DecimalValues[3] := DebeSaldoPeriodo;
+                // DecimalValues[4] := HaberSaldoPeriodo;
                 //PC 20-05-21-----------
                 SETRANGE("G/L Account"."Date Filter", DMY2DATE(1, 1, DATE2DMY(StartDate, 3)), EndDate);
                 CALCFIELDS("G/L Account"."Debit Amount", "G/L Account"."Credit Amount");
@@ -232,6 +241,24 @@ report 51039 "BALANCE DE COMPROBACION"
             UNTIL lclRecGLEntry.NEXT = 0;
 
         EXIT(lclAmount);
+    end;
+
+    local procedure fnRecalculateAmountOpenClosed(var pAmountOpen: Decimal; var pAmountClosed: Decimal; pStartDate: Date; pEndDate: Date)
+    var
+        lclRecGLEntry: Record "G/L Entry";
+        lclAmount: Decimal;
+    begin
+        pAmountOpen := 0;
+        pAmountClosed := 0;
+        lclRecGLEntry.RESET;
+        lclRecGLEntry.SETFILTER("Posting Date", '%1..%2', pStartDate, pEndDate);
+        lclRecGLEntry.SETRANGE("G/L Account No.", "G/L Account"."No.");
+        lclRecGLEntry.SETRANGE("Source Code", 'APERTURA');
+        IF lclRecGLEntry.FINDSET THEN
+            REPEAT
+                pAmountOpen += lclRecGLEntry."Debit Amount";
+                pAmountClosed += lclRecGLEntry."Credit Amount";
+            UNTIL lclRecGLEntry.NEXT = 0;
     end;
 
     local procedure fnRecalculateAmountNoMIG(pOnlyMigration: Boolean; var DebeSaldoPeriodo: Decimal; var HaberSaldoPeriodo: Decimal)
