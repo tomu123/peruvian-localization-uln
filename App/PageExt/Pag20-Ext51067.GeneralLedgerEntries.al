@@ -6,13 +6,6 @@ pageextension 51067 "Setup General Ledger Entries" extends "General Ledger Entri
         {
             Visible = true;
         }
-        addafter("Source Code")
-        {
-            field("Source No."; "Source No.")
-            {
-                ApplicationArea = All;
-            }
-        }
         // Add changes to page layout here
         addafter("Posting Date")
         {

@@ -119,14 +119,6 @@ pageextension 51183 "PR Purchase Order Subform" extends "Purchase Order Subform"
         {
             ShowMandatory = true;
         }
-        addafter(Description)
-        {
-            field("Description 2"; "Description 2")
-            {
-                ApplicationArea = All;
-                Editable = gStatus;
-            }
-        }
         moveafter("Description 2"; "Unit of Measure Code")
         //Purchase Request
         addlast(Control1)

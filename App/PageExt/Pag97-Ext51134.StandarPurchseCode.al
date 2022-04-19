@@ -6,25 +6,6 @@ pageextension 51134 "PR Purch. Quote Subform" extends "Purchase Quote Subform"
         {
             Editable = True;//ShowDescription;
         }
-        addafter(Description)
-        {
-            field("Description 2"; "Description 2")
-            {
-                ApplicationArea = All;
-                Editable = True;//ShowDescription;
-            }
-        }
-        addafter("Qty. Assigned")
-        {
-            field("Job No."; "Job No.")
-            {
-                ApplicationArea = All;
-            }
-            field("Job Task No."; "Job Task No.")
-            {
-                ApplicationArea = All;
-            }
-        }
 
         //Purchase Request
         addafter("No.")

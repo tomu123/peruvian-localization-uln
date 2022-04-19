@@ -286,14 +286,6 @@ codeunit 51007 "Analitycs Management"
         NextEntryNo += 1;
     end;
 
-    local procedure MyProcedure()
-    var
-        FileMgt: Codeunit "File Management";
-        TempBlob: Codeunit "Temp Blob";
-    begin
-        FileMgt.BLOBImportFromServerFile(TempBlob, '');
-    end;
-
     var
         SLSetup: Record "Setup Localization";
         CUOMgt: Codeunit "CUO Management";

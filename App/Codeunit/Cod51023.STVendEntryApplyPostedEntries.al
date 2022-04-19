@@ -228,7 +228,7 @@ codeunit 51023 "ST VendEntry-Apply Posted Entr"
             GenJnlLine."System-Created Entry" := true;
             Window.Open(UnapplyingMsg);
             CollectAffectedLedgerEntries(TempVendorLedgerEntry, DtldVendLedgEntry2);
-            GenJnlPostLine.UnapplyUniqueVendLedgEntry_ULN(GenJnlLine, DtldVendLedgEntry2, FilterVendorLedgerEntryNos);
+            // GenJnlPostLine.UnapplyUniqueVendLedgEntry_ULN(GenJnlLine, DtldVendLedgEntry2, FilterVendorLedgerEntryNos);
             STAdjustExchangeRates.AdjustExchRateVend(GenJnlLine, TempVendorLedgerEntry);
 
             if PreviewMode then

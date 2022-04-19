@@ -199,8 +199,8 @@ report 51013 "ST Adjust Exchange Rates"
 
             trigger OnPreDataItem()
             begin
-                STSetup.Get();//++ ULN::RRR 001  2020.07.17  v.001 
-                CheckAdjustExchangeRate();//++ ULN::RRR 001  2020.07.17  v.001 
+                STSetup.Get();//++ ULN::RRR 001  2020.07.17  v.001
+                CheckAdjustExchangeRate();//++ ULN::RRR 001  2020.07.17  v.001
                 CheckPostingDate;
                 if not AdjCustVendBank then
                     CurrReport.Break();
@@ -1089,7 +1089,7 @@ report 51013 "ST Adjust Exchange Rates"
         TotalCustomersAdjusted: Integer;
         TotalVendorsAdjusted: Integer;
 
-        //++ begin ULN::RRR 001  2020.07.17  v.001 
+        //++ begin ULN::RRR 001  2020.07.17  v.001
         STSetup: Record "Setup Localization";
         STBankAccPstgGroup: Record "Bank Account Posting Group";
         STCustPostingGroup: Record "Customer Posting Group";
@@ -1101,7 +1101,7 @@ report 51013 "ST Adjust Exchange Rates"
         STMsgAdjustExchRateActive: Label 'You must enter a active exchange rate.', Comment = 'ESM="Falta colocar el tipo de cambio Activo"';
         STMsgAdjustExchRatepassive: Label 'You must enter a passive exchange rate.', Comment = 'ESM="Falta colocar el tipo de cambio Pasivo"';
         STMsgCurrencyCodeFilter: Label 'You must enter a currency code filter', Comment = 'ESM="Falta filtrar por una moneda"';
-        //++ END ULN::RRR 001  2020.07.17  v.001 
+        //++ END ULN::RRR 001  2020.07.17  v.001
 
 
         //++ begin ULN::RRR 003  2020.07.17  v.001
@@ -1112,7 +1112,7 @@ report 51013 "ST Adjust Exchange Rates"
         //++ END ULN::RRR 003  2020.07.17  v.001
         TotalGLAccountsAdjusted: Integer;
 
-    //++ begin ULN::RRR 001  2020.07.17  v.001 
+    //++ begin ULN::RRR 001  2020.07.17  v.001
     local procedure CheckAdjustExchangeRate()
     begin
         if STAdjustExchRateActive = 0 then
@@ -1122,7 +1122,7 @@ report 51013 "ST Adjust Exchange Rates"
         if Currency.GetFilter(Code) = '' then
             Error(STMsgCurrencyCodeFilter);
     end;
-    //++ END ULN::RRR 001  2020.07.17  v.001 
+    //++ END ULN::RRR 001  2020.07.17  v.001
 
 
     //++ begin ULN::RRR 003  2020.07.17  v.001
@@ -2384,7 +2384,6 @@ report 51013 "ST Adjust Exchange Rates"
                         (AdjAmount > 0):
                             begin
                                 TempDtldEmployeeLedgEntry."Amount (LCY)" := AdjAmount;
-                                TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Gain";
                                 HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                                 InsertTempDtldEmployeeLedgerEntry;
                                 NewEntryNo := NewEntryNo + 1;
@@ -2394,7 +2393,6 @@ report 51013 "ST Adjust Exchange Rates"
                         (AdjAmount < 0):
                             if -AdjAmount <= OldAdjAmount then begin
                                 TempDtldEmployeeLedgEntry."Amount (LCY)" := AdjAmount;
-                                TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Loss";
                                 HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                                 InsertTempDtldEmployeeLedgerEntry;
                                 NewEntryNo := NewEntryNo + 1;
@@ -2403,7 +2401,6 @@ report 51013 "ST Adjust Exchange Rates"
                             end else begin
                                 AdjAmount := AdjAmount + OldAdjAmount;
                                 TempDtldEmployeeLedgEntry."Amount (LCY)" := -OldAdjAmount;
-                                TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Gain";
                                 HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                                 InsertTempDtldEmployeeLedgerEntry;
                                 NewEntryNo := NewEntryNo + 1;
@@ -2430,7 +2427,6 @@ report 51013 "ST Adjust Exchange Rates"
                         (AdjAmount < 0):
                             begin
                                 TempDtldEmployeeLedgEntry."Amount (LCY)" := AdjAmount;
-                                TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Loss";
                                 HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                                 InsertTempDtldEmployeeLedgerEntry;
                                 NewEntryNo := NewEntryNo + 1;
@@ -2440,7 +2436,6 @@ report 51013 "ST Adjust Exchange Rates"
                         (AdjAmount > 0):
                             if AdjAmount <= -OldAdjAmount then begin
                                 TempDtldEmployeeLedgEntry."Amount (LCY)" := AdjAmount;
-                                TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Gain";
                                 HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                                 InsertTempDtldEmployeeLedgerEntry;
                                 NewEntryNo := NewEntryNo + 1;
@@ -2449,7 +2444,6 @@ report 51013 "ST Adjust Exchange Rates"
                             end else begin
                                 AdjAmount := OldAdjAmount + AdjAmount;
                                 TempDtldEmployeeLedgEntry."Amount (LCY)" := -OldAdjAmount;
-                                TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Loss";
                                 HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                                 InsertTempDtldEmployeeLedgerEntry;
                                 NewEntryNo := NewEntryNo + 1;
@@ -2477,12 +2471,10 @@ report 51013 "ST Adjust Exchange Rates"
                     HandleEmployeeDebitCredit(Correction, TempDtldEmployeeLedgEntry."Amount (LCY)");
                     TempDtldEmployeeLedgEntry."Entry No." := NewEntryNo;
                     if AdjAmount < 0 then begin
-                        TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Loss";
                         GainsAmount := 0;
                         LossesAmount := AdjAmount;
                     end else
                         if AdjAmount > 0 then begin
-                            TempDtldEmployeeLedgEntry."Entry Type" := TempDtldEmployeeLedgEntry."Entry Type"::"Unrealized Gain";
                             GainsAmount := AdjAmount;
                             LossesAmount := 0;
                         end;
@@ -2719,7 +2711,6 @@ report 51013 "ST Adjust Exchange Rates"
             Reset();
             SetCurrentKey("Employee Ledger Entry No.", "Entry Type");
             SetRange("Employee Ledger Entry No.", EntryNo);
-            SetRange("Entry Type", "Entry Type"::"Unrealized Loss", "Entry Type"::"Unrealized Gain");
         end;
     end;
 

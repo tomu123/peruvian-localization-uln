@@ -13,10 +13,6 @@ pageextension 51251 "ST Recurring General Journal" extends "Recurring General Jo
         }
         addbefore("Gen. Bus. Posting Group")
         {
-            field("External Document No."; Rec."External Document No.")
-            {
-                ApplicationArea = All;
-            }
             field("Payment Method Code"; Rec."Payment Method Code")
             {
                 ApplicationArea = All;

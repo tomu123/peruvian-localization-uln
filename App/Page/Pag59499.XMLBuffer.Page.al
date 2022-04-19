@@ -40,23 +40,7 @@ page 59499 "ULN Page Buffer XML"
                 {
                     ApplicationArea = All;
                 }
-                field("Is Parent"; "Is Parent")
-                {
-                    ApplicationArea = All;
-                }
                 field("Data Type"; "Data Type")
-                {
-                    ApplicationArea = All;
-                }
-                field(Code; Rec.Code)
-                {
-                    ApplicationArea = All;
-                }
-                field("Node Name"; "Node Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Has Attributes"; "Has Attributes")
                 {
                     ApplicationArea = All;
                 }

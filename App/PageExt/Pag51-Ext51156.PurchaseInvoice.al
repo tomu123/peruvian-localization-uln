@@ -75,10 +75,6 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                     Validate("Vendor Invoice No.");
                 end;
             }
-            field("Vendor Order No."; "Vendor Order No.")
-            {
-                ApplicationArea = All;
-            }
         }
         addafter("Vendor Invoice No.")
         {
