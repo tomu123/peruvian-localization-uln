@@ -169,13 +169,13 @@ codeunit 51005 "Cnslt. Ruc Management"
         RecordRef_.GetTable(Vendor);
         ConfTemplMgt.UpdateRecord(ConfTempHdr, RecordRef_);
         ShowVendor(true);
-        if not ExcludeApprovalVendor then begin
-            if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Vendor) then begin
-                ApprovalsMgmt.OnSendVendorForApproval(Vendor);
-                Vendor."Status approved" := true;
-                Vendor.Modify();
-            end;
-        end;
+        // if not ExcludeApprovalVendor then begin
+        //     if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Vendor) then begin
+        //         ApprovalsMgmt.OnSendVendorForApproval(Vendor);
+        //         Vendor."Status approved" := true;
+        //         Vendor.Modify();
+        //     end;
+        // end;
     end;
 
     local procedure UpdateVendor()
@@ -269,8 +269,8 @@ codeunit 51005 "Cnslt. Ruc Management"
             Customer.Address := TextField[6];
         Customer."VAT Registration Type" := '6';
         Customer.Insert(true);
-        fnCreateDimensionUNIDNEG();
-        fnUpdateDimensionREGION();
+        // fnCreateDimensionUNIDNEG();
+        // fnUpdateDimensionREGION();
         RecordRef_.GetTable(Customer);
         ConfTemplMgt.UpdateRecord(ConfTempHdr, RecordRef_);
         if not IntegrationProcess then
@@ -347,10 +347,10 @@ codeunit 51005 "Cnslt. Ruc Management"
             Customer.Address := TextField[6];
         Customer."VAT Registration Type" := '6';
         Customer.Modify();
-        if not DefaultDimension.Get(18, TextField[1], 'UNIDNEG') then
-            fnCreateDimensionUNIDNEG();
-        if not DefaultDimension.Get(18, TextField[1], 'REGION') then
-            fnUpdateDimensionREGION();
+        // if not DefaultDimension.Get(18, TextField[1], 'UNIDNEG') then
+        //     fnCreateDimensionUNIDNEG();
+        // if not DefaultDimension.Get(18, TextField[1], 'REGION') then
+        //     fnUpdateDimensionREGION();
         RecordRef_.GetTable(Customer);
         ConfTemplMgt.UpdateRecord(ConfTempHdr, RecordRef_);
         if not IntegrationProcess then
@@ -740,10 +740,10 @@ codeunit 51005 "Cnslt. Ruc Management"
             Customer."VAT Registration No." := Customer."No.";
             Customer.ModifyCust := true;
             Customer.Modify();
-            if not DefaultDimension.Get(18, TextField[1], 'UNIDNEG') then
-                fnCreateDimensionUNIDNEG();
-            if not DefaultDimension.Get(18, TextField[1], 'REGION') then
-                fnUpdateDimensionREGION();
+            // if not DefaultDimension.Get(18, TextField[1], 'UNIDNEG') then
+            //     fnCreateDimensionUNIDNEG();
+            // if not DefaultDimension.Get(18, TextField[1], 'REGION') then
+            //     fnUpdateDimensionREGION();
         end;
     end;
 

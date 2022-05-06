@@ -16038,6 +16038,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Tipo de bien"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control LegalPropertyType - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1830809694 - Control 1489563871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
+          <source>Glosa Principal</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Glosa Principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Posting Text - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 685493271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Debit Note</source>
           <note from="Developer" annotates="general" priority="2">Nota Débito</note>

@@ -1,5 +1,6 @@
 codeunit 51029 "LD Correct Posted Documents"
 {
+    Permissions = tabledata "Purch. Inv. Header" = rimd, tabledata "Purch. Inv. Line" = rimd,tabledata "G/L Entry" = rimd,tabledata "VAT Entry" = rimd,tabledata "Detailed Vendor Ledg. Entry" =rimd;
     trigger OnRun()
     begin
 

@@ -126,6 +126,15 @@ pageextension 51086 "Detrac. Sales Invoice" extends "Sales Invoice"
             group(Localization)
             {
                 Caption = 'Peruvian Localization', Comment = 'ESM="Localización peruana"';
+                field("Posting Text"; "Posting Text")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Glosa Principal', Comment = 'ESM="Glosa Principal"';
+                    Importance = Promoted;
+                    NotBlank = true;
+                    ShowMandatory = true;
+                    Visible = true;
+                }
                 field("Legal Document"; "Legal Document")
                 {
                     ApplicationArea = Basic, Suite;

@@ -1,5 +1,6 @@
 codeunit 51007 "Analitycs Management"
 {
+    Permissions = tabledata "G/L Entry" = rim;
     trigger OnRun()
     begin
 
